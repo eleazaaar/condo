@@ -57,7 +57,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="<?=site_url('Page/admin')?>">Get Started</a>
+      <a class="btn-getstarted" href="<?=site_url('Page/login')?>">Get Started</a>
 
     </div>
   </header>
@@ -73,7 +73,7 @@
             <h1 class="">BEACHFRONT LIVING IN THE HEART OF THE CITY</h1>
             <p class="">Located in Bicutan, Parañaque City, AZURE URBAN RESORT RESIDENCES brought the first ever large scale man-made beach concept to a residential development in the Philippines.</p>
             <div class="d-flex">
-              <a href="<?=site_url('Page/admin')?>" class="btn-get-started">Get Started</a>
+              <a href="<?=site_url('Page/login')?>" class="btn-get-started">Get Started</a>
               <a href="#." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
@@ -359,7 +359,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
-              <img src="<?=base_url()?>/assets-all/img/FOOD STALLS AND CONVENIENCE STORE.jpg" width="250px" alt="">
+              <img src="#" width="250px" alt="">
               <h4><a href="#" class="stretched-link">FOOD STALLS AND CONVENIENCE STORE</a></h4>
               <p></p>
             </div>
@@ -368,7 +368,7 @@
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
-              <img src="<?=base_url()?>/assets-all/img/ROOF DECK, SKY VIEW, AND SKY GARDEN.jpg" width="250px" alt="">
+              <img src="#" width="250px" alt="">
               <h4><a href="#" class="stretched-link">ROOF DECK, SKY VIEW, AND SKY GARDEN</a></h4>
               <p></p>
             </div>

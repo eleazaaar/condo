@@ -7,6 +7,14 @@ class Page extends CI_Controller {
 		$this->load->view('index');
 	}
 
+	public function login() {
+		$this->load->view('login');
+	}
+
+	public function signup() {
+		$this->load->view('signup');
+	}
+
     public function admin() {
         $this->load->view('admin/index');
     }
