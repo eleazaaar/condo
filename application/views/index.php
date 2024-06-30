@@ -11,7 +11,6 @@
   <!-- Favicons -->
   <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
   <link href="<?=base_url()?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-  <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
   
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
