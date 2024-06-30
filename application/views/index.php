@@ -11,7 +11,8 @@
   <!-- Favicons -->
   <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
   <link href="<?=base_url()?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+  
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -74,44 +75,11 @@
             <p class="">Located in Bicutan, Parañaque City, AZURE URBAN RESORT RESIDENCES brought the first ever large scale man-made beach concept to a residential development in the Philippines.</p>
             <div class="d-flex">
               <a href="<?=site_url('Page/admin')?>" class="btn-get-started">Get Started</a>
-              <a href="." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="#." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-            <!-- <img src="<?=base_url()?>/assets/img/hero-img.png" class="img-fluid animated" alt=""> -->
-             
-            <div class="slideshow-container">
-
-              <div class="mySlides fade">
-                <div class="numbertext">1 / 3</div>
-                <img src="<?=base_url()?>/assets-all/img/1.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="numbertext">2 / 3</div>
-                <img src="<?=base_url()?>/assets-all/img/2.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
-              </div>
-
-              <div class="mySlides fade">
-                <div class="numbertext">3 / 3</div>
-                <img src="<?=base_url()?>/assets-all/img/3.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
-              </div>
-
-              <a class="prev" onclick="plusSlides(-1)">❮</a>
-              <a class="next" onclick="plusSlides(1)">❯</a>
-
-            </div>
-              <br>
-
-              <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span> 
-                <span class="dot" onclick="currentSlide(2)"></span> 
-                <span class="dot" onclick="currentSlide(3)"></span> 
-              </div>
-          </div>
+            <img src="<?=base_url()?>/assets-all/img/1.jpg" class="img-fluid animated" alt="" width="70%">
         </div>
       </div>
 
