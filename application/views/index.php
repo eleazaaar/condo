@@ -4,12 +4,12 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Title</title>
+  <title>Azure</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?=base_url()?>/assets/img/favicon.png" rel="icon">
+  <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
   <link href="<?=base_url()?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -41,17 +41,17 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
+      <a href="#" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="<?=base_url()?>/assets/img/logo.png" alt="">
-        <h1 class="sitename">Arsha</h1>
+        <img src="<?=base_url()?>/assets-all/img/logo.jpg" alt="">
+        <h1 class="sitename">Azure</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Overview</a></li>
+          <li><a href="#services">Ameneties</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -70,27 +70,59 @@
       <div class="container">
         <div class="row gy-4">
           <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="zoom-out">
-            <h1 class="">Better Solutions For Your Business</h1>
-            <p class="">We are team of talented designers making websites with Bootstrap</p>
+            <h1 class="">BEACHFRONT LIVING IN THE HEART OF THE CITY</h1>
+            <p class="">Located in Bicutan, Parañaque City, AZURE URBAN RESORT RESIDENCES brought the first ever large scale man-made beach concept to a residential development in the Philippines.</p>
             <div class="d-flex">
               <a href="#about" class="btn-get-started">Get Started</a>
-              <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
           <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-            <img src="<?=base_url()?>/assets/img/hero-img.png" class="img-fluid animated" alt="">
+            <!-- <img src="<?=base_url()?>/assets/img/hero-img.png" class="img-fluid animated" alt=""> -->
+             
+            <div class="slideshow-container">
+
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="<?=base_url()?>/assets-all/img/1.jpg" style="width:100%">
+                <div class="text">Caption Text</div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="<?=base_url()?>/assets-all/img/2.jpg" style="width:100%">
+                <div class="text">Caption Two</div>
+              </div>
+
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="<?=base_url()?>/assets-all/img/3.jpg" style="width:100%">
+                <div class="text">Caption Three</div>
+              </div>
+
+              <a class="prev" onclick="plusSlides(-1)">❮</a>
+              <a class="next" onclick="plusSlides(1)">❯</a>
+
+            </div>
+              <br>
+
+              <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+              </div>
           </div>
         </div>
       </div>
 
     </section><!-- /Hero Section -->
 
-    <!-- About Section -->
+    <!-- about Section -->
     <section id="about" class="about section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2 class="">About Us</h2>
+        <h2 class="">AZURE OVERVIEW</h2>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -99,34 +131,40 @@
 
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Designed by the award-winning master planning and architectural firm Broadway Malyan, each tower highlights a breathtaking tropical modern aesthetic that provides optimal natural ventilation, light, and shade.
             </p>
             <ul>
-              <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check2-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check2-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Nine captivating mid-rise towers</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Resort-inspired outdoor amenities</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>An iconic clubhouse-The Azure Beach Club</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Key retail and service establishments catered to residents</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Ample parking slots</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>A tropical-inspired gated residential community with 24/7 security</span></li>
+              <li><i class="bi bi-check2-circle"></i> <span>Ready-for-occupancy condo units</span></li>
             </ul>
           </div>
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            <img src="<?=base_url()?>/assets-all/img/AZURE 9 TOWERS.jpg" width="300px" alt="">
+            <p>AZURE’S 9 TOWERS</p>
+            <p>Named after some of the most beautiful beaches in the world. From Rio in Brazil, Santorini in Greece, St. Tropez in France, Positano in Italy, and Miami in the US to Maui in Hawaii, Maldives in South Asia, the famous Boracay of the Philippines and Bahamas in the Caribbean.</p>
+            <!-- <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
           </div>
 
         </div>
 
       </div>
 
-    </section><!-- /About Section -->
+    </section><!-- /about Section -->
 
-    <!-- Services Section -->
+    <!-- services Section -->
     <section id="services" class="services section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>BEACH-INSPIRED AMENITIES</h2>
+        <p>INDOORS</p>
+        <p>Azure Beach Club feat. Lobby Lounge, Ice Cream and Candy Bar, Male and Female Spa, Locker Rooms, Children’s Playroom, Infirmary, Gym & Studio, Movie Room, Game Room, Function Rooms, Al Fresco Dining</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -135,41 +173,245 @@
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-activity icon"></i></div>
-              <h4><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+               <img src="<?=base_url()?>/assets-all/img/LOBBY LOUNGE.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">LOBBY LOUNGE</a></h4>
+              <p>A welcoming and restful entrance</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-              <h4><a href="service-details.html" class="stretched-link">Sed ut perspici</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/ICE CREAM & CANDY BAR.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">ICE CREAM & CANDY BAR</a></h4>
+              <p>Dessert and café lounge with a bright and multicolored atmosphere.</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-              <h4><a href="service-details.html" class="stretched-link">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/MALE SPA AND FEMALE SPA.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">MALE SPA AND FEMALE SPA</a></h4>
+              <p>Relax and ease away every ache and pain.</p>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
             <div class="service-item position-relative">
-              <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-              <h4><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+              <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/LOCKER ROOMS.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">LOCKER ROOMS</a></h4>
+              <p>For your privacy and safety</p>
             </div>
           </div><!-- End Service Item -->
 
         </div>
 
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+               <img src="<?=base_url()?>/assets-all/img/CHILDREN’S PLAYROOM.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">CHILDREN’S PLAYROOM</a></h4>
+              <p>A colorful indoor play area for your active kids</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/GYM & STUDIO.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">GYM & STUDIO</a></h4>
+              <p>A spacious fitness center with top-grade equipment and marvelous views</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/MOVIE ROOM.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">MOVIE ROOM</a></h4>
+              <p>For a comfortable entertainment experience</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/AL FRESCO DINING AREA.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">AL FRESCO DINING AREA</a></h4>
+              <p>For a delightful dining experience.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/GAME ROOM.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">GAME ROOM</a></h4>
+              <p>A variety of traditional and video games provides ample fun.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/ILLUMINATED HALLWAYS.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">ILLUMINATED HALLWAYS</a></h4>
+              <p>Alternating hues</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/FUNCTION ROOM.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">FUNCTION ROOM</a></h4>
+              <p>Ideal for meetings, seminars, and small parties</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/LOUNGE & FUNCTION ROOM.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">LOUNGE & FUNCTION ROOM</a></h4>
+              <p>A venue for small events or a quiet place to catch up on work, read a good book, or just hangout in style.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          </div>
+
       </div>
 
-    </section><!-- /Services Section -->
+      <div class="container section-title mt-5" data-aos="fade-up">
+        <p>OUTDOORS</p>
+        <p>White sand man-made beach, wave pool, lagoon pool, lap pool, beach bar, beach playground, beach volleyball area, basketball court</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+               <img src="<?=base_url()?>/assets-all/img/THE AZURE BEACH.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">THE AZURE BEACH</a></h4>
+              <p>An iconic man-made beach facility with fine white sand, undulating waves, and water features.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/THE AZURE WAVEPOOL.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">THE AZURE WAVE POOL</a></h4>
+              <p>Your very own man-made beach comes with a wave machine that creates fun beach waves every few minutes.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/LAP POOL.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">LAP POOL</a></h4>
+              <p>A 25-meter infinity lap pool with floating sunbathing-beds.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/LAGOON POOL.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">LAGOON POOL</a></h4>
+              <p>Exclusive to residents, the Azure’s lagoon pool is your next option for a more relaxed swim.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+               <img src="<?=base_url()?>/assets-all/img/THE BEACH BAR.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">THE BEACH BAR</a></h4>
+              <p>A dynamic hangout in the middle of the Azure beach</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/KIDDIE POOL WITH CHILDREN’S BEACH PLAYGROUND.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">KIDDIE POOL WITH CHILDREN’S BEACH PLAYGROUND</a></h4>
+              <p>Featuring fun slides and exciting water features for your kids!</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/BEACH VOLLEYBALL.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">BEACH VOLLEYBALL</a></h4>
+              <p>Dedicated to the great summer sport</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/THE AZURE BASKETBALL COURT.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">THE AZURE BASKETBALL COURT</a></h4>
+              <p>Shoot some hoops in your very own outdoor basketball court.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/AZURE BEACH CLUB.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">AZURE BEACH CLUB</a></h4>
+              <p>A one-of-a-kind beach club amenity that integrates dining, relaxation, and entertainment facilities into one seamless, tropical-inspired experience.</p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/FOOD STALLS AND CONVENIENCE STORE.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">FOOD STALLS AND CONVENIENCE STORE</a></h4>
+              <p></p>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
+              <img src="<?=base_url()?>/assets-all/img/ROOF DECK, SKY VIEW, AND SKY GARDEN.jpg" width="250px" alt="">
+              <h4><a href="#" class="stretched-link">ROOF DECK, SKY VIEW, AND SKY GARDEN</a></h4>
+              <p></p>
+            </div>
+          </div><!-- End Service Item -->
+
+          </div>
+
+      </div>
+
+    </section><!-- /services Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
@@ -177,7 +419,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <!-- <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p> -->
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -191,7 +433,9 @@
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <strong>RIGHT AT THE BICUTAN EXIT OF SLEX AND SKYWAY</strong>
+                  <p>SLEX West Service Road, corner D. Soledad Avenue, Bicutan,
+                  Parañaque City</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -199,7 +443,7 @@
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
+                  <p>0917-777-1448</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -207,11 +451,11 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Email Us</h3>
-                  <p>info@example.com</p>
+                  <p>cozystays.azure@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3863.0269485477857!2d121.04220187587313!3d14.483142079940059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397cf0585c07d9b%3A0xef3e63b30f501b33!2sAzure%20Beach%20Resort!5e0!3m2!1sen!2sph!4v1719731356455!5m2!1sen!2sph" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 
