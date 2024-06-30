@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-	<title>Dashboard</title>
+	<title>Azure</title>
 	<meta content="" name="description">
 	<meta content="" name="keywords">
 
@@ -78,7 +78,7 @@
 						</li>
 
 						<li>
-							<a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+							<a class="dropdown-item d-flex align-items-center" href="#">
 								<i class="bi bi-person"></i>
 								<span>My Profile</span>
 							</a>
@@ -88,7 +88,7 @@
 						</li>
 
 						<li>
-							<a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+							<a class="dropdown-item d-flex align-items-center" href="#">
 								<i class="bi bi-gear"></i>
 								<span>Account Settings</span>
 							</a>
