@@ -64,7 +64,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
+                      <h6>1000</h6>
                       <!-- <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span> -->
                     </div>
                   </div>
@@ -98,7 +98,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
+                        <th scope="col">Unit</th>
                         <th scope="col">Price</th>
                         <th scope="col">Status</th>
                       </tr>

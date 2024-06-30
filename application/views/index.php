@@ -73,7 +73,7 @@
             <h1 class="">BEACHFRONT LIVING IN THE HEART OF THE CITY</h1>
             <p class="">Located in Bicutan, Parañaque City, AZURE URBAN RESORT RESIDENCES brought the first ever large scale man-made beach concept to a residential development in the Philippines.</p>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Get Started</a>
+              <a href="<?=site_url('Page/admin')?>" class="btn-get-started">Get Started</a>
               <a href="." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
