@@ -21,7 +21,8 @@ class App extends CI_Controller
 
     public function site($data,$page)
     {
-        $data['url'] = $page;
-        $this->load->view('layout/main', $data);
+        $datas['url'] = $page;
+        $datas['data'] = $data;
+        $this->load->view('layout/main', $datas);
     }
 }

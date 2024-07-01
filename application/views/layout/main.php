@@ -149,7 +149,7 @@
 
     <!-- Page Content -->
     <main id="main" class="main">
-        <?php $this->load->view($url); ?>
+        <?php $this->load->view($url,$data); ?>
     </main>
 
     <!-- ======= Footer ======= -->
