@@ -21,6 +21,7 @@
     <link href="<?= base_url() ?>/assets-admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome-free/css/all.min.css'); ?>">
     <link href="<?= base_url() ?>/assets-admin/vendor/quill/quill.snow.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/remixicon/remixicon.css" rel="stylesheet">
@@ -118,18 +119,25 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" id="dashboard">
+                <a class="nav-link collapsed" href="<?= site_url('app/') ?>" id="dashboard">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" id="units">
+                <a class="nav-link collapsed" href="<?= site_url('app/units') ?>" id="units">
                     <i class="bi bi-buildings"></i>
                     <span>Units</span>
                 </a>
-            </li><!-- End Units Page Nav -->
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('app/amenity') ?>">
+                    <i class="fas fa-landmark"></i>
+                    <span>Amemity</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
