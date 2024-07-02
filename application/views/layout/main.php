@@ -26,6 +26,11 @@
     <link href="<?= base_url() ?>/assets-admin/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/simple-datatables/style.css" rel="stylesheet">
 
+    <!-- DataTables -->
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'); ?>">
+
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>/assets-admin/css/style.css" rel="stylesheet">
 </head>
@@ -149,7 +154,7 @@
 
     <!-- Page Content -->
     <main id="main" class="main">
-        <?php $this->load->view($url,$data); ?>
+        <?php $this->load->view($url, $data); ?>
     </main>
 
     <!-- ======= Footer ======= -->
@@ -174,17 +179,36 @@
     <script src="<?= base_url() ?>/assets-admin/vendor/tinymce/tinymce.min.js"></script>
     <script src="<?= base_url() ?>/assets-admin/vendor/php-email-form/validate.js"></script>
 
+    <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/inputmask/jquery.inputmask.js'); ?>"></script>
+    <!-- <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
+    <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
+
+    <!-- DataTables  & Plugins -->
+    <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-responsive/js/dataTables.responsive.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-buttons/js/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/jszip/jszip.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/pdfmake/pdfmake.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/pdfmake/vfs_fonts.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-buttons/js/buttons.html5.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-buttons/js/buttons.print.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/plugins/datatables-buttons/js/buttons.colVis.min.js'); ?>"></script>
     <!-- Template Main JS File -->
     <script src="<?= base_url() ?>/assets-admin/js/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        var loader = '<div class="loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
-
-        $(function() {
-        })
-    </script>
+    <?php
+    if (isset($data['ex_js'])) {
+        $this->load->view($data['ex_js']);
+    }
+    ?>
 </body>
 
 </html>

@@ -1,15 +1,37 @@
 <div class="pagetitle">
-      <h1>Units</h1>
-      <nav>
+    <h1>Units</h1>
+    <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="#">Home</a></li>
-          <li class="breadcrumb-item active">Units</li>
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Units</li>
         </ol>
-      </nav>
-    </div><!-- End Page Title -->
+    </nav>
+</div>
 
-    <section class="section units">
-        <div class="row">
-
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+            <div class="row">
+                <div class="col-12">
+                    <div class="cad-body">
+                        <table id="accomodation-tbl" class="table table-bordered" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Room No.</th>
+                                    <th>Floor No.</th>
+                                    <th>Floor Size</th>
+                                    <th>Good For</th>
+                                    <th>Max Of</th>
+                                    <th>Remarks</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class SSP_Config extends CI_Model
+class Ssp_Model extends CI_Model
 {
     // DB table to use
     private $table = '';
@@ -34,32 +34,24 @@ class SSP_Config extends CI_Model
             'host' => $this->db->hostname
         );
     }
-
-    public function get_sql_details(){
-        return $this->sql_details;
-    }
-
-    public function get_table(){
-        return $this->table;
-    }
-
-    public function get_primary_key(){
-        return $this->primaryKey;
-    }
-
-    public function get_columns(){
-        return $this->columns;
-    }
-  
-    public function set_table($data){
-        $this->table=$data;
-    }
-
-    public function set_primary_key($data){
-        $this->primaryKey=$data;
-    }
-
-    public function set_columns($data){
-        $this->columns=$data;
+    
+    public function units()
+    {
+        $this->table = 'accomodation';
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'name', 'dt' => 0),
+            array('db' => 'description', 'dt' => 1),
+            array('db' => 'room_no', 'dt' => 2),
+            array('db' => 'floor_no', 'dt' => 3),
+            array('db' => 'f_size', 'dt' => 4),
+            array('db' => 'good_for', 'dt' => 5),
+            array('db' => 'max_of', 'dt' => 6),
+            array('db' => 'remarks', 'dt' => 7),
+        );
+        
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
     }
 }
