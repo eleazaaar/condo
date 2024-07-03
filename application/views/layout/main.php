@@ -27,6 +27,7 @@
     <link href="<?= base_url() ?>/assets-admin/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="<?= base_url() ?>/assets-admin/vendor/simple-datatables/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
@@ -190,7 +191,7 @@
     <script src="<?= base_url('assets/js/jquery.min.js'); ?>"></script>
     <script src="<?= base_url('assets/plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
     <script src="<?= base_url('assets/plugins/inputmask/jquery.inputmask.js'); ?>"></script>
-    <!-- <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script> -->
+    <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
 
@@ -209,8 +210,7 @@
     <script src="<?= base_url('assets/plugins/datatables-buttons/js/buttons.colVis.min.js'); ?>"></script>
     <!-- Template Main JS File -->
     <script src="<?= base_url() ?>/assets-admin/js/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
     <?php
     if (isset($data['ex_js'])) {

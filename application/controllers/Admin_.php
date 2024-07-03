@@ -12,38 +12,37 @@ class Admin_ extends CI_Controller
         //     redirect('app');
         // }
 
-        // $this->load->model('admin');
+        $this->load->model('admin');
         $this->load->model('ssp_model');
     }
 
-    public function add_user()
+    public function add_units()
     {
-        $this->form_validation->set_rules(
-            'username',
-            'Username',
-            'required|min_length[5]|max_length[12]|is_unique[user_account.username]',
-            array(
-                'required'      => 'You have not provided %s.',
-                'is_unique'     => 'This %s already exists.'
-            )
-        );
-        $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]|max_length[100]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
-        $this->form_validation->set_rules('is_admin', 'Is Admin', 'required|in_list[1,0]');
-        
+        $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]');
+        $this->form_validation->set_rules('description', 'Description', 'required|min_length[5]');
+        $this->form_validation->set_rules('room_no', 'Room Number', 'required');
+        $this->form_validation->set_rules('floor_no', 'Floor Number', 'required|numeric');
+        $this->form_validation->set_rules('floor_size', 'Floor Size', 'required|numeric');
+        $this->form_validation->set_rules('good_for', 'Good For', 'required|numeric');
+        $this->form_validation->set_rules('max_of', 'Max Of', 'required|numeric');
+        $this->form_validation->set_rules('remarks', 'Remarks', 'required');
+
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>'.validation_errors('','<br>')));
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
             die;
         }
 
-        $data['username'] = $this->input->post('username', TRUE);
         $data['name'] = $this->input->post('name', TRUE);
-        $data['password'] = password_hash($this->input->post('password', TRUE), PASSWORD_DEFAULT);
-        $data['is_admin'] = $this->input->post('is_admin', TRUE);
-        $data['added_by'] = $this->session->userdata('username');
+        $data['description'] = $this->input->post('description', TRUE);
+        $data['room_no'] = $this->input->post('room_no', TRUE);
+        $data['floor_no'] = $this->input->post('floor_no', TRUE);
+        $data['f_size'] = $this->input->post('floor_size', TRUE);
+        $data['good_for'] = $this->input->post('good_for', TRUE);
+        $data['max_of'] = $this->input->post('max_of', TRUE);
+        $data['remarks'] = $this->input->post('remarks', TRUE);
+        $data['slug'] = str_replace([' ','-'],'_',$data['name']);
 
-        $res = $this->admin->save_user($data);
+        $res = $this->admin->save_units($data);
         if ($res) {
             echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Added Successfully'));
             die;

@@ -13,6 +13,11 @@
         <div class="card-body">
             <h5 class="card-title"></h5>
             <div class="row">
+                <div class="col-12 mb-4">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Add Units
+                    </button>
+                </div>
                 <div class="col-12">
                     <div class="cad-body">
                         <table id="accomodation-tbl" class="table table-bordered" style="width:100%">
@@ -35,3 +40,6 @@
         </div>
     </div>
 </section>
+<?php
+    $this->load->view('admin/modal/add_units');
+?>
