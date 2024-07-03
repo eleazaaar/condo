@@ -16,8 +16,32 @@ class Admin_ extends CI_Controller
         $this->load->model('ssp_model');
     }
 
-    public function add_units()
+    public function get_units(){
+        $this->form_validation->set_rules('id', 'ID', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+            die;
+        }
+
+        $id = $this->input->post('id');
+
+        $res = $this->admin->get_units($id);
+        if ($res) {
+            echo json_encode(array('status'=>200,'data'=>$res));
+            die;
+        } else {
+            echo json_encode(array('status'=>400,'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            die;
+        }
+    }
+
+    public function save_units()
     {
+        if(isset($_POST['unit_id'])){
+            $this->form_validation->set_rules('unit_id', 'ID', 'required|numeric');
+        }
+
         $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]');
         $this->form_validation->set_rules('description', 'Description', 'required|min_length[5]');
         $this->form_validation->set_rules('room_no', 'Room Number', 'required');
@@ -41,13 +65,18 @@ class Admin_ extends CI_Controller
         $data['max_of'] = $this->input->post('max_of', TRUE);
         $data['remarks'] = $this->input->post('remarks', TRUE);
         $data['slug'] = str_replace([' ','-'],'_',$data['name']);
-
-        $res = $this->admin->save_units($data);
+        
+        if(isset($_POST['unit_id'])){
+            $id = $this->input->post('unit_id', TRUE);
+            $res = $this->admin->update_units($id, $data);
+        }else{
+            $res = $this->admin->save_units($data);
+        }
         if ($res) {
-            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Added Successfully'));
+            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Save Successfully'));
             die;
         } else {
-            echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
             die;
         }
     }

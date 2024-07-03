@@ -34,7 +34,7 @@ class Ssp_Model extends CI_Model
             'host' => $this->db->hostname
         );
     }
-    
+
     public function units()
     {
         $this->table = 'accomodation';
@@ -48,8 +48,18 @@ class Ssp_Model extends CI_Model
             array('db' => 'good_for', 'dt' => 5),
             array('db' => 'max_of', 'dt' => 6),
             array('db' => 'remarks', 'dt' => 7),
+            array(
+                'db' => 'id', 'dt' => 8,
+                'formatter' => function ($data) {
+                    return "
+                        <button type='button' class='btn btn-primary edit_units' data-id='$data'>
+                            Edit
+                        </button>
+                ";
+                }
+            ),
         );
-        
+
         return json_encode(
             SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
         );
