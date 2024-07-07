@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2024 at 04:08 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Jul 07, 2024 at 11:08 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,6 +43,14 @@ CREATE TABLE `accomodation` (
   `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `accomodation`
+--
+
+INSERT INTO `accomodation` (`id`, `slug`, `name`, `room_no`, `floor_no`, `description`, `f_size`, `good_for`, `max_of`, `no_of_bed`, `remarks`, `date_created`, `date_updated`) VALUES
+(1, 'Elijah_Mueller', 'Elijah Mueller', 'Veritatis ', 40, 'Et molestiae ab volu', 29, 5, 5, 0, 'Asperiores maxime re', '2024-07-07 06:21:12', '2024-07-07 06:33:31'),
+(2, '', 'Jolie Clark', 'Aut rem do', 21, 'Eum eaque sit soluta', 6, 2, 2, 0, 'Eiusmod reprehenderi', '2024-07-07 08:20:22', '2024-07-07 08:20:22');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +61,17 @@ CREATE TABLE `accomodation_amenity` (
   `accomodation_id` int(11) NOT NULL,
   `amenity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accomodation_amenity`
+--
+
+INSERT INTO `accomodation_amenity` (`accomodation_id`, `amenity_id`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -73,8 +92,18 @@ CREATE TABLE `accomodation_inclusion` (
 
 CREATE TABLE `amenity` (
   `id` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amenity`
+--
+
+INSERT INTO `amenity` (`id`, `name`) VALUES
+(1, 'Swimming Pool'),
+(2, 'Basketball Court'),
+(3, 'Parking Lot'),
+(4, 'Pools');
 
 -- --------------------------------------------------------
 
@@ -164,13 +193,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `accomodation`
 --
 ALTER TABLE `accomodation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `amenity`
 --
 ALTER TABLE `amenity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inclusion`
