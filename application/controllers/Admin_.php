@@ -96,21 +96,23 @@ class Admin_ extends CI_Controller
         $this->form_validation->set_rules('good_for', 'Good For', 'required|numeric');
         $this->form_validation->set_rules('max_of', 'Max Of', 'required|numeric');
         $this->form_validation->set_rules('remarks', 'Remarks', 'required');
+        $this->form_validation->set_rules('amenities[]', 'Amenities', 'required');
 
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
             die;
         }
 
-        $data['name'] = $this->input->post('name', TRUE);
-        $data['description'] = $this->input->post('description', TRUE);
-        $data['room_no'] = $this->input->post('room_no', TRUE);
-        $data['floor_no'] = $this->input->post('floor_no', TRUE);
-        $data['f_size'] = $this->input->post('floor_size', TRUE);
-        $data['good_for'] = $this->input->post('good_for', TRUE);
-        $data['max_of'] = $this->input->post('max_of', TRUE);
-        $data['remarks'] = $this->input->post('remarks', TRUE);
-        $data['slug'] = str_replace([' ','-'],'_',$data['name']);
+        $data['units']['name'] = $this->input->post('name', TRUE);
+        $data['units']['description'] = $this->input->post('description', TRUE);
+        $data['units']['room_no'] = $this->input->post('room_no', TRUE);
+        $data['units']['floor_no'] = $this->input->post('floor_no', TRUE);
+        $data['units']['f_size'] = $this->input->post('floor_size', TRUE);
+        $data['units']['good_for'] = $this->input->post('good_for', TRUE);
+        $data['units']['max_of'] = $this->input->post('max_of', TRUE);
+        $data['units']['remarks'] = $this->input->post('remarks', TRUE);
+        $data['units']['slug'] = str_replace([' ','-'],'_',$data['units']['name']);
+        $data['amenities'] = $this->input->post('amenities', TRUE);
         
         if(isset($_POST['unit_id']) && !empty($_POST['unit_id'])){
             $id = $this->input->post('unit_id', TRUE);

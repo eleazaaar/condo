@@ -56,6 +56,29 @@
             }
         });
 
+        $('#amenities').select2({
+            dropdownParent: $("#unitsModal"),
+            multiple: true,
+            ajax: {
+                url: "<?= site_url('extension/get_amenities_select2') ?>",
+                dataType: 'JSON',
+                data: (d) => {
+                    var q = {
+                        search: d.term
+                    }
+                    return q;
+                },
+                method: 'POST',
+                processResults: function(data) {
+                    return {
+                        results: data
+                    };
+                },
+                delay: 500
+                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+            }
+        });
+
         $('#add_units_form').on('submit', e => {
             e.preventDefault();
 
