@@ -1,9 +1,9 @@
 <div class="pagetitle">
-    <h1>Units</h1>
+    <h1>Amenity</h1>
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Units</li>
+            <li class="breadcrumb-item active">Amenity</li>
         </ol>
     </nav>
 </div>
@@ -14,22 +14,15 @@
             <h5 class="card-title"></h5>
             <div class="row">
                 <div class="col-12 mb-4">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#unitsModal">
-                        Add Units
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#amenityModal">
+                        Add Amenity
                     </button>
                 </div>
                 <div class="col-12" style="overflow-x: auto;">
-                    <table id="accomodation-tbl" class="table table-bordered" style="overflow: auto;">
+                    <table id="amenity-tbl" class="table table-bordered" style="overflow: auto;">
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Room No.</th>
-                                <th>Floor No.</th>
-                                <th>Floor Size</th>
-                                <th>Good For</th>
-                                <th>Max Of</th>
-                                <th>Remarks</th>
                                 <th>Control</th>
                             </tr>
                         </thead>
@@ -40,5 +33,5 @@
     </div>
 </section>
 <?php
-    $this->load->view('admin/modal/add_units');
+    $this->load->view('admin/modal/add_amenity');
 ?>

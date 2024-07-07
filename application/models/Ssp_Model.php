@@ -35,6 +35,29 @@ class Ssp_Model extends CI_Model
         );
     }
 
+    public function amenity()
+    {
+        $this->table = 'amenity';
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'name', 'dt' => 0),
+            array(
+                'db' => 'id', 'dt' => 1,
+                'formatter' => function ($data,$row) {
+                    return "
+                        <button type='button' class='btn btn-primary edit_amenity' data-id='$data' data-name='".$row['name']."'>
+                            Edit
+                        </button>
+                ";
+                }
+            ),
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
+
     public function units()
     {
         $this->table = 'accomodation';

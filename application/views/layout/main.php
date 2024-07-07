@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'); ?>">
+    
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/css/select2.min.css'); ?>">
 
     <!-- Template Main CSS File -->
     <link href="<?= base_url() ?>/assets-admin/css/style.css" rel="stylesheet">
@@ -136,7 +138,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('app/amenity') ?>">
                     <i class="fas fa-landmark"></i>
-                    <span>Amemity</span>
+                    <span>Amenity</span>
                 </a>
             </li>
 
@@ -194,6 +196,7 @@
     <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
+    <script src="<?= base_url('assets/plugins/select2/js/select2.min.js') ?>"></script>
 
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
