@@ -16,6 +16,52 @@ class Admin_ extends CI_Controller
         $this->load->model('ssp_model');
     }
 
+    /**
+     * AMENITY-----------------------------------------------
+     */
+    public function save_amenity()
+    {
+        if(isset($_POST['id'])){
+            $this->form_validation->set_rules('id', 'ID', 'numeric');
+        }
+
+        $this->form_validation->set_rules('name', 'Name', 'required|min_length[3]');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+            die;
+        }
+
+        $data['name'] = $this->input->post('name', TRUE);
+        
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            $id = $this->input->post('id', TRUE);
+            $res = $this->admin->update_amenity($id, $data);
+        }else{
+            $res = $this->admin->save_amenity($data);
+        }
+        if ($res) {
+            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Save Successfully'));
+            die;
+        } else {
+            echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
+            die;
+        }
+    }
+
+    public function ssp_amenity()
+    {
+        echo $this->ssp_model->amenity();
+    }
+
+    /**
+     * END OF AMENITY-----------------------------------
+     */
+
+    /**
+     * ----------------------UNITS
+     */
+
     public function get_units(){
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
 
@@ -39,7 +85,7 @@ class Admin_ extends CI_Controller
     public function save_units()
     {
         if(isset($_POST['unit_id'])){
-            $this->form_validation->set_rules('unit_id', 'ID', 'required|numeric');
+            $this->form_validation->set_rules('unit_id', 'ID', 'numeric');
         }
 
         $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]');
@@ -66,7 +112,7 @@ class Admin_ extends CI_Controller
         $data['remarks'] = $this->input->post('remarks', TRUE);
         $data['slug'] = str_replace([' ','-'],'_',$data['name']);
         
-        if(isset($_POST['unit_id'])){
+        if(isset($_POST['unit_id']) && !empty($_POST['unit_id'])){
             $id = $this->input->post('unit_id', TRUE);
             $res = $this->admin->update_units($id, $data);
         }else{
@@ -85,4 +131,8 @@ class Admin_ extends CI_Controller
     {
         echo $this->ssp_model->units();
     }
+
+    /**
+     * END OF UNITS ------------------------------
+     */
 }

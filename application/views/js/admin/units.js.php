@@ -41,7 +41,7 @@
                                 Swal.fire({
                                     icon: response.icon,
                                     title: response.title,
-                                    text: response.message,
+                                    html: response.message,
                                 });
                             }
                         })
@@ -73,6 +73,7 @@
                         })
                         .then(() => {
                             accomodation_tbl.ajax.reload(false, null);
+                            $('#unitsModal').modal('hide');
                         });
                 })
                 .fail((jqXHR, textStatus) => {

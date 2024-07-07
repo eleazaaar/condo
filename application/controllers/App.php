@@ -19,6 +19,12 @@ class App extends CI_Controller
         $this->site([],'admin/dashboard');
     }
 
+    public function amenity(){
+
+        $data['ex_js'] = 'js/admin/amenity.js.php'; 
+        $this->site($data,'admin/amenity');
+    }
+
     public function units(){
 
         $data['ex_js'] = 'js/admin/units.js.php'; 

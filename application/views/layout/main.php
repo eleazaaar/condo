@@ -136,7 +136,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('app/amenity') ?>">
                     <i class="fas fa-landmark"></i>
-                    <span>Amemity</span>
+                    <span>Amenity</span>
                 </a>
             </li>
 

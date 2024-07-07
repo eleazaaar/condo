@@ -7,7 +7,29 @@ class Admin extends CI_Model
     {
         parent::__construct();
     }
+    
+    /**
+     * AMENITY------------------------------------------------
+     */
 
+    public function save_amenity($data){
+        return $this->db->insert('amenity',$data);
+    }
+
+    public function update_amenity($id, $data){
+        return $this->db
+        ->set($data)
+        ->where('id',$id)
+        ->update('amenity');
+    }
+
+    /**
+     * END OF UNITS-----------------------------------------
+     */
+
+    /**
+     * UNITS------------------------------------------------
+     */
     public function get_units($id){
         $res = $this->db
         ->where('id',$id)
@@ -25,4 +47,8 @@ class Admin extends CI_Model
         ->where('id',$id)
         ->update('accomodation');
     }
+
+    /**
+     * END OF UNITS-----------------------------------------
+     */
 }
