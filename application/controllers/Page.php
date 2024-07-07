@@ -19,11 +19,19 @@ class Page extends CI_Controller {
         $this->load->view('admin/index');
     }
 
+	public function home() {
+		$this->load->view('admin/dashboard');
+	}
+
 	public function dashboard() {
 		$this->load->view('admin/dashboard');
 	}
 
 	public function units() {
 		$this->load->view('admin/units');
+	}
+
+	public function amenities() {
+		$this->load->view('admin/amenity');
 	}
 }
