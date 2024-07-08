@@ -21,7 +21,7 @@ class User extends CI_Controller
 
     public function schedule(){
 
-        $data['ex_js'] = 'js/admin/amenity.js.php'; 
+        $data['ex_js'] = 'js/user/schedule.js.php'; 
         $this->site($data,'user/schedule');
     }
 

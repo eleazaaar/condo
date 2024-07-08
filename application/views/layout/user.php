@@ -28,6 +28,10 @@
     <link href="<?= base_url() ?>/assets-admin/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
+
+    <!-- FULLCALENDAR -->
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/fullcalendar/main.min.css'); ?>">
+
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
@@ -190,6 +194,9 @@
     <script src="<?= base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
     <script src="<?= base_url('assets/plugins/select2/js/select2.min.js') ?>"></script>
+
+    <!-- FULLCALENDAR -->
+    <script src="<?= base_url('assets/plugins/fullcalendar/main.min.js'); ?>"></script>
 
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
