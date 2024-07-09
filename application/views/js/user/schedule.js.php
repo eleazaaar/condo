@@ -50,8 +50,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <input type="button" class="btn btn-secondary" value="View">
-                                            <input type="button" class="btn btn-success" value="Reserve">
+                                            <input type="button" class="btn btn-secondary view-unit" data-id="${r['id']}" value="View">
+                                            <input type="button" class="btn btn-success reserve-unit" data-id="${r['id']}" value="Reserve">
                                         </div>
                                     </div>
                                 </div>
