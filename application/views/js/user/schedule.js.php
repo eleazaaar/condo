@@ -63,5 +63,10 @@
         });
 
         calendar.render();
+
+        $(document).on('click','.reserve-unit', (e)=>{
+            const _this = $(e.currentTarget);
+            
+        })
     });
 </script>
