@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2024 at 11:08 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.2.34
+-- Generation Time: Jul 10, 2024 at 03:32 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,6 +39,7 @@ CREATE TABLE `accomodation` (
   `max_of` int(11) NOT NULL,
   `no_of_bed` int(11) NOT NULL,
   `remarks` text NOT NULL,
+  `price` decimal(10,0) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
   `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -47,9 +48,11 @@ CREATE TABLE `accomodation` (
 -- Dumping data for table `accomodation`
 --
 
-INSERT INTO `accomodation` (`id`, `slug`, `name`, `room_no`, `floor_no`, `description`, `f_size`, `good_for`, `max_of`, `no_of_bed`, `remarks`, `date_created`, `date_updated`) VALUES
-(1, 'Elijah_Mueller', 'Elijah Mueller', 'Veritatis ', 40, 'Et molestiae ab volu', 29, 5, 5, 0, 'Asperiores maxime re', '2024-07-07 06:21:12', '2024-07-07 06:33:31'),
-(2, '', 'Jolie Clark', 'Aut rem do', 21, 'Eum eaque sit soluta', 6, 2, 2, 0, 'Eiusmod reprehenderi', '2024-07-07 08:20:22', '2024-07-07 08:20:22');
+INSERT INTO `accomodation` (`id`, `slug`, `name`, `room_no`, `floor_no`, `description`, `f_size`, `good_for`, `max_of`, `no_of_bed`, `remarks`, `price`, `date_created`, `date_updated`) VALUES
+(1, 'one_bedroom', 'ONE-BEDROOM', '1', 1, '', 29, 0, 0, 0, '', '0', '2024-07-02 13:25:18', '2024-07-02 13:25:18'),
+(3, 'Tamekah_Flowers', 'Tamekah Flowers', 'Vel invent', 9, 'Deserunt facilis adi', 31, 75, 69, 0, 'Dolor assumenda in o', '0', '2024-07-03 12:56:39', '2024-07-03 12:56:39'),
+(4, 'ONE_BEDROOM', 'ONE-BEDROOM', '1', 1, 'Non ratione et natus', 29, 2, 3, 0, 'Natus sapiente in eo', '0', '2024-07-03 14:06:50', '2024-07-03 14:08:38'),
+(5, 'ONE_BEDROOM', 'ONE-BEDROOM', '1', 1, 'Non ratione et natus', 29, 2, 4, 0, 'Natus sapiente in eo', '0', '2024-07-03 14:07:50', '2024-07-03 14:08:25');
 
 -- --------------------------------------------------------
 
@@ -61,17 +64,6 @@ CREATE TABLE `accomodation_amenity` (
   `accomodation_id` int(11) NOT NULL,
   `amenity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `accomodation_amenity`
---
-
-INSERT INTO `accomodation_amenity` (`accomodation_id`, `amenity_id`) VALUES
-(2, 1),
-(2, 2),
-(2, 3),
-(1, 1),
-(1, 2);
 
 -- --------------------------------------------------------
 
@@ -92,18 +84,8 @@ CREATE TABLE `accomodation_inclusion` (
 
 CREATE TABLE `amenity` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `description` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `amenity`
---
-
-INSERT INTO `amenity` (`id`, `name`) VALUES
-(1, 'Swimming Pool'),
-(2, 'Basketball Court'),
-(3, 'Parking Lot'),
-(4, 'Pools');
 
 -- --------------------------------------------------------
 
@@ -131,6 +113,13 @@ CREATE TABLE `schedule` (
   `total_amount` decimal(10,0) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `user_id`, `accomodation_id`, `from_date`, `to_date`, `total_amount`, `date_created`) VALUES
+(1, 0, 1, '2024-07-13', '2024-07-15', '0', '2024-07-10 11:54:06');
 
 -- --------------------------------------------------------
 
@@ -193,13 +182,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `accomodation`
 --
 ALTER TABLE `accomodation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `amenity`
 --
 ALTER TABLE `amenity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `inclusion`
@@ -211,7 +200,7 @@ ALTER TABLE `inclusion`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
