@@ -67,6 +67,28 @@
         $(document).on('click','.reserve-unit', (e)=>{
             const _this = $(e.currentTarget);
             
-        })
+            if(!$("#from").val() || !$('#to').val()){
+                alert('Please select date schedule');
+                return;
+            }
+
+            $.ajax({
+                url: "<?= site_url('user/save_schedule')?>",
+                method: 'POST',
+                dataType: 'JSON',
+                data:{
+                    from: $('#from').val(),
+                    to: $('#to').val(),
+                    unit_id: _this.data('id'),
+                }
+            })
+            .then(res => {
+                Swal.fire({
+                    icon: res.icon,
+                    title: res.title,
+                    text: res.message
+                })
+            })
+        });
     });
 </script>
