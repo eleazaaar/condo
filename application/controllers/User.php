@@ -54,7 +54,7 @@ class User extends CI_Controller
         $this->db->insert('schedule',$data);
         
         if ($this->db->affected_rows()) {
-            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Save Successfully'));
+            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Schedule was applied successfully.'));
             die;
         } else {
             echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
