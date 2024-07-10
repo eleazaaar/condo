@@ -22,4 +22,9 @@
             </div>
         </div>
     </div>
+    <form id="schedule_detail_form" action="<?= site_url('user/preview_schedue_details')?>" method="POST">
+        <input type="hidden" name="unit_id" id="unit_id">
+        <input type="hidden" name="from" id="from">
+        <input type="hidden" name="to" id="to">
+    </form>
 </section>

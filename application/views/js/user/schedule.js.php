@@ -72,23 +72,28 @@
                 return;
             }
 
-            $.ajax({
-                url: "<?= site_url('user/save_schedule')?>",
-                method: 'POST',
-                dataType: 'JSON',
-                data:{
-                    from: $('#from').val(),
-                    to: $('#to').val(),
-                    unit_id: _this.data('id'),
-                }
-            })
-            .then(res => {
-                Swal.fire({
-                    icon: res.icon,
-                    title: res.title,
-                    text: res.message
-                })
-            })
+            $('#schedule_detail_form').find('#unit_id').val(_this.data('id'));
+            $('#schedule_detail_form').find('#from').val($("#from").val());
+            $('#schedule_detail_form').find('#to').val($("#to").val());
+            
+            $('#schedule_detail_form').submit();
+            // $.ajax({
+            //     url: "<?= site_url('user/save_schedule')?>",
+            //     method: 'POST',
+            //     dataType: 'JSON',
+            //     data:{
+            //         from: $('#from').val(),
+            //         to: $('#to').val(),
+            //         unit_id: _this.data('id'),
+            //     }
+            // })
+            // .then(res => {
+            //     Swal.fire({
+            //         icon: res.icon,
+            //         title: res.title,
+            //         text: res.message
+            //     })
+            // })
         });
     });
 </script>
