@@ -2,7 +2,7 @@
 $from_date = new DateTime($from);
 $to_date = new DateTime($to);
 
-$days_between = $to_date->diff($from_date)->format('%a'); 
+$days_between = $to_date->diff($from_date)->format('%a');
 ?>
 <section class="section">
     <div class="card">
@@ -32,7 +32,7 @@ $days_between = $to_date->diff($from_date)->format('%a');
                         <tr>
                             <td>Price</td>
                             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                            <td><?= number_format($price,2) ?></td>
+                            <td><?= number_format($price, 2) ?></td>
                         </tr>
                         <tr>
                             <td>No. of Days</td>
@@ -47,14 +47,19 @@ $days_between = $to_date->diff($from_date)->format('%a');
                         <tr>
                             <td>Total</td>
                             <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                            <td><?= number_format($price * $days_between,2); ?></td>
+                            <td><?= number_format($price * $days_between, 2); ?></td>
                         </tr>
                     </table>
 
-                    <input type="button" value="FINISH" class="form-control my-4 bg-success text-white">
+                    <input type="button" value="FINISH" class="form-control my-4 bg-success text-white" id="reserve_schedule" data-id="<?= $id ?>">
                 </div>
 
             </div>
         </div>
     </div>
 </section>
+<form id="schedule_detail_form" action="<?= site_url('user/save_schedule') ?>" method="POST">
+    <input type="hidden" name="unit_id" id="unit_id">
+    <input type="hidden" name="from" id="from">
+    <input type="hidden" name="to" id="to">
+</form>

@@ -3,7 +3,7 @@
         <div class="row">
             <h1>Schedule</h1>
             <div class="col-12 mb-4">
-                <div class="row col-4">
+                <div class="row col-6">
                     <div class="col-6">
                         <label for="from">From</label>
                         <input type="text" class="form-control" id="from" readonly>

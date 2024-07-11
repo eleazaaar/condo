@@ -39,8 +39,9 @@ class User extends CI_Controller
         $this->form_validation->set_rules('to', 'To Date', 'trim|required|regex_match[/^\d{4}-\d{2}-\d{2}$/]');
 
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
-            die;
+            // echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+            $this->site([],'layout/invalid_data_entry');
+            return;
         }
 
         extract($this->input->post(NULL,TRUE));
@@ -49,6 +50,7 @@ class User extends CI_Controller
         $data = $query->row_array();
         $data['from'] = $from;
         $data['to'] = $to;
+        $data['ex_js'] = 'js/user/preview_schedule_details.js.php'; 
         $this->site($data,'user/preview_schedule_details');
     }
 
@@ -72,12 +74,11 @@ class User extends CI_Controller
         ];
         $this->db->insert('schedule',$data);
         
+        $data = [];
         if ($this->db->affected_rows()) {
-            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Schedule was applied successfully.'));
-            die;
+            $this->site($data,'user/schedule_applied');
         } else {
-            echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
-            die;
+            $this->site($data,'layout/error_occured');
         }
     }
 
