@@ -117,4 +117,36 @@ class Ssp_Model extends CI_Model
             SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
         );
     }
+   
+    public function customer_book()
+    {
+        $this->table = "(
+            SELECT s.id,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as units,a.f_size,a.good_for,a.max_of,a.price
+            ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
+            ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
+            FROM schedule s 
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            INNER JOIN USER U ON s.user_id=u.id
+            ) temp";
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'customer_name', 'dt' => 0),
+            array('db' => 'units', 'dt' => 1),
+            array('db' => 'from_date', 'dt' => 2),
+            array('db' => 'to_date', 'dt' => 3),
+            array('db' => 'price', 'dt' => 4),
+            array(
+                'db' => 'id', 'dt' => 5,
+                'formatter' => function ($data) {
+                    return "
+                        <span class='badge badge-warning'>PENDING</span>
+                ";
+                }
+            ),
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
 }

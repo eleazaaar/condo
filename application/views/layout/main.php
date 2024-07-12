@@ -129,6 +129,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('app/book') ?>" id="book">
+                    <i class="bi bi-book"></i>
+                    <span>Book</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('app/units') ?>" id="units">
                     <i class="bi bi-buildings"></i>
                     <span>Units</span>

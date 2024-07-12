@@ -21,7 +21,7 @@ class Admin_ extends CI_Controller
      */
     public function save_amenity()
     {
-        if(isset($_POST['id'])){
+        if (isset($_POST['id'])) {
             $this->form_validation->set_rules('id', 'ID', 'numeric');
         }
 
@@ -33,11 +33,11 @@ class Admin_ extends CI_Controller
         }
 
         $data['name'] = $this->input->post('name', TRUE);
-        
-        if(isset($_POST['id']) && !empty($_POST['id'])){
+
+        if (isset($_POST['id']) && !empty($_POST['id'])) {
             $id = $this->input->post('id', TRUE);
             $res = $this->admin->update_amenity($id, $data);
-        }else{
+        } else {
             $res = $this->admin->save_amenity($data);
         }
         if ($res) {
@@ -62,7 +62,8 @@ class Admin_ extends CI_Controller
      * ----------------------UNITS
      */
 
-    public function get_units(){
+    public function get_units()
+    {
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE) {
@@ -74,17 +75,17 @@ class Admin_ extends CI_Controller
 
         $res = $this->admin->get_units($id);
         if ($res) {
-            echo json_encode(array('status'=>200,'data'=>$res));
+            echo json_encode(array('status' => 200, 'data' => $res));
             die;
         } else {
-            echo json_encode(array('status'=>400,'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
             die;
         }
     }
 
     public function save_units()
     {
-        if(isset($_POST['unit_id'])){
+        if (isset($_POST['unit_id'])) {
             $this->form_validation->set_rules('unit_id', 'ID', 'numeric');
         }
 
@@ -111,13 +112,13 @@ class Admin_ extends CI_Controller
         $data['units']['good_for'] = $this->input->post('good_for', TRUE);
         $data['units']['max_of'] = $this->input->post('max_of', TRUE);
         $data['units']['remarks'] = $this->input->post('remarks', TRUE);
-        $data['units']['slug'] = str_replace([' ','-'],'_',$data['units']['name']);
+        $data['units']['slug'] = str_replace([' ', '-'], '_', $data['units']['name']);
         $data['amenities'] = $this->input->post('amenities', TRUE);
-        
-        if(isset($_POST['unit_id']) && !empty($_POST['unit_id'])){
+
+        if (isset($_POST['unit_id']) && !empty($_POST['unit_id'])) {
             $id = $this->input->post('unit_id', TRUE);
             $res = $this->admin->update_units($id, $data);
-        }else{
+        } else {
             $res = $this->admin->save_units($data);
         }
         if ($res) {
@@ -136,5 +137,17 @@ class Admin_ extends CI_Controller
 
     /**
      * END OF UNITS ------------------------------
+     */
+
+    /**
+     * BOOK
+     */
+
+    public function ssp_customer_book()
+    {
+        echo $this->ssp_model->customer_book();
+    }
+    /**
+     * END OF BOOK
      */
 }

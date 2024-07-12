@@ -31,6 +31,12 @@ class App extends CI_Controller
         $this->site($data,'admin/units');
     }
 
+    public function book(){
+
+        $data['ex_js'] = 'js/admin/book.js.php'; 
+        $this->site($data,'admin/book');
+    }
+
     private function site($data,$page)
     {
         $datas['url'] = $page;
