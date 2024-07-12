@@ -19,6 +19,10 @@ class Page extends CI_Controller {
 		$this->site([],'schedule');
 	}
 
+	public function home() {
+		$this->load->view('admin/dashboard');
+	}
+
 	public function dashboard() {
 		$this->load->view('admin/dashboard');
 	}
@@ -27,10 +31,13 @@ class Page extends CI_Controller {
 		$this->load->view('admin/units');
 	}
 
-	private function site($data,$page)
-    {
-        $datas['url'] = $page;
-        $datas['data'] = $data;
-        $this->load->view('layout/guest', $datas);
-    }
+	private function site($data,$page){
+    $datas['url'] = $page;
+    $datas['data'] = $data;
+    $this->load->view('layout/guest', $datas);
+  }
+	public function amenities() {
+		$this->load->view('admin/amenity');
+	}
+
 }

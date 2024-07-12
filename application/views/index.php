@@ -51,7 +51,7 @@
         <ul>
           <li><a href="#hero" class="">Home</a></li>
           <li><a href="#about">Overview</a></li>
-          <li><a href="#services">Ameneties</a></li>
+          <li><a href="#services">Amenities</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -135,6 +135,13 @@
 			</li><!-- End Units Page Nav -->
 
 			<li class="nav-item">
+				<a class="nav-link collapsed" href="#" id="amenities">
+					<i class="bi bi-buildings"></i>
+					<span>Amenities</span>
+				</a>
+			</li><!-- End Units Page Nav -->
+
+			<li class="nav-item">
 				<a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
 					<i class="bi bi-gem"></i><span>Dropdown</span><i class="bi bi-chevron-down ms-auto"></i>
 				</a>
@@ -209,12 +216,8 @@
 
 			loadView();
 
-			$("#home, #dashboard").unbind().click(function() {
-				loadView();
-			})
-
-			$("#units").unbind().click(function() {
-				loadView('units');
+			$("#home, #dashboard, #units, #amenity").unbind().click(function() {
+				loadView($(this).attr('id'));
 			})
 		})
 	</script>
