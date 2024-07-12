@@ -9,6 +9,7 @@ class User extends CI_Controller
         parent::__construct();
         // $this->load->model('auth');
         $this->load->model('units');
+        $this->load->model('ssp_model');
 
         // if (!$this->auth->is_login()) {
         //     $this->load->view('login');return;
@@ -80,6 +81,15 @@ class User extends CI_Controller
         } else {
             $this->site($data,'layout/error_occured');
         }
+    }
+
+    public function your_book(){
+        $data['ex_js'] = 'js/user/book.js.php'; 
+        $this->site($data,'user/book');
+    }
+
+    public function ssp_book(){
+        echo $this->ssp_model->book();
     }
 
     private function site($data,$page)

@@ -139,7 +139,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= site_url('user/schedule') ?>">
+                <a class="nav-link collapsed" href="<?= site_url('user/your_book') ?>">
                     <i class="fas fa-book"></i>
                     <span>Your Book</span>
                 </a>
