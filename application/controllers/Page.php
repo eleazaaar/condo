@@ -15,9 +15,9 @@ class Page extends CI_Controller {
 		$this->load->view('signup');
 	}
 
-    public function admin() {
-        $this->load->view('admin/index');
-    }
+	public function schedule() {
+		$this->site([],'schedule');
+	}
 
 	public function home() {
 		$this->load->view('admin/dashboard');
@@ -31,7 +31,13 @@ class Page extends CI_Controller {
 		$this->load->view('admin/units');
 	}
 
+	private function site($data,$page){
+    $datas['url'] = $page;
+    $datas['data'] = $data;
+    $this->load->view('layout/guest', $datas);
+  }
 	public function amenities() {
 		$this->load->view('admin/amenity');
 	}
+
 }
