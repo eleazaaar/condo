@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'); ?>">
-    
+
     <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/css/select2.min.css'); ?>">
 
     <!-- Template Main CSS File -->
@@ -66,12 +66,12 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <!-- <img src="<?= base_url() ?>/assets-admin/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
                         <i class="bi bi-person"></i>
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Juan Dela Cruz</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?=$this->session->userdata('userfullname');?></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
@@ -99,13 +99,15 @@
                         </li>
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
+                        </li> -->
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?= site_url() ?>">
-                                <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
-                            </a>
+                            <form action="<?=site_url('auth_/logout')?>" class="dropdown-item d-flex align-items-center">
+                                <button type="submit" class="btn">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sign Out</span>
+                                </button>
+                            </form>
                         </li>
 
                     </ul><!-- End Profile Dropdown Items -->
