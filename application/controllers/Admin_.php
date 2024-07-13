@@ -7,10 +7,10 @@ class Admin_ extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth');
-        // if ($this->auth->is_login() == false) {
-        //     redirect('app');
-        // }
+        $this->load->model('auth');
+        if ($this->auth->is_login() == false || $this->session->userdata('userlevel')!=$this->auth::ADMIN) {
+            redirect('login');
+        }
 
         $this->load->model('admin');
         $this->load->model('ssp_model');

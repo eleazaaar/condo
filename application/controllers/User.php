@@ -7,13 +7,13 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth');
+        $this->load->model('auth');
         $this->load->model('units');
         $this->load->model('ssp_model');
 
-        // if (!$this->auth->is_login()) {
-        //     $this->load->view('login');return;
-        // }
+        if (!$this->auth->is_login() || $this->session->userdata('userlevel') != $this->auth::USER) {
+            redirect('login');
+        }
     }
     public function index()
     {

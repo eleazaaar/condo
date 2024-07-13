@@ -7,37 +7,41 @@ class App extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth');
-
-        // if (!$this->auth->is_login()) {
-        //     $this->load->view('login');return;
-        // }
+        $this->load->model('auth');
+        
+        if (!$this->auth->is_login() || $this->session->userdata('userlevel')!=$this->auth::ADMIN) {
+            // die( $this->session->userdata('userlevel'));
+            redirect('login');
+        }
     }
     public function index()
     {
         # dashboard
-        $this->site([],'admin/dashboard');
+        $this->site([], 'admin/dashboard');
     }
 
-    public function amenity(){
+    public function amenity()
+    {
 
-        $data['ex_js'] = 'js/admin/amenity.js.php'; 
-        $this->site($data,'admin/amenity');
+        $data['ex_js'] = 'js/admin/amenity.js.php';
+        $this->site($data, 'admin/amenity');
     }
 
-    public function units(){
+    public function units()
+    {
 
-        $data['ex_js'] = 'js/admin/units.js.php'; 
-        $this->site($data,'admin/units');
+        $data['ex_js'] = 'js/admin/units.js.php';
+        $this->site($data, 'admin/units');
     }
 
-    public function book(){
+    public function book()
+    {
 
-        $data['ex_js'] = 'js/admin/book.js.php'; 
-        $this->site($data,'admin/book');
+        $data['ex_js'] = 'js/admin/book.js.php';
+        $this->site($data, 'admin/book');
     }
 
-    private function site($data,$page)
+    private function site($data, $page)
     {
         $datas['url'] = $page;
         $datas['data'] = $data;
