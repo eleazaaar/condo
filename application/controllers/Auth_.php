@@ -19,22 +19,26 @@ class Auth_ extends CI_Controller
         }
     }
 
-    public function loggedin()
+    public function sign_in()
     {
-        $this->form_validation->set_rules('username', 'Username', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Required All Fields', 'message' => validation_errors()));
             die;
         } else {
-            $username = $this->input->post('username', TRUE);
+            $email = $this->input->post('email', TRUE);
             $password = $this->input->post('password', TRUE);
 
-            if ($this->auth->login($username, $password)) {
-                echo json_encode(array('status' => 200, 'url' => site_url('app')));
+            if ($this->auth->login($email, $password)) {
+                if($this->session->userdata('userlevel')==$this->auth::ADMIN){
+                    echo json_encode(array('status' => 200, 'url' => site_url('app')));
+                }else{
+                    echo json_encode(array('status' => 200, 'url' => site_url('user')));
+                }
                 die;
             } else {
-                echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Not Match', 'message' => 'Username and Password does not match'));
+                echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Not Match', 'message' => 'Username and Password does not match or does not exists'));
                 die;
             }
         }
@@ -70,7 +74,7 @@ class Auth_ extends CI_Controller
         $data['mname'] = $mname;
         $data['lname'] = $lname;
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
-        $data['user_type'] = 1;
+        $data['user_type'] = 2;
 
         $res = $this->db->insert('user',$data);
         if ($res) {

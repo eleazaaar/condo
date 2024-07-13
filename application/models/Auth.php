@@ -4,35 +4,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Auth extends CI_Model
 {
     const ADMIN = '1';
+    const USER = '2';
     public function __construct()
     {
         parent::__construct();
         $this->load->library('encryption');
     }
 
-    public function login($username, $password)
+    public function login($email, $password)
     {
-        $username = $this->security->xss_clean($username);
+        $email = $this->security->xss_clean($email);
         $password = $this->security->xss_clean($password);
 
-        $query = $this->db->query("SELECT username,name,password,is_admin FROM user_account WHERE username='$username';");
+        $query = $this->db->query("SELECT email,CONCAT_WS(' ',fname,lname,mname) as name,password,user_type FROM user WHERE email='$email';");
         if ($query && $query->num_rows()==1) {
             $row = $query->row();
             if (!password_verify($password, $row->password)) {
                 return false;
             }
             // USER AND PASSWORD ARE GOODS
-            $this->session->set_userdata("username", $row->username);
+            $this->session->set_userdata("email", $row->email);
             $this->session->set_userdata("userfullname", $row->name);
-            $this->session->set_userdata("userlevel", $row->is_admin);
+            $this->session->set_userdata("userlevel", $row->user_type);
 
             $key = $this->encryption->create_key(16);
             $this->session->set_userdata("usertoken", $key);
             $this->session->set_userdata("dikoalamitatawagdito", password_hash($key,PASSWORD_DEFAULT));
             return true;
-        }else if($username=='administrator' && $password== 'azurecondo123') {
+        }else if($email=='administrator@azure-condo.com' && $password== 'azurecondo123') {
             // USER AND PASSWORD ARE GOODS
-            $this->session->set_userdata("username", 'administrator');
+            $this->session->set_userdata("email", 'administrator@azure-condo.com');
             $this->session->set_userdata("userfullname", 'AZURE ADMIN');
 
             $key = $this->encryption->create_key(16);
@@ -59,7 +60,7 @@ class Auth extends CI_Model
     }
 
     public function is_valid_user(){
-        return $this->session->has_userdata('username') && !empty($this->session->userdata('username'))
+        return $this->session->has_userdata('email') && !empty($this->session->userdata('email'))
         && password_verify($this->session->userdata('usertoken'),$this->session->userdata('dikoalamitatawagdito'));
     }
 }
