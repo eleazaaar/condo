@@ -90,12 +90,14 @@ class Ssp_Model extends CI_Model
 
     public function book()
     {
+        $id = $this->session->userdata('userid');
         $this->table = "(
             SELECT a.id, a.name,a.f_size,a.good_for,a.max_of,a.price
             ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
             ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
             FROM accomodation a
             INNER JOIN schedule s ON a.id=s.accomodation_id
+            WHERE s.user_id=$id
             ) temp";
         $this->primaryKey = 'id';
         $this->columns = array(

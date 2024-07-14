@@ -16,13 +16,14 @@ class Auth extends CI_Model
         $email = $this->security->xss_clean($email);
         $password = $this->security->xss_clean($password);
 
-        $query = $this->db->query("SELECT email,CONCAT_WS(' ',fname,mname,lname) as name,password,user_type FROM user WHERE email='$email';");
+        $query = $this->db->query("SELECT id,email,CONCAT_WS(' ',fname,mname,lname) as name,password,user_type FROM user WHERE email='$email';");
         if ($query && $query->num_rows()==1) {
             $row = $query->row();
             if (!password_verify($password, $row->password)) {
                 return false;
             }
             // USER AND PASSWORD ARE GOODS
+            $this->session->set_userdata("userid", $row->id);
             $this->session->set_userdata("email", $row->email);
             $this->session->set_userdata("userfullname", $row->name);
             $this->session->set_userdata("userlevel", $row->user_type);

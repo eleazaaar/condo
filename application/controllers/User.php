@@ -17,8 +17,7 @@ class User extends CI_Controller
     }
     public function index()
     {
-        # dashboard
-        $this->site([],'admin/dashboard');
+        $this->your_book();
     }
 
     public function schedule(){
