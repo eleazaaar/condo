@@ -7,11 +7,9 @@ class App extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth');
-
-        // if (!$this->auth->is_login()) {
-        //     $this->load->view('login');return;
-        // }
+        if (!$this->session->userdata('user')) {
+			redirect('login');
+		} 
     }
     public function index()
     {
