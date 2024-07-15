@@ -73,6 +73,7 @@ class Auth_ extends CI_Controller
         $data['fname'] = $fname;
         $data['mname'] = $mname;
         $data['lname'] = $lname;
+        $data['contact_number'] = $contact_no;
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         $data['user_type'] = 2;
 
