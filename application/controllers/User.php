@@ -55,6 +55,8 @@ class User extends CI_Controller
     }
 
     public function save_schedule(){
+        $_POST['userid'] = $this->session->userdata('userid');
+        $this->form_validation->set_rules('userid', 'USER ID', 'trim|required|numeric');
         $this->form_validation->set_rules('unit_id', 'ID', 'trim|required|numeric');
         $this->form_validation->set_rules('from', 'From Date', 'trim|required|regex_match[/^\d{4}-\d{2}-\d{2}$/]');
         $this->form_validation->set_rules('to', 'To Date', 'trim|required|regex_match[/^\d{4}-\d{2}-\d{2}$/]');
@@ -67,7 +69,7 @@ class User extends CI_Controller
         extract($this->input->post(NULL,TRUE));
 
         $data = [
-            'user_id' => 0,
+            'user_id' => $userid,
             'accomodation_id'=>$unit_id,
             'from_date'=>$from,
             'to_date'=>$to
