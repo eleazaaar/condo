@@ -8,7 +8,7 @@ class Admin_ extends CI_Controller
     {
         parent::__construct();
         $this->load->model('auth');
-        if ($this->auth->is_login() == false || $this->session->userdata('userlevel')!=$this->auth::ADMIN) {
+        if ($this->auth->is_login() == false || $this->session->userdata('userlevel') != $this->auth::ADMIN) {
             redirect('login');
         }
 
@@ -126,6 +126,27 @@ class Admin_ extends CI_Controller
             die;
         } else {
             echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
+            die;
+        }
+    }
+
+    public function get_booked_details()
+    {
+        $this->form_validation->set_rules('id', 'ID', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' =>validation_errors('', '<br>')));
+            die;
+        }
+
+        $id = $this->input->post('id');
+
+        $res = $this->admin->get_booked_details($id);
+        if ($res) {
+            echo json_encode(array('status' => 200, 'data' => $res));
+            die;
+        } else {
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
             die;
         }
     }

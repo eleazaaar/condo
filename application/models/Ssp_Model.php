@@ -123,7 +123,7 @@ class Ssp_Model extends CI_Model
     public function customer_book()
     {
         $this->table = "(
-            SELECT s.id,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as units,a.f_size,a.good_for,a.max_of,a.price
+            SELECT s.id,s.status,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as units,a.f_size,a.good_for,a.max_of,a.price
             ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
             ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
             FROM schedule s 
@@ -138,10 +138,21 @@ class Ssp_Model extends CI_Model
             array('db' => 'to_date', 'dt' => 3),
             array('db' => 'price', 'dt' => 4),
             array(
-                'db' => 'id', 'dt' => 5,
+                'db' => 'status', 'dt' => 5,
                 'formatter' => function ($data) {
                     return "
-                        <span class='badge badge-warning'>PENDING</span>
+                        <span class='badge badge-warning'>$data</span>
+                ";
+                }
+            ),
+            array(
+                'db' => 'id', 'dt' => 6,
+                'formatter' => function ($data) {
+                    return "
+                        <div class='m-auto' data-id='$data'>
+                            <button class='btn btn-outline-success btn-edit-status' data-toggle='modal' data-target='#editUnitModal' title='Edit Booked Status'><i class='fas fa-edit'></i></button>
+                            <button class='btn btn-outline-warning btn-transfer-unit' data-toggle='modal' data-target='#editUnitModal' title='Transfer Unit'><i class='fas fa-exchange-alt'></i></button>
+                        </div>
                 ";
                 }
             ),

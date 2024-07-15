@@ -93,4 +93,28 @@ class Admin extends CI_Model
     /**
      * END OF UNITS-----------------------------------------
      */
+
+    
+     /**
+      * BOOKED
+      */
+
+    public function get_booked_details($id){
+        $results = [];
+        $query = $this->db->query("
+            SELECT s.id,s.status,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as unit_name
+            ,a.f_size,a.good_for,a.max_of,a.price,a.room_no,a.floor_no
+            ,DATE_FORMAT(s.from_date, '%M %d, %Y') as from_date
+            ,DATE_FORMAT(s.to_date, '%M %d, %Y') as to_date
+            FROM schedule s 
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            INNER JOIN USER U ON s.user_id=u.id 
+            WHERE s.id='$id'
+        ");
+        $results = $query->row_array();
+        return $results;
+    }
+    /**
+     * END OF BOOKED
+     */
 }
