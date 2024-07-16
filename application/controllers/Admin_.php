@@ -85,6 +85,10 @@ class Admin_ extends CI_Controller
 
     public function save_units()
     {
+        $datas = urldecode($this->input->post('data'));
+        parse_str($datas, $datas);
+        $this->form_validation->set_data($datas);
+
         if (isset($_POST['unit_id'])) {
             $this->form_validation->set_rules('unit_id', 'ID', 'numeric');
         }
@@ -104,22 +108,36 @@ class Admin_ extends CI_Controller
             die;
         }
 
-        $data['units']['name'] = $this->input->post('name', TRUE);
-        $data['units']['description'] = $this->input->post('description', TRUE);
-        $data['units']['room_no'] = $this->input->post('room_no', TRUE);
-        $data['units']['floor_no'] = $this->input->post('floor_no', TRUE);
-        $data['units']['f_size'] = $this->input->post('floor_size', TRUE);
-        $data['units']['good_for'] = $this->input->post('good_for', TRUE);
-        $data['units']['max_of'] = $this->input->post('max_of', TRUE);
-        $data['units']['remarks'] = $this->input->post('remarks', TRUE);
+        $data['units']['name'] = $datas['name'];
+        $data['units']['description'] = $datas['description'];
+        $data['units']['room_no'] = $datas['room_no'];
+        $data['units']['floor_no'] = $datas['floor_no'];
+        $data['units']['f_size'] = $datas['floor_size'];
+        $data['units']['good_for'] = $datas['good_for'];
+        $data['units']['max_of'] = $datas['max_of'];
+        $data['units']['remarks'] = $datas['remarks'];
         $data['units']['slug'] = str_replace([' ', '-'], '_', $data['units']['name']);
-        $data['amenities'] = $this->input->post('amenities', TRUE);
+        $data['amenities'] = $datas['amenities'];
+
+        $files = [];
+
+        for ($i=0; $i < count($_FILES['files']['name']); $i++) {
+	        $file = file_get_contents($_FILES['files']['tmp_name'][$i]);
+	        $final_file = base64_encode($file);
+            $mime = $_FILES["files"]["type"][$i];
+
+            $files[] = array(
+                'what' => 'units',
+                'data' => $final_file,
+                'mime' => $mime
+            );
+        }
 
         if (isset($_POST['unit_id']) && !empty($_POST['unit_id'])) {
             $id = $this->input->post('unit_id', TRUE);
-            $res = $this->admin->update_units($id, $data);
+            $res = $this->admin->update_units($id, $data, $files);
         } else {
-            $res = $this->admin->save_units($data);
+            $res = $this->admin->save_units($data, $files);
         }
         if ($res) {
             echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Save Successfully'));

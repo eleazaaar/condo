@@ -49,10 +49,16 @@ class Admin extends CI_Model
         return $results;
     }
 
-    public function save_units($data){
+    public function save_units($data, $files){
         $this->db->trans_begin();
         $this->db->insert('accomodation',$data['units']);
         $id = $this->db->insert_id();
+        if (count($files) > 0) {
+            foreach($files as $file) {
+                $file['what_id'] = $id;
+                $this->db->insert('gallery',$file);
+            }
+        }
         foreach($data['amenities'] as $a){
             $this->db->insert('accomodation_amenity',[
                 'accomodation_id'=>$id,
@@ -66,12 +72,22 @@ class Admin extends CI_Model
         }
     }
 
-    public function update_units($id, $data){
+    public function update_units($id, $data, $files){
         $this->db->trans_begin();
         $this->db
         ->set($data['units'])
         ->where('id',$id)
         ->update('accomodation');
+
+        if (count($files) > 0) {
+            $this->db->where(['what_id'=>$id, 'what'=>'units'])
+            ->delete('gallery');
+    
+            foreach($files as $file) {
+                $file['what_id'] = $id;
+                $this->db->insert('gallery',$file);
+            }
+        }
 
         $this->db->where('accomodation_id',$id)
         ->delete('accomodation_amenity');

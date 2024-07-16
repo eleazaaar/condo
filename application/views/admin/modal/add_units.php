@@ -56,10 +56,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="remarks">Remarks</label>
-                        <textarea class="form-control" name="remarks" id="remarks" cols="30" rows="5"></textarea>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="remarks">Remarks</label>
+                            <textarea class="form-control" name="remarks" id="remarks" cols="30" rows="5"></textarea>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="pictures">Image</label>
+                            <input type="file" class="form-control" id="pictures" name="pictures" multiple>
+                        </div>
+                    </div>
+                    
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>

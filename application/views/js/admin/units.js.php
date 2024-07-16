@@ -120,11 +120,21 @@
         $('#add_units_form').on('submit', e => {
             e.preventDefault();
 
+            var fileData = $('#pictures').prop('files');
+            var formData = new FormData();
+
+            formData.append('data', $(e.currentTarget).serialize());
+            for (var i = 0; i < fileData.length; i++) {
+                formData.append("files[]", fileData[i]);
+            }
+
             $.ajax({
                     url: "<?= site_url('admin_/save_units') ?>",
                     method: "POST",
                     dataType: "JSON",
-                    data: $(e.currentTarget).serialize()
+                    data: formData,
+                    processData: false,
+                    contentType: false
                 })
                 .then(response => {
                     Swal.fire({
