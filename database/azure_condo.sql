@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2024 at 03:32 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Generation Time: Jul 16, 2024 at 05:12 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,7 +39,7 @@ CREATE TABLE `accomodation` (
   `max_of` int(11) NOT NULL,
   `no_of_bed` int(11) NOT NULL,
   `remarks` text NOT NULL,
-  `price` decimal(10,0) NOT NULL,
+  `price` decimal(10,3) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
   `date_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -49,10 +49,8 @@ CREATE TABLE `accomodation` (
 --
 
 INSERT INTO `accomodation` (`id`, `slug`, `name`, `room_no`, `floor_no`, `description`, `f_size`, `good_for`, `max_of`, `no_of_bed`, `remarks`, `price`, `date_created`, `date_updated`) VALUES
-(1, 'one_bedroom', 'ONE-BEDROOM', '1', 1, '', 29, 0, 0, 0, '', '0', '2024-07-02 13:25:18', '2024-07-02 13:25:18'),
-(3, 'Tamekah_Flowers', 'Tamekah Flowers', 'Vel invent', 9, 'Deserunt facilis adi', 31, 75, 69, 0, 'Dolor assumenda in o', '0', '2024-07-03 12:56:39', '2024-07-03 12:56:39'),
-(4, 'ONE_BEDROOM', 'ONE-BEDROOM', '1', 1, 'Non ratione et natus', 29, 2, 3, 0, 'Natus sapiente in eo', '0', '2024-07-03 14:06:50', '2024-07-03 14:08:38'),
-(5, 'ONE_BEDROOM', 'ONE-BEDROOM', '1', 1, 'Non ratione et natus', 29, 2, 4, 0, 'Natus sapiente in eo', '0', '2024-07-03 14:07:50', '2024-07-03 14:08:25');
+(1, 'Elijah_Mueller', 'Elijah Mueller', 'Veritatis ', 40, 'Et molestiae ab volu', 29, 5, 5, 0, 'Asperiores maxime re', '1500.000', '2024-07-07 06:21:12', '2024-07-11 01:46:39'),
+(2, '', 'Jolie Clark', 'Aut rem do', 21, 'Eum eaque sit soluta', 6, 2, 2, 0, 'Eiusmod reprehenderi', '1500.000', '2024-07-07 08:20:22', '2024-07-11 07:37:32');
 
 -- --------------------------------------------------------
 
@@ -64,6 +62,17 @@ CREATE TABLE `accomodation_amenity` (
   `accomodation_id` int(11) NOT NULL,
   `amenity_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `accomodation_amenity`
+--
+
+INSERT INTO `accomodation_amenity` (`accomodation_id`, `amenity_id`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(1, 1),
+(1, 2);
 
 -- --------------------------------------------------------
 
@@ -84,8 +93,18 @@ CREATE TABLE `accomodation_inclusion` (
 
 CREATE TABLE `amenity` (
   `id` int(11) NOT NULL,
-  `description` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `amenity`
+--
+
+INSERT INTO `amenity` (`id`, `name`) VALUES
+(1, 'Swimming Pool'),
+(2, 'Basketball Court'),
+(3, 'Parking Lot'),
+(4, 'Pools');
 
 -- --------------------------------------------------------
 
@@ -111,6 +130,7 @@ CREATE TABLE `schedule` (
   `from_date` date NOT NULL,
   `to_date` date NOT NULL,
   `total_amount` decimal(10,0) NOT NULL,
+  `status` varchar(100) DEFAULT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -118,8 +138,14 @@ CREATE TABLE `schedule` (
 -- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `user_id`, `accomodation_id`, `from_date`, `to_date`, `total_amount`, `date_created`) VALUES
-(1, 0, 1, '2024-07-13', '2024-07-15', '0', '2024-07-10 11:54:06');
+INSERT INTO `schedule` (`id`, `user_id`, `accomodation_id`, `from_date`, `to_date`, `total_amount`, `status`, `date_created`) VALUES
+(1, 1, 1, '2024-07-09', '2024-07-10', '1500', 'Pending', '2024-07-09 06:39:52'),
+(2, 0, 2, '2024-07-17', '2024-07-19', '3000', 'Pending', '2024-07-09 06:46:26'),
+(3, 0, 1, '2024-07-31', '2024-08-01', '0', 'Pending', '2024-07-11 05:32:43'),
+(4, 0, 1, '2024-07-31', '2024-08-01', '0', 'Pending', '2024-07-11 05:59:07'),
+(5, 0, 1, '2024-07-31', '2024-08-01', '0', 'Pending', '2024-07-11 06:27:33'),
+(6, 0, 1, '2024-07-31', '2024-08-01', '0', 'Pending', '2024-07-11 06:27:45'),
+(7, 3, 1, '2024-07-19', '2024-07-21', '0', 'Approved', '2024-07-14 23:48:59');
 
 -- --------------------------------------------------------
 
@@ -136,9 +162,18 @@ CREATE TABLE `user` (
   `contact_number` varchar(11) NOT NULL,
   `password` text NOT NULL,
   `user_type` tinyint(4) NOT NULL COMMENT '1=admin,2=customer',
-  `is_verified` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `is_verified` timestamp NULL DEFAULT NULL,
   `date_created` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `fname`, `mname`, `lname`, `email`, `contact_number`, `password`, `user_type`, `is_verified`, `date_created`) VALUES
+(1, 'JUAN', 'LORENZO', 'DELA CRUZ', 'juandelacruz@gmail.com', '09999999999', '123123', 2, '2024-07-12 07:10:42', '2024-07-12 07:10:42'),
+(3, 'Dexter', 'Agus', 'Aragon', 'dexterdaaragon@gmail.com', '', '$2y$10$WvJT2WX4iymneIKfJVBWTuKKBQky/.V.YcQ5x6njWRWBvIRHAnjqS', 2, NULL, '2024-07-13 07:23:17'),
+(4, 'ADMIN', 'ADMIN', 'ADMIN', 'admin@azure.com', '', '$2y$10$nFxjcxGVkiza6ledMc16peVF3RocADZEIRLX77ZoBKSro2HvOEHRm', 1, NULL, '2024-07-15 00:30:48');
 
 --
 -- Indexes for dumped tables
@@ -182,13 +217,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `accomodation`
 --
 ALTER TABLE `accomodation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `amenity`
 --
 ALTER TABLE `amenity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `inclusion`
@@ -200,13 +235,13 @@ ALTER TABLE `inclusion`
 -- AUTO_INCREMENT for table `schedule`
 --
 ALTER TABLE `schedule`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
