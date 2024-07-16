@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure</title>
-    <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
+    <link href="<?= base_url() ?>/assets-all/img/logo.jpg" rel="icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/signup.css">
 </head>
+
 <body>
     <div class="content">
         <div class="content-body">
@@ -15,7 +17,8 @@
                 <form class="modal-content animate" id="signup-form" style="border:1px solid #ccc;">
                     <div class="container-content" style="background: #FFF;">
                         <h1>Sign Up</h1>
-                        <p>Please fill in this form to create an account.</p> <hr>
+                        <p>Please fill in this form to create an account.</p>
+                        <hr>
 
                         <div class="row">
                             <div class="col-4">
@@ -37,13 +40,13 @@
                                 <label for="email"><b>Email</b></label>
                                 <input type="text" name="email" required>
                             </div>
-                            
+
                             <div class="col-4">
                                 <label for="contact_no"><b>Mobile Number</b></label>
                                 <input type="text" placeholder="Enter Mobile" name="contact_no" required>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-12">
                                 <label for="password"><b>Password</b></label>
@@ -57,9 +60,13 @@
 
                         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-                        <div class="clearfix" align="center">
-                            <a class="btn btn-danger" href="<?=site_url('Page/login')?>" style="width: 49%">Cancel</a>
-                            <a class="btn btn-success" id="signup" style="width: 49%">Sign Up</a>
+                        <div class="row col-12">
+                            <div class="col-6">
+                                <a class="btn btn-danger btn-block" href="<?= site_url('Page/login') ?>">Cancel</a>
+                            </div>
+                            <div class="col-6">
+                                <input type="submit" class="btn btn-success btn-block" value="Sign Up">
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -67,6 +74,7 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -78,29 +86,29 @@
 <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
 
 <script>
-    $(document).ready(()=>{
-        $('#signup-form').on('submit',(e)=>{
+    $(document).ready(() => {
+        $('#signup-form').on('submit', (e) => {
             e.preventDefault();
 
             const _this = $(e.currentTarget);
-        $.ajax({
-            url: "<?= site_url('auth_/sign_up')?>",
-            dataType: 'JSON',
-            method: 'POST',
-            data: _this.serialize()
-        })
-        .then((res)=>{
-            Swal.fire({
-                icon: res.icon,
-                title: res.title,
-                html: res.message
-            })
-            .then((r)=>{
-                if(res.status==200){
-                    window.location.replace("<?= site_url('page/login')?>");
-                }
-            });
-        })
+            $.ajax({
+                    url: "<?= site_url('auth_/sign_up') ?>",
+                    dataType: 'JSON',
+                    method: 'POST',
+                    data: _this.serialize()
+                })
+                .then((res) => {
+                    Swal.fire({
+                            icon: res.icon,
+                            title: res.title,
+                            html: res.message
+                        })
+                        .then((r) => {
+                            if (res.status == 200) {
+                                window.location.replace("<?= site_url('page/login') ?>");
+                            }
+                        });
+                })
         })
     });
 </script>
