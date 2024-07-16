@@ -87,4 +87,79 @@ class Ssp_Model extends CI_Model
             SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
         );
     }
+
+    public function book()
+    {
+        $id = $this->session->userdata('userid');
+        $this->table = "(
+            SELECT a.id, a.name,a.f_size,a.good_for,a.max_of,a.price
+            ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
+            ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
+            FROM accomodation a
+            INNER JOIN schedule s ON a.id=s.accomodation_id
+            WHERE s.user_id=$id
+            ) temp";
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'name', 'dt' => 0),
+            array('db' => 'from_date', 'dt' => 1),
+            array('db' => 'to_date', 'dt' => 2),
+            array('db' => 'price', 'dt' => 3),
+            array(
+                'db' => 'id', 'dt' => 4,
+                'formatter' => function ($data) {
+                    return "
+                        <span class='badge badge-warning'>PENDING</span>
+                ";
+                }
+            ),
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
+   
+    public function customer_book()
+    {
+        $this->table = "(
+            SELECT s.id,s.status,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as units,a.f_size,a.good_for,a.max_of,a.price
+            ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
+            ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
+            FROM schedule s 
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            INNER JOIN USER U ON s.user_id=u.id
+            ) temp";
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'customer_name', 'dt' => 0),
+            array('db' => 'units', 'dt' => 1),
+            array('db' => 'from_date', 'dt' => 2),
+            array('db' => 'to_date', 'dt' => 3),
+            array('db' => 'price', 'dt' => 4),
+            array(
+                'db' => 'status', 'dt' => 5,
+                'formatter' => function ($data) {
+                    return "
+                        <span class='badge badge-warning'>$data</span>
+                ";
+                }
+            ),
+            array(
+                'db' => 'id', 'dt' => 6,
+                'formatter' => function ($data) {
+                    return "
+                        <div class='m-auto' data-id='$data'>
+                            <button class='btn btn-outline-success btn-edit-status' data-toggle='modal' data-target='#editUnitModal' title='Edit Booked Status'><i class='fas fa-edit'></i></button>
+                            <button class='btn btn-outline-warning btn-transfer-unit' data-toggle='modal' data-target='#editUnitModal' title='Transfer Unit'><i class='fas fa-exchange-alt'></i></button>
+                        </div>
+                ";
+                }
+            ),
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
 }

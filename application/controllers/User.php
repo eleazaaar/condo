@@ -7,17 +7,17 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model('auth');
+        $this->load->model('auth');
         $this->load->model('units');
+        $this->load->model('ssp_model');
 
-        // if (!$this->auth->is_login()) {
-        //     $this->load->view('login');return;
-        // }
+        if (!$this->auth->is_login() || $this->session->userdata('userlevel') != $this->auth::USER) {
+            redirect('login');
+        }
     }
     public function index()
     {
-        # dashboard
-        $this->site([],'admin/dashboard');
+        $this->your_book();
     }
 
     public function schedule(){
@@ -56,6 +56,8 @@ class User extends CI_Controller
     }
 
     public function save_schedule(){
+        $_POST['userid'] = $this->session->userdata('userid');
+        $this->form_validation->set_rules('userid', 'USER ID', 'trim|required|numeric');
         $this->form_validation->set_rules('unit_id', 'ID', 'trim|required|numeric');
         $this->form_validation->set_rules('from', 'From Date', 'trim|required|regex_match[/^\d{4}-\d{2}-\d{2}$/]');
         $this->form_validation->set_rules('to', 'To Date', 'trim|required|regex_match[/^\d{4}-\d{2}-\d{2}$/]');
@@ -68,7 +70,7 @@ class User extends CI_Controller
         extract($this->input->post(NULL,TRUE));
 
         $data = [
-            'user_id' => 0,
+            'user_id' => $userid,
             'accomodation_id'=>$unit_id,
             'from_date'=>$from,
             'to_date'=>$to
@@ -81,6 +83,15 @@ class User extends CI_Controller
         } else {
             $this->site($data,'layout/error_occured');
         }
+    }
+
+    public function your_book(){
+        $data['ex_js'] = 'js/user/book.js.php'; 
+        $this->site($data,'user/book');
+    }
+
+    public function ssp_book(){
+        echo $this->ssp_model->book();
     }
 
     private function site($data,$page)

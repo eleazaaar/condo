@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css'); ?>">
-    
+
     <link rel="stylesheet" href="<?= base_url('assets/plugins/select2/css/select2.min.css'); ?>">
 
     <!-- Template Main CSS File -->
@@ -70,12 +70,12 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <!-- <img src="<?= base_url() ?>/assets-admin/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
                         <i class="bi bi-person"></i>
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Juan Dela Cruz</span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?= $this->session->userdata('userfullname'); ?></span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
@@ -110,6 +110,14 @@
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Sign Out</span>
                             </a>
+                        </li> -->
+                        <li>
+                            <form action="<?= site_url('auth_/logout') ?>" class="dropdown-item d-flex align-items-center">
+                                <button type="submit" class="btn">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Sign Out</span>
+                                </button>
+                            </form>
                         </li>
 
                     </ul><!-- End Profile Dropdown Items -->
@@ -124,24 +132,16 @@
     <aside id="sidebar" class="sidebar">
 
         <ul class="sidebar-nav" id="sidebar-nav">
-
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= site_url('app/') ?>" id="dashboard">
-                    <i class="bi bi-grid"></i>
-                    <span>Dashboard</span>
+                <a class="nav-link collapsed" href="<?= site_url('user/your_book') ?>">
+                    <i class="fas fa-book"></i>
+                    <span>Your Book</span>
                 </a>
             </li>
-
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('user/schedule') ?>">
                     <i class="fas fa-calendar"></i>
                     <span>Schedule</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?= site_url('user/schedule') ?>">
-                    <i class="fas fa-book"></i>
-                    <span>Your Book</span>
                 </a>
             </li>
         </ul>
