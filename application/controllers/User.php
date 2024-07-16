@@ -50,7 +50,7 @@ class User extends CI_Controller
         $data = $query->row_array();
         $data['from'] = $from;
         $data['to'] = $to;
-        $data['price'] = $price ? $price : 0;
+        
         $data['ex_js'] = 'js/user/preview_schedule_details.js.php'; 
         $this->site($data,'user/preview_schedule_details');
     }
