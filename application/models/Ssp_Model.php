@@ -108,8 +108,9 @@ class Ssp_Model extends CI_Model
             array(
                 'db' => 'id', 'dt' => 4,
                 'formatter' => function ($data) {
+                    $badge = status_badge($data);
                     return "
-                        <span class='badge badge-warning'>PENDING</span>
+                        <span class='badge $badge'>$data</span>
                 ";
                 }
             ),
@@ -140,8 +141,9 @@ class Ssp_Model extends CI_Model
             array(
                 'db' => 'status', 'dt' => 5,
                 'formatter' => function ($data) {
+                    $badge = status_badge($data);
                     return "
-                        <span class='badge badge-warning'>$data</span>
+                        <span class='badge $badge'>$data</span>
                 ";
                 }
             ),

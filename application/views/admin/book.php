@@ -33,6 +33,7 @@
 
             <div class="modal-body">
                 <form id="edit-unit-status-form">
+                    <input type="hidden" id="unit_id">
                     <div class="form-group">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" id="status" class="form-control">

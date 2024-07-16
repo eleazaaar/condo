@@ -186,6 +186,31 @@ class Admin_ extends CI_Controller
     {
         echo $this->ssp_model->customer_book();
     }
+
+    public function save_book_status(){
+        $this->form_validation->set_rules('id', 'ID', 'required|numeric');
+        $this->form_validation->set_rules('status', 'Status', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' =>validation_errors('', '<br>')));
+            die;
+        }
+
+        extract($this->input->post(NULL,TRUE));
+
+        $res = $this->db
+        ->where('id',$id)
+        ->update('schedule',[
+            'status'=>$status
+        ]);
+        if ($res) {
+            echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Updated Successfully', 'message' => 'Booked status updated successfully'));
+            die;
+        } else {
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            die;
+        }
+    }
     /**
      * END OF BOOK
      */

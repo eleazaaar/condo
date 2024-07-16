@@ -64,3 +64,17 @@ if (!function_exists('is_contact_number_valid')) {
         }
     }
 }
+
+
+if(!function_exists('status_badge')){
+    function status_badge($str){
+        $badge = [
+            'Pending'=>'badge-warning',
+            'Approved'=>'badge-success',
+            'Disapproved'=>'badge-trash',
+            'Check-In'=>'badge-info',
+            'Check-Out'=>'badge-trash',
+        ];
+        return $badge[$str];
+    }
+}
