@@ -89,7 +89,7 @@ class Admin_ extends CI_Controller
         parse_str($datas, $datas);
         $this->form_validation->set_data($datas);
 
-        if (isset($_POST['unit_id'])) {
+        if (isset($datas['unit_id'])) {
             $this->form_validation->set_rules('unit_id', 'ID', 'numeric');
         }
 
@@ -133,8 +133,8 @@ class Admin_ extends CI_Controller
             );
         }
 
-        if (isset($_POST['unit_id']) && !empty($_POST['unit_id'])) {
-            $id = $this->input->post('unit_id', TRUE);
+        if (isset($datas['unit_id']) && !empty($datas['unit_id'])) {
+            $id = $datas['unit_id'];
             $res = $this->admin->update_units($id, $data, $files);
         } else {
             $res = $this->admin->save_units($data, $files);

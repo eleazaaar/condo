@@ -23,4 +23,8 @@ class Units extends CI_Model {
 		}
 		return [];
 	}
+
+	public function getUnitsGallery($id) {
+		return $this->db->query("SELECT * FROM gallery WHERE what_id = '$id' AND what = 'units'")->result();
+	}
 }

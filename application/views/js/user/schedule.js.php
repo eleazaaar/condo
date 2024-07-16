@@ -50,7 +50,7 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <input type="button" class="btn btn-secondary view-unit" data-id="${r['id']}" value="View">
+                                            <input type="button" class="btn btn-secondary view-unit" data-id="${r['id']}" data-description="${r['description']}" value="View">
                                             <input type="button" class="btn btn-success reserve-unit" data-id="${r['id']}" value="Reserve">
                                         </div>
                                     </div>
@@ -77,23 +77,28 @@
             $('#schedule_detail_form').find('#to').val($("#to").val());
             
             $('#schedule_detail_form').submit();
-            // $.ajax({
-            //     url: "<?= site_url('user/save_schedule')?>",
-            //     method: 'POST',
-            //     dataType: 'JSON',
-            //     data:{
-            //         from: $('#from').val(),
-            //         to: $('#to').val(),
-            //         unit_id: _this.data('id'),
-            //     }
-            // })
-            // .then(res => {
-            //     Swal.fire({
-            //         icon: res.icon,
-            //         title: res.title,
-            //         text: res.message
-            //     })
-            // })
         });
+
+        $(document).on('click','.view-unit', (e)=>{
+            const _this = $(e.currentTarget);
+            const id = _this.data('id');
+            const description = _this.data('description');
+
+            $('#viewUnitModal').modal('toggle');
+            $(".modal-title").text(description);
+            $.ajax({
+                url: '<?= site_url('Units_/getUnitsGallery') ?>',
+                method: 'POST',
+                dataType: 'HTML',
+                data: {id: id},
+                beforeSend: function() {
+                    $("#viewUnitModal").find("div[tag='display']").html('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
+                },
+                success: function(data) {
+                    $("#viewUnitModal").find("div[tag='display']").html(data);
+                }
+            })
+        });
+
     });
 </script>
