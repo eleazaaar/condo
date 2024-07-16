@@ -37,8 +37,11 @@
                     <div class="form-group">
                         <label for="status" class="form-label">Status</label>
                         <select name="status" id="status" class="form-control">
-                            <option value="Pending">Pending</option>
-                            <option value="Approved">Approved</option>
+                            <?php
+                                foreach(status_list() as $s):
+                            ?>
+                                <option value="<?=$s?>"><?=$s?></option>
+                            <?php endforeach;?>
                         </select>
                     </div>
                     <div class="form-group">

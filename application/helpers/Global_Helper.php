@@ -55,7 +55,7 @@ if (!function_exists('is_contact_number_valid')) {
     {
         // Define a regular expression for a simple 10-digit phone number
         $pattern = '/^9\d{9}$/';
-        
+
         // Use preg_match to test if the number matches the pattern
         if (preg_match($pattern, $phone)) {
             return true; // Valid number
@@ -65,15 +65,29 @@ if (!function_exists('is_contact_number_valid')) {
     }
 }
 
+if (!function_exists('status_list')) {
+    function status_list($str='') : string | array
+    {
+        $status = [
+            'Pending',
+            'Approved',
+            'Disapproved',
+            'Check-In',
+            'Check-Out',
+        ];
+        return isset($status[$str])?$status[$str]:$status;
+    }
+}
 
-if(!function_exists('status_badge')){
-    function status_badge($str){
+if (!function_exists('status_badge')) {
+    function status_badge($str)
+    {
         $badge = [
-            'Pending'=>'badge-warning',
-            'Approved'=>'badge-success',
-            'Disapproved'=>'badge-trash',
-            'Check-In'=>'badge-info',
-            'Check-Out'=>'badge-trash',
+            'Pending' => 'badge-warning',
+            'Approved' => 'badge-success',
+            'Disapproved' => 'badge-trash',
+            'Check-In' => 'badge-info',
+            'Check-Out' => 'badge-trash',
         ];
         return $badge[$str];
     }
