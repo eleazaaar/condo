@@ -220,6 +220,22 @@ class Admin_ extends CI_Controller
             die;
         }
     }
+
+    public function get_recent_check_in_check_out(){
+        $query = $this->db->query("
+            SELECT TIMESTAMPDIFF(HOUR, c.date_created, NOW()) as hour_diff
+            ,TIMESTAMPDIFF(MINUTE, c.date_created, NOW()) as minute_diff
+            ,c.action as status,a.name as unit_name
+            FROM check_in_check_out c
+            INNER JOIN schedule s ON c.schedule_id=s.id
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            ORDER BY c.date_created ASC
+            LIMIT 20
+        ");
+
+        $res = $query->result();
+        echo json_encode(array('data'=>$res));
+    }
     /**
      * END OF BOOK
      */
