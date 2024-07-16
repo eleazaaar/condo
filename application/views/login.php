@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure</title>
-    <link href="<?= base_url() ?>/assets-all/img/logo.jpg" rel="icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+    <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
+
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
 </head>
+
 
 <body>
     <div class="content">
@@ -46,6 +49,27 @@
 </body>
 
 </html>
+
+<div class="modal fade" id="forgotPasswordModal" aria-labelledby="forgotPasswordModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="forgotPasswordModalLabel">Recover Account</h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="id" id="id">
+                <div class="form-group">
+                    <label for="recover_email">Email</label>
+                    <input type="text" class="form-control" id="recover_email">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
