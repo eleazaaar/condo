@@ -58,6 +58,10 @@
                         html: response.message
                     })
                 })
+                .always(() => {
+                    book_tbl.ajax.reload(null,false);
+                    $('#editUnitModal').find('.close').trigger('click');
+                })
         })
     });
 </script>

@@ -85,9 +85,9 @@ if (!function_exists('status_badge')) {
         $badge = [
             'Pending' => 'badge-warning',
             'Approved' => 'badge-success',
-            'Disapproved' => 'badge-trash',
+            'Disapproved' => 'badge-danger',
             'Check-In' => 'badge-info',
-            'Check-Out' => 'badge-trash',
+            'Check-Out' => 'badge-danger',
         ];
         return $badge[$str];
     }

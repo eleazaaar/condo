@@ -197,16 +197,25 @@ class Admin_ extends CI_Controller
         }
 
         extract($this->input->post(NULL,TRUE));
+        $this->db->trans_begin();
+        if(in_array($status,['Check-In','Check-Out'])){
+            $this->db->insert('check_in_check_out',[
+                'schedule_id'=>$id,
+                'action'=>$status
+            ]);
+        }
 
         $res = $this->db
         ->where('id',$id)
         ->update('schedule',[
             'status'=>$status
         ]);
-        if ($res) {
+        if ($this->db->trans_status()) {
+            $this->db->trans_commit();
             echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Updated Successfully', 'message' => 'Booked status updated successfully'));
             die;
         } else {
+            $this->db->trans_rollback();
             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
             die;
         }
