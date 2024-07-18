@@ -97,7 +97,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'https://sandybrown-llama-658903.hostingersite.com/',
+	'hostname' => 'localhost',
 	'username' => 'u317968081_azure',
 	'password' => '0v[WF/iM',
 	'database' => 'u317968081_azure_condo',
