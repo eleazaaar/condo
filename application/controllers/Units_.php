@@ -11,14 +11,25 @@ class Units_ extends CI_Controller {
 	public function getUnitsGallery() {
 		$id = $this->input->post('id');
 		$data = $this->Units->getUnitsGallery($id);
-		echo '<div class="row">';
+		$return = '<h5>Unit Gallery</h5>';
+		$return .= '<div class="row">';
 		foreach ($data as $value) {
-		echo '<div class="col-3 mb-3">
-               <a href="data:'.$value->mime.';base64,'.$value->data.'" target="_blank"> 
-               <img class="img-fluid" src="data:'.$value->mime.';base64,'.$value->data.'" alt="" width="100%" style="border-radius: 10px">
-               </a>
-            </div>';
+		$return .= '<div class="col-3 mb-3">
+						<a href="data:'.$value->mime.';base64,'.$value->data.'" target="_blank"> 
+							<img class="img-fluid" src="data:'.$value->mime.';base64,'.$value->data.'" alt="" width="100%" style="border-radius: 10px">
+						</a>
+            		</div>';
 		}
-		echo '</div>';
+		$return .= '</div>';
+
+		$return .= '<hr><h5>Ameneties</h5>';
+		$data = $this->Units->getUnitsAmeneties($id);
+		foreach ($data as $value) {
+			$return .= '<div class="col-12 mb-3">
+							'.$value->name.'
+						</div>';
+			}
+			$return .= '</div>';
+		echo $return;
 	}
 }

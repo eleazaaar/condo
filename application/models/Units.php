@@ -27,4 +27,8 @@ class Units extends CI_Model {
 	public function getUnitsGallery($id) {
 		return $this->db->query("SELECT * FROM gallery WHERE what_id = '$id' AND what = 'units'")->result();
 	}
+
+	public function getUnitsAmeneties($id) {
+		return $this->db->query("SELECT * FROM amenity WHERE id IN (SELECT amenity_id FROM accomodation_amenity WHERE accomodation_id = '$id')")->result();
+	}
 }
