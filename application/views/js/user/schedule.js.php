@@ -100,5 +100,14 @@
             })
         });
 
+        $(document).on('click','.my_unit_image', e => {
+            const _this = $(e.currentTarget);
+
+            const newWindow = window.open();
+            newWindow.document.write('<img src="' + _this.find('img').attr('src') + '" alt="Base64 Image" style="height:100vh;">');
+            newWindow.document.title = "Base64 Image";
+            newWindow.document.close();
+        })
+
     });
 </script>

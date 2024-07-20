@@ -15,7 +15,7 @@ class Units_ extends CI_Controller {
 		$return .= '<div class="row">';
 		foreach ($data as $value) {
 		$return .= '<div class="col-3 mb-3">
-						<a href="data:'.$value->mime.';base64,'.$value->data.'" target="_blank"> 
+						<a href="#" target="_blank" class="my_unit_image"> 
 							<img class="img-fluid" src="data:'.$value->mime.';base64,'.$value->data.'" alt="" width="100%" style="border-radius: 10px">
 						</a>
             		</div>';
