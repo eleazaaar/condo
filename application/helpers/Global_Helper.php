@@ -66,7 +66,7 @@ if (!function_exists('is_contact_number_valid')) {
 }
 
 if (!function_exists('status_list')) {
-    function status_list($str='') : string | array
+    function status_list($str='')
     {
         $status = [
             'Pending',

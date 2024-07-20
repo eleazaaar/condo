@@ -92,7 +92,7 @@ class Ssp_Model extends CI_Model
     {
         $id = $this->session->userdata('userid');
         $this->table = "(
-            SELECT a.id, a.name,a.f_size,a.good_for,a.max_of,a.price
+            SELECT a.id, a.name,a.f_size,a.good_for,a.max_of,a.price,s.status
             ,DATE_FORMAT(s.from_date, '%b %d, %Y') as from_date
             ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
             FROM accomodation a
@@ -106,7 +106,7 @@ class Ssp_Model extends CI_Model
             array('db' => 'to_date', 'dt' => 2),
             array('db' => 'price', 'dt' => 3),
             array(
-                'db' => 'id', 'dt' => 4,
+                'db' => 'status', 'dt' => 4,
                 'formatter' => function ($data) {
                     $badge = status_badge($data);
                     return "
