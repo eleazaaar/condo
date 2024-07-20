@@ -6,21 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure</title>
     <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
-
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
 </head>
 
-
-<body>
+<body style="background: #37517e;">
     <div class="content">
         <div class="content-body">
             <div class="container">
-                <form class="modal-content animate" id="login-form" method="post">
-                    <div class="container-content" style="background: #FFF;">
+                <form class="animate" id="login-form" method="post">
+                    <div class="container" style="background: #FFF; width: 50%;">
                         <div class="imgcontainer">
-                            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                             <img src="<?= base_url('assets-all/img/avatar.png') ?>" alt="Avatar" class="avatar" style="width: 25%">
                         </div>
 
@@ -35,10 +31,9 @@
                         </div>
 
                         <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                            <a class="btn btn-danger btn-block" href="<?= site_url('') ?>" style="width: 25%">Cancel</a>
                             <span class="psw">
-                                <a href="#">Forgot password?</a><br>
-                                <a href="<?= site_url('signup')?>">Create new account</a><br>
+                                <a href="#" data-toggle="modal" data-target="#forgotPasswordModal">Forgot password?</a> | <a href="<?=site_url('signup')?>">Create new Account</a>
                             </span>
                         </div>
                     </div>
