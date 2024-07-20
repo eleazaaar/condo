@@ -5,6 +5,15 @@ class Page extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->model('auth');
+        
+        if ($this->auth->is_login()) {
+			if ($this->session->userdata('userlevel') == 1) {
+				redirect('app');
+			} else if ( $this->session->userdata('userlevel') == 2) {
+				redirect('User');
+			}
+        }
 	}
 
 	public function index() {
