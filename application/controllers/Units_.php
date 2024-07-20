@@ -26,7 +26,7 @@ class Units_ extends CI_Controller {
 		$data = $this->Units->getUnitsAmeneties($id);
 		foreach ($data as $value) {
 			$return .= '<div class="col-12 mb-3">
-							'.$value->name.'
+							<span class="badge badge-secondary">'.$value->name.' </span>
 						</div>';
 			}
 			$return .= '</div>';
