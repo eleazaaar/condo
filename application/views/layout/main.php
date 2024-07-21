@@ -152,6 +152,13 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('app/users') ?>">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-gem"></i><span>Dropdown</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
@@ -167,7 +174,8 @@
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Icons Nav -->
+            </li> -->
+            <!-- End Icons Nav -->
         </ul>
 
     </aside><!-- End Sidebar-->

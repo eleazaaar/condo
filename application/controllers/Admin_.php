@@ -58,6 +58,58 @@ class Admin_ extends CI_Controller
      * END OF AMENITY-----------------------------------
      */
 
+     /**
+     * USERS-----------------------------------------------
+     */
+    public function save_user()
+    {
+        if (isset($_POST['id'])) {
+            $this->form_validation->set_rules('id', 'ID', 'numeric');
+        }
+
+        $this->form_validation->set_rules('fname', 'First Name', 'required|min_length[3]');
+        $this->form_validation->set_rules('lname', 'Last Name', 'required|min_length[3]');
+        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('contact_number', 'Mobile', 'required');
+        $this->form_validation->set_rules('user_type', 'User Type', 'required');
+        
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+            die;
+        }
+
+        $data['fname'] = $this->input->post('fname', TRUE);
+        $data['mname'] = $this->input->post('mname', TRUE);
+        $data['lname'] = $this->input->post('lname', TRUE);
+        $data['email'] = $this->input->post('email', TRUE);
+        $data['contact_number'] = $this->input->post('contact_number', TRUE);
+        $data['password'] = password_hash(strtoupper($this->input->post('lname', TRUE)), PASSWORD_BCRYPT);
+        $data['user_type'] = $this->input->post('user_type', TRUE);
+        
+        if (isset($_POST['id']) && !empty($_POST['id'])) {
+            $id = $this->input->post('id', TRUE);
+            $res = $this->admin->update_user($id, $data);
+        } else {
+            $res = $this->admin->save_user($data);
+        }
+        if ($res) {
+            echo json_encode(array('icon' => 'success', 'title' => 'Success', 'message' => 'Save Successfully'));
+            die;
+        } else {
+            echo json_encode(array('icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong'));
+            die;
+        }
+    }
+
+    public function ssp_user()
+    {
+        echo $this->ssp_model->user();
+    }
+
+    /**
+     * END OF USERS-----------------------------------
+     */
+
     /**
      * ----------------------UNITS
      */
@@ -82,6 +134,31 @@ class Admin_ extends CI_Controller
             die;
         }
     }
+
+    /**
+     * ----------------------USERS
+     */
+
+     public function get_user()
+     {
+         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
+ 
+         if ($this->form_validation->run() == FALSE) {
+             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+             die;
+         }
+ 
+         $id = $this->input->post('id');
+ 
+         $res = $this->admin->get_user($id);
+         if ($res) {
+             echo json_encode(array('status' => 200, 'data' => $res));
+             die;
+         } else {
+             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+             die;
+         }
+     }
 
     public function save_units()
     {
@@ -240,3 +317,4 @@ class Admin_ extends CI_Controller
      * END OF BOOK
      */
 }
+

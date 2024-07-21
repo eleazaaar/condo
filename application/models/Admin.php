@@ -24,7 +24,36 @@ class Admin extends CI_Model
     }
 
     /**
-     * END OF UNITS-----------------------------------------
+     * END OF AMENITY-----------------------------------------
+     */
+
+     /**
+     * USER------------------------------------------------
+     */
+
+    public function save_user($data){
+        return $this->db->insert('user',$data);
+    }
+
+    public function update_user($id, $data){
+        return $this->db
+        ->set($data)
+        ->where('id',$id)
+        ->update('user');
+    }
+
+    public function get_user($id){
+        $results = [];
+        $res = $this->db
+            ->where('id',$id)
+            ->get('user');
+        $results = $res->row_array();
+        
+        return $results;
+    }
+
+    /**
+     * END OF USER-----------------------------------------
      */
 
     /**

@@ -58,6 +58,37 @@ class Ssp_Model extends CI_Model
         );
     }
 
+    public function user()
+    {
+        $this->table = 'user';
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'fname', 'dt' => 0),
+            array('db' => 'mname', 'dt' => 0),
+            array('db' => 'lname', 'dt' => 0),
+            array('db'=> 'id', 'dt' => 0, 'formatter' => function ($data, $row) {
+                return $row['fname'].' '.$row['mname'].' '.$row['lname'];
+            }),
+            array('db' => 'email', 'dt' => 1),
+            array('db'=> 'contact_number', 'dt' => 2),
+            array('db'=> 'user_type', 'dt' => 3, 'formatter' => function ($data) {
+                return $data == 1 ? 'Admin' : 'User';
+            }),
+            array(
+                'db' => 'id', 'dt' => 4,
+                'formatter' => function ($data) {
+                    return "<button type='button' class='btn btn-primary edit_user' data-id='$data'>
+                                Edit
+                            </button>";
+                }
+            ),
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
+
     public function units()
     {
         $this->table = 'accomodation';

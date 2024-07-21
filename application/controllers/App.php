@@ -27,6 +27,13 @@ class App extends CI_Controller
         $this->site($data, 'admin/amenity');
     }
 
+    public function users()
+    {
+
+        $data['ex_js'] = 'js/admin/users.js.php';
+        $this->site($data, 'admin/users');
+    }
+
     public function units()
     {
 
