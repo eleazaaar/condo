@@ -303,6 +303,7 @@ class Admin_ extends CI_Controller
     {
         $query = $this->db->query("
             SELECT TIMESTAMPDIFF(HOUR, c.date_created, NOW()) as hour_diff
+            ,TIMESTAMPDIFF(DAY, c.date_created, NOW()) as day_diff
             ,TIMESTAMPDIFF(MINUTE, c.date_created, NOW()) as minute_diff
             ,c.action as status,a.name as unit_name
             FROM check_in_check_out c

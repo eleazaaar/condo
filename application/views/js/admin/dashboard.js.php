@@ -8,7 +8,7 @@
                 $('.recent-activity').html('');
                 $.each(response.data, (i, d) => {
                     const color = d.status == 'Check-In' ? 'text-success' : 'text-danger';
-                    const time_diff = d.hour_diff == 0 ? d.minute_diff + ' mins ago' : d.hour_diff + ' hrs ago';
+                    const time_diff = d.day_diff == 0 ? (d.hour_diff == 0 ? d.minute_diff + ' mins ago' : d.hour_diff + ' hrs ago') : d.day_diff + ' days ago';
                     $('.recent-activity').append(`
                         <div class="activity-item d-flex">
                             <div class="activite-label">${time_diff}</div>
