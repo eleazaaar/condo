@@ -49,8 +49,22 @@
                 dataType: "JSON",
             })
             .then(response => {
-                console.log(response);
                 $('#customer_no').html(response.data.customer_no);
+            })
+            .fail((jqXHR, textStatus) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error Occured',
+                    html: textStatus,
+                });
+            });
+
+        $.ajax({
+                url: "<?= site_url('admin_/get_revenue_per_month') ?>",
+                dataType: "JSON",
+            })
+            .then(response => {
+                $('#revenue').html(response.data.revenue);
             })
             .fail((jqXHR, textStatus) => {
                 Swal.fire({

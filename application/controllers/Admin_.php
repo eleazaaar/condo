@@ -331,6 +331,14 @@ class Admin_ extends CI_Controller
         $res = $query->row();
         echo json_encode(array('data' => $res));
     }
+
+    public function get_revenue_per_month()
+    {
+        $query = $this->db->query("SELECT SUM(total_amount) as revenue FROM schedule WHERE DATE_FORMAT(date_created, '%Y')=DATE_FORMAT(NOW(), '%Y') AND status IN ('Approved','Check-In','Check-Out')");
+
+        $res = $query->row();
+        echo json_encode(array('data' => $res));
+    }
     /**
      * END OF BOOK
      */
