@@ -7,8 +7,7 @@
             .then(response => {
                 $('.recent-activity').html('');
                 $.each(response.data, (i, d) => {
-                    console.log(d);
-                    const color = d.status=='Check-In' ? 'text-success':'text-danger';
+                    const color = d.status == 'Check-In' ? 'text-success' : 'text-danger';
                     const time_diff = d.hour_diff == 0 ? d.minute_diff + ' mins ago' : d.hour_diff + ' hrs ago';
                     $('.recent-activity').append(`
                         <div class="activity-item d-flex">
@@ -20,6 +19,22 @@
                         </div><!-- End activity item-->
                     `);
                 })
+            })
+            .fail((jqXHR, textStatus) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error Occured',
+                    html: textStatus,
+                });
+            });
+
+        $.ajax({
+                url: "<?= site_url('admin_/get_no_book_today') ?>",
+                dataType: "JSON",
+            })
+            .then(response => {
+                console.log(response);
+                $('#book_today').html(response.data.book_today);
             })
             .fail((jqXHR, textStatus) => {
                 Swal.fire({

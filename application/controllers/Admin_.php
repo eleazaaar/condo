@@ -58,7 +58,7 @@ class Admin_ extends CI_Controller
      * END OF AMENITY-----------------------------------
      */
 
-     /**
+    /**
      * USERS-----------------------------------------------
      */
     public function save_user()
@@ -72,7 +72,7 @@ class Admin_ extends CI_Controller
         $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('contact_number', 'Mobile', 'required');
         $this->form_validation->set_rules('user_type', 'User Type', 'required');
-        
+
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
             die;
@@ -85,7 +85,7 @@ class Admin_ extends CI_Controller
         $data['contact_number'] = $this->input->post('contact_number', TRUE);
         $data['password'] = password_hash(strtoupper($this->input->post('lname', TRUE)), PASSWORD_BCRYPT);
         $data['user_type'] = $this->input->post('user_type', TRUE);
-        
+
         if (isset($_POST['id']) && !empty($_POST['id'])) {
             $id = $this->input->post('id', TRUE);
             $res = $this->admin->update_user($id, $data);
@@ -139,26 +139,26 @@ class Admin_ extends CI_Controller
      * ----------------------USERS
      */
 
-     public function get_user()
-     {
-         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
- 
-         if ($this->form_validation->run() == FALSE) {
-             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
-             die;
-         }
- 
-         $id = $this->input->post('id');
- 
-         $res = $this->admin->get_user($id);
-         if ($res) {
-             echo json_encode(array('status' => 200, 'data' => $res));
-             die;
-         } else {
-             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
-             die;
-         }
-     }
+    public function get_user()
+    {
+        $this->form_validation->set_rules('id', 'ID', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => 'Invalid Data Entry!<br>' . validation_errors('', '<br>')));
+            die;
+        }
+
+        $id = $this->input->post('id');
+
+        $res = $this->admin->get_user($id);
+        if ($res) {
+            echo json_encode(array('status' => 200, 'data' => $res));
+            die;
+        } else {
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            die;
+        }
+    }
 
     public function save_units()
     {
@@ -198,9 +198,9 @@ class Admin_ extends CI_Controller
 
         $files = [];
 
-        for ($i=0; $i < count($_FILES['files']['name']); $i++) {
-	        $file = file_get_contents($_FILES['files']['tmp_name'][$i]);
-	        $final_file = base64_encode($file);
+        for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+            $file = file_get_contents($_FILES['files']['tmp_name'][$i]);
+            $final_file = base64_encode($file);
             $mime = $_FILES["files"]["type"][$i];
 
             $files[] = array(
@@ -230,7 +230,7 @@ class Admin_ extends CI_Controller
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
 
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' =>validation_errors('', '<br>')));
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
             die;
         }
 
@@ -264,29 +264,30 @@ class Admin_ extends CI_Controller
         echo $this->ssp_model->customer_book();
     }
 
-    public function save_book_status(){
+    public function save_book_status()
+    {
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');
         $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' =>validation_errors('', '<br>')));
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
             die;
         }
 
-        extract($this->input->post(NULL,TRUE));
+        extract($this->input->post(NULL, TRUE));
         $this->db->trans_begin();
-        if(in_array($status,['Check-In','Check-Out'])){
-            $this->db->insert('check_in_check_out',[
-                'schedule_id'=>$id,
-                'action'=>$status
+        if (in_array($status, ['Check-In', 'Check-Out'])) {
+            $this->db->insert('check_in_check_out', [
+                'schedule_id' => $id,
+                'action' => $status
             ]);
         }
 
         $res = $this->db
-        ->where('id',$id)
-        ->update('schedule',[
-            'status'=>$status
-        ]);
+            ->where('id', $id)
+            ->update('schedule', [
+                'status' => $status
+            ]);
         if ($this->db->trans_status()) {
             $this->db->trans_commit();
             echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Updated Successfully', 'message' => 'Booked status updated successfully'));
@@ -298,7 +299,8 @@ class Admin_ extends CI_Controller
         }
     }
 
-    public function get_recent_check_in_check_out(){
+    public function get_recent_check_in_check_out()
+    {
         $query = $this->db->query("
             SELECT TIMESTAMPDIFF(HOUR, c.date_created, NOW()) as hour_diff
             ,TIMESTAMPDIFF(MINUTE, c.date_created, NOW()) as minute_diff
@@ -311,10 +313,17 @@ class Admin_ extends CI_Controller
         ");
 
         $res = $query->result();
-        echo json_encode(array('data'=>$res));
+        echo json_encode(array('data' => $res));
+    }
+
+    public function get_no_book_today()
+    {
+        $query = $this->db->query("SELECT COUNT(id) as book_today FROM schedule WHERE DATE(date_created)=DATE(NOW())");
+
+        $res = $query->row();
+        echo json_encode(array('data' => $res));
     }
     /**
      * END OF BOOK
      */
 }
-
