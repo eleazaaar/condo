@@ -44,5 +44,21 @@
                 });
             });
 
+        $.ajax({
+                url: "<?= site_url('admin_/get_no_customer_per_year') ?>",
+                dataType: "JSON",
+            })
+            .then(response => {
+                console.log(response);
+                $('#customer_no').html(response.data.customer_no);
+            })
+            .fail((jqXHR, textStatus) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error Occured',
+                    html: textStatus,
+                });
+            });
+
     });
 </script>

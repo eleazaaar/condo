@@ -318,7 +318,15 @@ class Admin_ extends CI_Controller
 
     public function get_no_book_today()
     {
-        $query = $this->db->query("SELECT COUNT(id) as book_today FROM schedule WHERE DATE(date_created)=DATE(NOW())");
+        $query = $this->db->query("SELECT COUNT(id) as book_today FROM schedule WHERE DATE(date_created)=DATE(NOW()) AND status IN ('Approved','Check-In','Check-Out')");
+
+        $res = $query->row();
+        echo json_encode(array('data' => $res));
+    }
+
+    public function get_no_customer_per_year()
+    {
+        $query = $this->db->query("SELECT COUNT(id) as customer_no FROM schedule WHERE DATE_FORMAT(date_created, '%Y')=DATE_FORMAT(NOW(), '%Y') AND status IN ('Approved','Check-In','Check-Out')");
 
         $res = $query->row();
         echo json_encode(array('data' => $res));
