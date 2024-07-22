@@ -89,6 +89,6 @@ if (!function_exists('status_badge')) {
             'Check-In' => 'badge-info',
             'Check-Out' => 'badge-danger',
         ];
-        return $badge[$str];
+        return isset($badge[$str]) ? $badge[$str]:'';
     }
 }
