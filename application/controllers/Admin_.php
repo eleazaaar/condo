@@ -350,7 +350,7 @@ class Admin_ extends CI_Controller
             FROM check_in_check_out c
             INNER JOIN schedule s ON c.schedule_id=s.id
             INNER JOIN accomodation a ON s.accomodation_id=a.id
-            ORDER BY c.date_created ASC
+            ORDER BY c.date_created DESC
             LIMIT 20
         ");
 
