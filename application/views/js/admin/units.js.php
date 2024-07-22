@@ -85,16 +85,20 @@
                 $(row).on('click', '.edit_gallery', e => {
                     const id = $(e.currentTarget).data('id');
                     $('#unitsGalleryModal').find('.gallery-container').html('');
+                    $('#unitsGalleryModal').modal('toggle');
                     $.ajax({
                             url: "<?= site_url('units_/get_units_gallery') ?>",
                             method: "POST",
                             dataType: "JSON",
                             data: {
                                 id: id
+                            },
+                            beforeSend: () => {
+                                $('#unitsGalleryModal').find('.gallery-container').html('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
                             }
                         })
                         .then(response => {
-
+                            $('#unitsGalleryModal').find('.gallery-container').html('');
                             $.each(response, (i, res) => {
                                 $('#unitsGalleryModal').find('.gallery-container').append(`
                                 <div class="col-3 mb-3">
@@ -106,7 +110,7 @@
                                 `);
                             });
                             $('#gallery-form').find('#unit_id').val($(e.currentTarget).data('id'));
-                            $('#unitsGalleryModal').modal('toggle');
+                            
                         })
                         .fail((jqXHR, textStatus) => {
                             Swal.fire({
