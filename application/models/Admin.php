@@ -76,7 +76,7 @@ class Admin extends CI_Model
             ->select('amenity_id')
             ->where('accomodation_id', $id)
             ->get('accomodation_amenity');
-        $amenities = [];
+            
         foreach ($res_ame->result() as $r) {
             $results['amenities'][] = $r->amenity_id;
         }

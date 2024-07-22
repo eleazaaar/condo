@@ -99,6 +99,7 @@
                                 $('#add_units_form').find('#unit_id').val(id);
                                 $('#add_units_form').find('#name').val(data.name);
                                 $('#add_units_form').find('#description').val(data.description);
+                                $('#add_units_form').find('#price').val(data.price);
                                 $('#add_units_form').find('#room_no').val(data.room_no);
                                 $('#add_units_form').find('#floor_no').val(data.floor_no);
                                 $('#add_units_form').find('#floor_size').val(data.f_size);
