@@ -172,6 +172,7 @@ class Admin_ extends CI_Controller
 
         $this->form_validation->set_rules('name', 'Name', 'required|min_length[5]');
         $this->form_validation->set_rules('description', 'Description', 'required|min_length[5]');
+        $this->form_validation->set_rules('price', 'Price', 'required|numeric');
         $this->form_validation->set_rules('room_no', 'Room Number', 'required');
         $this->form_validation->set_rules('floor_no', 'Floor Number', 'required|numeric');
         $this->form_validation->set_rules('floor_size', 'Floor Size', 'required|numeric');

@@ -22,6 +22,10 @@
                         <label for="description">Description</label>
                         <input type="text" class="form-control" id="description" name="description">
                     </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" step="0.001" class="form-control" id="price" name="price">
+                    </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-12">
                             <div class="form-group">
