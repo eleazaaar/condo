@@ -9,7 +9,9 @@ class Units extends CI_Model {
 
 	public function get_available_units($from, $to){
 		$query = $this->db->query("
-			SELECT a.* FROM accomodation a
+			SELECT a.*, g.data AS unit_thumbnail,g.mime
+			FROM accomodation a
+			LEFT JOIN gallery g ON a.id=g.what_id AND g.what='units_thumbnail'
 			WHERE 
 			NOT EXISTS
 				(SELECT 1 FROM schedule s WHERE a.id=s.accomodation_id 

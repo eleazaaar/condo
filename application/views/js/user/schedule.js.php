@@ -22,19 +22,23 @@
                     data:{
                         from: info.startStr,
                         to:info.endStr
+                    },
+                    beforeSend: () => {
+                        $('#units-container').html('<div class="text-center"><div class="spinner-border" role="status"><span class="sr-only">Loading...</span></div></div>');
                     }
                 })
                 .then(response => {
                     $('#units-container').html('');
 
                     $.each(response,(i,r)=>{
+                        const thumbnail = r['unit_thumbnail'] ? `<img src="data:${r['mime']};base64,${r['unit_thumbnail']}" class="img-fluid" alt='thumbnail'>` : '';
                         $('#units-container').append(`
                             <div class="col-xl-4 col-md-6 col-sm-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title"><a href="#" class="">${r['name']}</a></h4>
                                         <div class="service-item position-relative">
-                                            <img src="http://localhost/condo//assets-all/img/LOBBY LOUNGE.jpg" class="img-fluid">
+                                            ${thumbnail}
                                             <p>${r['description']}</p>
                                             <p>${r['remarks']}</p>
                                             <div class="row col-12">
