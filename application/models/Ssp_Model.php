@@ -163,7 +163,7 @@ class Ssp_Model extends CI_Model
             ,DATE_FORMAT(s.to_date, '%b %d, %Y') as to_date
             FROM schedule s 
             INNER JOIN accomodation a ON s.accomodation_id=a.id
-            INNER JOIN USER U ON s.user_id=u.id
+            INNER JOIN user u ON s.user_id=u.id
             ) temp";
         $this->primaryKey = 'id';
         $this->columns = array(
