@@ -64,8 +64,15 @@
                     </div>
                     <div class="row">
                         <div class="form-group">
+                            <label for="thumbnail">Thumbnail</label>
+                            <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" >
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group">
                             <label for="pictures">Image</label>
-                            <input type="file" class="form-control" id="pictures" name="pictures" multiple>
+                            <input type="file" class="form-control" id="pictures" name="pictures" multiple accept="image/*" >
                         </div>
                     </div>
                     

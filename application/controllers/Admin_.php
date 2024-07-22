@@ -196,6 +196,21 @@ class Admin_ extends CI_Controller
         $data['units']['slug'] = str_replace([' ', '-'], '_', $data['units']['name']);
         $data['amenities'] = $datas['amenities'];
 
+        if(!isset($_FILES['thumbnail']['name'])){
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data Entry!', 'message' => 'Thumbnail is required'));
+            die;
+        }
+
+        $file = file_get_contents($_FILES['thumbnail']['tmp_name']);
+        $final_file = base64_encode($file);
+        $mime = $_FILES["thumbnail"]["type"];
+
+        $data['thumbnail'] = array(
+            'what' => 'units_thumbnail',
+            'data' => $final_file,
+            'mime' => $mime
+        );
+
         $files = [];
 
         for ($i = 0; $i < count($_FILES['files']['name']); $i++) {

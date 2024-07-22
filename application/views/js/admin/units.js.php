@@ -140,6 +140,8 @@
                 formData.append("files[]", fileData[i]);
             }
 
+            formData.append('thumbnail',$('#thumbnail').prop('files')[0]);
+
             $.ajax({
                     url: "<?= site_url('admin_/save_units') ?>",
                     method: "POST",

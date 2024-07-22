@@ -88,6 +88,10 @@ class Admin extends CI_Model
                 $this->db->insert('gallery',$file);
             }
         }
+
+        $data['thumbnail']['what_id'] = $id;
+        $this->db->insert('gallery',$data['thumbnail']);
+
         foreach($data['amenities'] as $a){
             $this->db->insert('accomodation_amenity',[
                 'accomodation_id'=>$id,
