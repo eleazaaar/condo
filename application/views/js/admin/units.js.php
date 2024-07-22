@@ -157,6 +157,7 @@
                             text: response.message,
                         })
                         .then(() => {
+                            $(e.currentTarget).find('input').val('');
                             accomodation_tbl.ajax.reload(false, null);
                             $('#unitsModal').modal('hide');
                         });

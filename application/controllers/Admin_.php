@@ -196,33 +196,37 @@ class Admin_ extends CI_Controller
         $data['units']['slug'] = str_replace([' ', '-'], '_', $data['units']['name']);
         $data['amenities'] = $datas['amenities'];
 
-        if(!isset($_FILES['thumbnail']['name'])){
+        // REQUIRED ANG THUMBNAIL PAG BAGONG ADD
+        if(!isset($_FILES['thumbnail']['name']) && !isset($datas['unit_id'])){
             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data Entry!', 'message' => 'Thumbnail is required'));
             die;
         }
 
-        $file = file_get_contents($_FILES['thumbnail']['tmp_name']);
-        $final_file = base64_encode($file);
-        $mime = $_FILES["thumbnail"]["type"];
-
-        $data['thumbnail'] = array(
-            'what' => 'units_thumbnail',
-            'data' => $final_file,
-            'mime' => $mime
-        );
-
-        $files = [];
-
-        for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
-            $file = file_get_contents($_FILES['files']['tmp_name'][$i]);
+        if(isset($_FILES['thumbnail']['name'])){
+            $file = file_get_contents($_FILES['thumbnail']['tmp_name']);
             $final_file = base64_encode($file);
-            $mime = $_FILES["files"]["type"][$i];
-
-            $files[] = array(
-                'what' => 'units',
+            $mime = $_FILES["thumbnail"]["type"];
+    
+            $data['thumbnail'] = array(
+                'what' => 'units_thumbnail',
                 'data' => $final_file,
                 'mime' => $mime
             );
+        }
+
+        $files = [];
+        if(isset($_FILES['files']['name'])){
+            for ($i = 0; $i < count($_FILES['files']['name']); $i++) {
+                $file = file_get_contents($_FILES['files']['tmp_name'][$i]);
+                $final_file = base64_encode($file);
+                $mime = $_FILES["files"]["type"][$i];
+    
+                $files[] = array(
+                    'what' => 'units',
+                    'data' => $final_file,
+                    'mime' => $mime
+                );
+            }
         }
 
         if (isset($datas['unit_id']) && !empty($datas['unit_id'])) {
