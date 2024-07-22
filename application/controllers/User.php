@@ -45,8 +45,10 @@ class User extends CI_Controller
         }
 
         extract($this->input->post(NULL,TRUE));
-
-        $query = $this->db->get('accomodation',['id'=>$unit_id]);
+        
+        $query = $this->db
+        ->where(['id'=>$unit_id])
+        ->get('accomodation');
         $data = $query->row_array();
         $data['from'] = $from;
         $data['to'] = $to;
