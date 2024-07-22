@@ -14,7 +14,7 @@
             <h5 class="card-title"></h5>
             <div class="row">
                 <div class="col-12 mb-4">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#unitsModal">
+                    <button type="button" id="btn_add_units_modal" class="btn btn-primary" data-action="add" data-bs-toggle="modal" data-bs-target="#unitsModal">
                         Add Units
                     </button>
                 </div>

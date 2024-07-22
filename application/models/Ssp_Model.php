@@ -106,7 +106,7 @@ class Ssp_Model extends CI_Model
                 'db' => 'id', 'dt' => 8,
                 'formatter' => function ($data) {
                     return "
-                        <button type='button' class='btn btn-primary edit_units' data-id='$data'>
+                        <button type='button' class='btn btn-primary edit_units' data-action='edit' data-id='$data'>
                             Edit
                         </button>
                 ";

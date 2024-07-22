@@ -1,6 +1,18 @@
 <script>
     $(() => {
+        $('#btn_add_units_modal').on('click', function(e) {
+            const _this = $(e.currentTarget);
+            setUnitsModalLabel(_this);
+        });
 
+        const setUnitsModalLabel = (btn) =>{
+            if(btn.data('action')=='add'){
+                $('#unitsModalLabel').html('ADD UNITS');
+            }else{
+                $('#unitsModalLabel').html('EDIT UNITS');
+            }
+        }
+        
         $('#amenities').select2({
             dropdownParent: $("#unitsModal"),
             multiple: true,
@@ -82,7 +94,6 @@
                             }
                         })
                         .then(response => {
-                            console.log(response.data.amenities);
                             if (response.status == 200) {
                                 const data = response.data;
                                 $('#add_units_form').find('#unit_id').val(id);
@@ -98,6 +109,7 @@
                                 $('#add_units_form').find('#amenities').val(data.amenities).trigger('change');
 
                                 $('#unitsModal').modal('toggle');
+                                setUnitsModalLabel($(e.currentTarget));
                             } else {
                                 Swal.fire({
                                     icon: response.icon,
