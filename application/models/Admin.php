@@ -123,8 +123,8 @@ class Admin extends CI_Model
             ->update('accomodation');
 
         if (count($files) > 0) {
-            $this->db->where(['what_id' => $id, 'what' => 'units'])
-                ->delete('gallery');
+            // $this->db->where(['what_id' => $id, 'what' => 'units'])
+            //     ->delete('gallery');
 
             foreach ($files as $file) {
                 $file['what_id'] = $id;

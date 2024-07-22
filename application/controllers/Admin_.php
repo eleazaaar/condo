@@ -245,6 +245,27 @@ class Admin_ extends CI_Controller
         }
     }
 
+    public function update_gallery(){
+        $this->form_validation->set_rules('unit_id', 'ID', 'required|numeric');
+        $this->form_validation->set_rules('gallery_deleted', 'ID', 'required');
+
+        extract($this->input->post(NULL,TRUE));
+        
+        $gallery_ids = explode(',',$gallery_deleted);
+
+        $this->db
+        ->where([
+            'what_id' => $unit_id,
+            'what' => 'units'
+        ])
+        ->where_in('id',$gallery_ids)
+        ->delete('gallery');
+        $affected_rows = $this->db->affected_rows();
+
+        echo json_encode(array('icon' => 'success', 'title' => 'Unit Gallery Updated Successfully', 'message' => $affected_rows . ' images affected.'));
+        die;
+    }
+
     public function get_booked_details()
     {
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');

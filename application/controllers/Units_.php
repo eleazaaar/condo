@@ -32,4 +32,11 @@ class Units_ extends CI_Controller {
 			$return .= '</div>';
 		echo $return;
 	}
+
+	public function get_units_gallery() {
+		$id = $this->input->post('id');
+		$data = $this->Units->getUnitsGallery($id);
+		
+		echo json_encode($data);
+	}
 }

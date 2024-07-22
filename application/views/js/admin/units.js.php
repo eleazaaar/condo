@@ -5,14 +5,14 @@
             setUnitsModalLabel(_this);
         });
 
-        const setUnitsModalLabel = (btn) =>{
-            if(btn.data('action')=='add'){
+        const setUnitsModalLabel = (btn) => {
+            if (btn.data('action') == 'add') {
                 $('#unitsModalLabel').html('ADD UNITS');
-            }else{
+            } else {
                 $('#unitsModalLabel').html('EDIT UNITS');
             }
         }
-        
+
         $('#amenities').select2({
             dropdownParent: $("#unitsModal"),
             multiple: true,
@@ -82,6 +82,41 @@
             processing: true,
             serverSide: true,
             rowCallback: (row, data) => {
+                $(row).on('click', '.edit_gallery', e => {
+                    const id = $(e.currentTarget).data('id');
+                    $('#unitsGalleryModal').find('.gallery-container').html('');
+                    $.ajax({
+                            url: "<?= site_url('units_/get_units_gallery') ?>",
+                            method: "POST",
+                            dataType: "JSON",
+                            data: {
+                                id: id
+                            }
+                        })
+                        .then(response => {
+
+                            $.each(response, (i, res) => {
+                                $('#unitsGalleryModal').find('.gallery-container').append(`
+                                <div class="col-3 mb-3">
+                                    <div class="remove-image" data-id="${res.id}"><i class="fas fa-times-circle" title='Delete'></i></div>
+                                    <a href="#" class="my_unit_image"> 
+                                        <img class="img-fluid" src="data:${res.mime};base64,${res.data}" alt="" width="100%" style="border-radius: 10px">
+                                    </a>
+                                </div>
+                                `);
+                            });
+                            $('#gallery-form').find('#unit_id').val($(e.currentTarget).data('id'));
+                            $('#unitsGalleryModal').modal('toggle');
+                        })
+                        .fail((jqXHR, textStatus) => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error Occured',
+                                html: textStatus,
+                            });
+                        });
+                });
+
                 $(row).on('click', '.edit_units', e => {
                     const id = $(e.currentTarget).data('id');
 
@@ -126,8 +161,45 @@
                                 html: textStatus,
                             });
                         });
-                })
+                });
             }
+        });
+
+        $(document).on('click', '.remove-image', e => {
+            const _this = $(e.currentTarget);
+
+            $('#gallery_deleted').val($('#gallery_deleted').val() + ',' + _this.data('id'));
+            _this.parent().remove();
+        });
+
+        $('#gallery-form').on('submit', e => {
+            e.preventDefault();
+            $('#gallery_deleted').val($('#gallery_deleted').val().substring(1))
+            $.ajax({
+                    url: "<?= site_url('admin_/update_gallery') ?>",
+                    method: "POST",
+                    dataType: "JSON",
+                    data: $(e.currentTarget).serialize()
+                })
+                .then(response => {
+                    Swal.fire({
+                            icon: response.icon,
+                            title: response.title,
+                            text: response.message,
+                        })
+                        .then(() => {
+                            $(e.currentTarget).find('input').val('');
+                            accomodation_tbl.ajax.reload(false, null);
+                            $('#unitsModal').modal('hide');
+                        });
+                })
+                .fail((jqXHR, textStatus) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error Occured',
+                        html: textStatus,
+                    });
+                });
         });
 
         $('#add_units_form').on('submit', e => {
@@ -141,7 +213,7 @@
                 formData.append("files[]", fileData[i]);
             }
 
-            formData.append('thumbnail',$('#thumbnail').prop('files')[0]);
+            formData.append('thumbnail', $('#thumbnail').prop('files')[0]);
 
             $.ajax({
                     url: "<?= site_url('admin_/save_units') ?>",

@@ -41,4 +41,5 @@
 </section>
 <?php
     $this->load->view('admin/modal/add_units');
+    $this->load->view('admin/modal/units_gallery');
 ?>
