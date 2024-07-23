@@ -13,7 +13,7 @@
 <body style="background: #37517e;">
     <div class="content">
         <div class="content-body">
-            <div class="container" style="width:50%">
+            <div class="container col-lg-8 col-md-8 col-sm-12">
                 <form class="animate" id="signup-form" style="border:1px solid #ccc;">
                     <div class="container" style="background: #FFF;">
                         <h1>Sign Up</h1>
@@ -21,29 +21,29 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
                                 <label for="fname"><b>First Name</b></label>
-                                <input type="text" name="fname" required>
+                                <input type="text" name="fname" placeholder="Enter First Name" required>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
                                 <label for="mname"><b>Middle Name</b></label>
-                                <input type="text" name="mname" required>
+                                <input type="text" name="mname" placeholder="Enter Middle Name" required>
                             </div>
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
                                 <label for="lname"><b>Last Name</b></label>
-                                <input type="text" name="lname" required>
+                                <input type="text" name="lname" placeholder="Enter Last Name" required>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-8">
+                            <div class="col-lg-8 col-md-8 col-sm-12">
                                 <label for="email"><b>Email</b></label>
-                                <input type="text" name="email" required>
+                                <input type="email" name="email" placeholder="Enter Email" required>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-lg-4 col-md-4 col-sm-12">
                                 <label for="contact_no"><b>Mobile Number</b></label>
-                                <input type="text" placeholder="Enter Mobile" name="contact_no" required>
+                                <input type="text" placeholder="Enter Mobile" maxlength="11" name="contact_no" required>
                             </div>
                         </div>
 
@@ -57,18 +57,18 @@
                         <div class="row">
                             <div class="col-12">
                                 <label for="password_confirm"><b>Confirm Password</b></label>
-                                <input type="password" placeholder="Enter Password" name="password_confirm" required>
+                                <input type="password" placeholder="Confirm Password" name="password_confirm" required>
                             </div>
                         </div>
 
                         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
                         <div class="row col-12">
-                            <div class="col-6">
-                                <a class="btn btn-danger btn-block" href="<?= site_url('Page/login') ?>">Cancel</a>
-                            </div>
-                            <div class="col-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
                                 <input type="submit" class="btn btn-success btn-block" value="Sign Up">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 mt-4">
+                                <a class="btn btn-danger btn-block" href="<?= site_url('Page/login') ?>">Cancel</a>
                             </div>
                         </div>
                     </div>
