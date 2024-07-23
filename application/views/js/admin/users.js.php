@@ -2,6 +2,7 @@
     $(() => {
         const user_tbl = new DataTable('#user-tbl', {
             order: [],
+            scrollX: true,
             ajax: {
                 url: "<?= site_url('admin_/ssp_user'); ?>",
                 method: 'POST',
