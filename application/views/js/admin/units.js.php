@@ -72,6 +72,7 @@
 
         const accomodation_tbl = new DataTable('#accomodation-tbl', {
             order: [],
+            scrollX: true,
             ajax: {
                 url: "<?= site_url('admin_/ssp_units'); ?>",
                 method: 'POST',
