@@ -75,7 +75,8 @@ class User extends CI_Controller
             'user_id' => $userid,
             'accomodation_id'=>$unit_id,
             'from_date'=>$from,
-            'to_date'=>$to
+            'to_date'=>$to,
+            'status'=>'Pending'
         ];
         $this->db->insert('schedule',$data);
         
