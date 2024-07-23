@@ -194,6 +194,7 @@ class Admin_ extends CI_Controller
         $data['units']['good_for'] = $datas['good_for'];
         $data['units']['max_of'] = $datas['max_of'];
         $data['units']['remarks'] = $datas['remarks'];
+        $data['units']['price'] = $datas['price'];
         $data['units']['slug'] = str_replace([' ', '-'], '_', $data['units']['name']);
         $data['amenities'] = $datas['amenities'];
 
