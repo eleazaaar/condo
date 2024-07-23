@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure</title>
-    <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
+    <link href="<?= base_url() ?>/assets-all/img/logo.jpg" rel="icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/login.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
@@ -14,30 +14,38 @@
     <div class="content">
         <div class="content-body">
             <div class="container">
-                <form class="animate" id="login-form" method="post">
-                    <div class="container" style="background: #FFF; width: 50%;">
-                        <div class="imgcontainer">
-                            <img src="<?= base_url('assets-all/img/avatar.png') ?>" alt="Avatar" class="avatar" style="width: 25%">
+                <div class="col-lg-6 col-md-6 col-sm-12 m-auto">
+                    <form class="animate" id="login-form" method="post">
+                        <div class="container" style="background: #FFF;">
+                            <div class="imgcontainer">
+                                <img src="<?= base_url('assets-all/img/avatar.png') ?>" alt="Avatar" class="avatar" style="width: 25%">
+                            </div>
+
+                            <div class="container">
+                                <label for="email"><b>Email</b></label>
+                                <input type="text" placeholder="Enter Email" name="email" required>
+
+                                <label for="password"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="password" required>
+
+                                <button type="submit">Login</button>
+                            </div>
+
+                            <div class="container" style="background-color:#f1f1f1">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-12 my-auto">
+                                        <a class="btn btn-danger btn-block" href="<?= site_url('') ?>">Cancel</a>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-12 my-auto">
+                                        <span class="psw">
+                                            <a href="#" data-toggle="modal" data-target="#forgotPasswordModal">Forgot password?</a> | <a href="<?= site_url('signup') ?>">Create new Account</a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="container">
-                            <label for="email"><b>Email</b></label>
-                            <input type="text" placeholder="Enter Email" name="email" required>
-
-                            <label for="password"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" required>
-
-                            <button type="submit">Login</button>
-                        </div>
-
-                        <div class="container" style="background-color:#f1f1f1">
-                            <a class="btn btn-danger btn-block" href="<?= site_url('') ?>" style="width: 25%">Cancel</a>
-                            <span class="psw">
-                                <a href="#" data-toggle="modal" data-target="#forgotPasswordModal">Forgot password?</a> | <a href="<?=site_url('signup')?>">Create new Account</a>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
