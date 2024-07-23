@@ -18,7 +18,7 @@
                         Add Units
                     </button>
                 </div>
-                <table id="accomodation-tbl" class="display nowrap table table-bordered" style="overflow: auto;">
+                <table id="accomodation-tbl" class="display nowrap table table-bordered" style="width: 100%;">
                     <thead>
                         <tr>
                             <th>Name</th>

@@ -18,16 +18,14 @@
                         Add Amenity
                     </button>
                 </div>
-                <div class="col-12" style="overflow-x: auto;">
-                    <table id="amenity-tbl" class="table table-bordered" style="overflow: auto;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Control</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                <table id="amenity-tbl" class="display nowrap table table-bordered" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Control</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>

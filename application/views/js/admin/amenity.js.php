@@ -2,6 +2,7 @@
     $(() => {
         const amenity_tbl = new DataTable('#amenity-tbl', {
             order: [],
+            scrollX:true,
             ajax: {
                 url: "<?= site_url('admin_/ssp_amenity'); ?>",
                 method: 'POST',
