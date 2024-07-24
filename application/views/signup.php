@@ -47,19 +47,19 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12">
                                 <label for="password"><b>Password</b></label>
                                 <input type="password" placeholder="Enter Password" name="password" required>
                             </div>
-                        </div>
+                        </div> -->
                         
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-12">
                                 <label for="password_confirm"><b>Confirm Password</b></label>
                                 <input type="password" placeholder="Confirm Password" name="password_confirm" required>
                             </div>
-                        </div>
+                        </div> -->
 
                         <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 

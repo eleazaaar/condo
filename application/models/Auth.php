@@ -64,4 +64,8 @@ class Auth extends CI_Model
         return $this->session->has_userdata('email') && !empty($this->session->userdata('email'))
         && password_verify($this->session->userdata('usertoken'),$this->session->userdata('dikoalamitatawagdito'));
     }
+
+    public function savePassword($password) {
+        return $this->db->insert('user_password', array('password'=> $password, 'valid_until'=> date('Y-m-d', strtotime('+1 day'))));
+    }
 }
