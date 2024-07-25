@@ -316,27 +316,43 @@ class Admin_ extends CI_Controller
             die;
         }
 
-        extract($this->input->post(NULL, TRUE));
-        $this->db->trans_begin();
-        if (in_array($status, ['Check-In', 'Check-Out'])) {
-            $this->db->insert('check_in_check_out', [
-                'schedule_id' => $id,
-                'action' => $status
-            ]);
-        }
+        try{
+            extract($this->input->post(NULL, TRUE));
+            $this->db->trans_begin();
+    
+            // CHECK MUNA PREVIOUS STATUS
+            // PAG CHECK OUT NA SYA, BAWAL NA MABAGO
+            $res = $this->db->select('status')
+            ->where('id',$id)
+            ->get('schedule');
+            $res = $res->row();
+            if($res->status=='Check-Out'){
+                throw new Exception('Cannot change check-out status');
+            }
 
-        $res = $this->db
-            ->where('id', $id)
-            ->update('schedule', [
-                'status' => $status
-            ]);
-        if ($this->db->trans_status()) {
-            $this->db->trans_commit();
-            echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Updated Successfully', 'message' => 'Booked status updated successfully'));
-            die;
-        } else {
+            if (in_array($status, ['Check-In', 'Check-Out'])) {
+                $this->db->insert('check_in_check_out', [
+                    'schedule_id' => $id,
+                    'action' => $status
+                ]);
+            }
+    
+            $res = $this->db
+                ->where('id', $id)
+                ->update('schedule', [
+                    'status' => $status
+                ]);
+            if ($this->db->trans_status()) {
+                $this->db->trans_commit();
+                echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Updated Successfully', 'message' => 'Booked status updated successfully'));
+                die;
+            } else {
+                throw new Exception(implode('. ',$this->db->error()));
+            }
+        }
+        catch(Exception $e){
             $this->db->trans_rollback();
-            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding'));
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Something went wrong', 'message' => $e->getMessage()));
             die;
         }
     }
