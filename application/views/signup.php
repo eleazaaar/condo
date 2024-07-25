@@ -94,6 +94,8 @@
             e.preventDefault();
 
             const _this = $(e.currentTarget);
+            
+            Swal.showLoading();
             $.ajax({
                     url: "<?= site_url('auth_/sign_up') ?>",
                     dataType: 'JSON',

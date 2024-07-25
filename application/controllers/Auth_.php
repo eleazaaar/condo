@@ -60,33 +60,35 @@ class Auth_ extends CI_Controller
         $this->form_validation->set_rules('fname', 'First Name', 'required|min_length[5]|max_length[100]');
         $this->form_validation->set_rules('mname', 'Middle Name', 'regex_match[/^.*$/]');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|min_length[5]|max_length[100]');
-        // $this->form_validation->set_rules('password', 'Password', 'required');
-        // $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
         $this->form_validation->set_rules('contact_no', 'Contact Number', 'required|regex_match[/^09\d{9}$/]');
 
-        // if ($this->form_validation->run() == FALSE) {
-        //     echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
-        //     die;
-        // }
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
+            die;
+        }
 
         extract($this->input->post(NULL,TRUE));
-
+        
+        $password = $this->generatePassword();
+        
         $data['email'] = $email;
         $data['fname'] = $fname;
         $data['mname'] = $mname;
         $data['lname'] = $lname;
         $data['contact_number'] = $contact_no;
-        // $data['password'] = password_hash($password, PASSWORD_DEFAULT);
+        $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         $data['user_type'] = 2;
+
+        $account['code'] = "Password: $password";
+
+        $message = $this->load->view('activate_account', $account, TRUE);
 
         $res = $this->db->insert('user',$data);
         if ($res) {
-            // echo json_encode(array('status' => 200,'icon' => 'success', 'title' => 'Success', 'message' => 'Account created successfully.'));
-            // die;
-
-            $message = $this->generatePassword();
-
-            $this->sendActivationEmail($email, $message);
+            if ($this->sendActivationEmail($email, $message)) {
+                echo json_encode(array('status' => 200,'icon' => 'success', 'title' => 'Success', 'message' => 'Check your email to activate your account.'));
+                die;
+            }
         } else {
             echo json_encode(array('status' => 400,'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));
             die;
@@ -95,8 +97,8 @@ class Auth_ extends CI_Controller
 
     public function generatePassword() {
         $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-        $pass = array(); //remember to declare $pass as an array
-        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        $pass = array(); 
+        $alphaLength = strlen($alphabet) - 1; 
         for ($i = 0; $i < 8; $i++) {
             $n = rand(0, $alphaLength);
             $pass[] = $alphabet[$n];
@@ -105,49 +107,16 @@ class Auth_ extends CI_Controller
 
         $this->auth->savePassword($password);
 
-        return "Password: $password";
+        return $password;
     }
 
-    // public function sendActivationEmail($email, $message) {
-    //     $this->load->library('email');
-
-    //     $config = array(
-    //         'protocol' => 'smtp', 
-    //         'smtp_host' => 'ssl://smtp.googlemail.com', 
-    //         'smtp_timeout' => 30,
-    //         'smtp_port' => 465, 
-    //         'smtp_user' => "azurestaycations@gmail.com", 
-    //         'smtp_pass' => "Azure@Admin", 
-    //         'charset' => 'utf-8',
-    //         'mailtype' => 'html',
-    //         'newline' => "\r\n" 
-    //     );
-        
-    //     $subject = 'Activate Account';
-
-    //     $this->email->initialize($config);
-    //     $this->email->set_newline("\r\n");
-    //     $this->email->set_crlf("\r\n");
-    //     $this->email->from('azurestaycations@gmail.com');
-    //     $this->email->to($email);
-    //     $this->email->subject($subject);
-    //     $this->email->message($message);
-        
-    //     if (!$this->email->send()) {
-    //         show_error($this->email->print_debugger());
-    //     } else {
-    //         return 1;
-    //     }
-    // }
-
     public function sendActivationEmail($email, $message) {
-        
         $mailer = new PHPMailer(true);
         $mailer->isSMTP();
         $mailer->Host = 'smtp.gmail.com';
         $mailer->SMTPAuth = true;
         $mailer->Username = 'azurestaycations@gmail.com';
-        $mailer->Password = 'Azure@Admin';
+        $mailer->Password = 'spohodhubtzlzdti';
         $mailer->SMTPSecure = 'tls';
         $mailer->Port = 587;
         $mailer->setFrom('azurestaycations@gmail.com');
@@ -158,8 +127,9 @@ class Auth_ extends CI_Controller
 
         if (!$mailer->send()) {
             show_error($mailer->ErrorInfo);
+            return 0;
         } else {
-            return 'Success';
+            return 1;
         }
     }
 
