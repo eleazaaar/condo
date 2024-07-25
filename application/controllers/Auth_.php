@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 class Auth_ extends CI_Controller
 {
 
@@ -10,14 +12,14 @@ class Auth_ extends CI_Controller
         $this->load->model('auth');
     }
 
-    public function login()
-    {
-        if ($this->auth->is_valid_user()) {
-            redirect('app');
-        } else {
-            $this->load->view('auth/login');
-        }
-    }
+    // public function login()
+    // {
+    //     if ($this->auth->is_valid_user()) {
+    //         redirect('app');
+    //     } else {
+    //         $this->load->view('auth/login');
+    //     }
+    // }
 
     public function sign_in()
     {
@@ -31,9 +33,12 @@ class Auth_ extends CI_Controller
             $password = $this->input->post('password', TRUE);
 
             if ($this->auth->login($email, $password)) {
-                if($this->session->userdata('userlevel')==$this->auth::ADMIN){
+                if (!$this->auth->isUserVerified($email)) {
+                    $this->session->set_userdata('your_email', $email);
+                    echo json_encode(array('status' => 200, 'url' => site_url('page/verify_user')));
+                } else if ($this->session->userdata('userlevel') == $this->auth::ADMIN) {
                     echo json_encode(array('status' => 200, 'url' => site_url('app')));
-                }else{
+                } else {
                     echo json_encode(array('status' => 200, 'url' => site_url('user')));
                 }
                 die;
@@ -58,8 +63,6 @@ class Auth_ extends CI_Controller
         $this->form_validation->set_rules('fname', 'First Name', 'required|min_length[5]|max_length[100]');
         $this->form_validation->set_rules('mname', 'Middle Name', 'regex_match[/^.*$/]');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|min_length[5]|max_length[100]');
-        $this->form_validation->set_rules('password', 'Password', 'required');
-        $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
         $this->form_validation->set_rules('contact_no', 'Contact Number', 'required|regex_match[/^09\d{9}$/]');
 
         if ($this->form_validation->run() == FALSE) {
@@ -67,7 +70,9 @@ class Auth_ extends CI_Controller
             die;
         }
 
-        extract($this->input->post(NULL,TRUE));
+        extract($this->input->post(NULL, TRUE));
+
+        $password = $this->generatePassword();
 
         $data['email'] = $email;
         $data['fname'] = $fname;
@@ -77,13 +82,91 @@ class Auth_ extends CI_Controller
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         $data['user_type'] = 2;
 
-        $res = $this->db->insert('user',$data);
+        $account['code'] = "Password: $password";
+
+        $message = $this->load->view('activate_account', $account, TRUE);
+
+        $res = $this->db->insert('user', $data);
         if ($res) {
-            echo json_encode(array('status' => 200,'icon' => 'success', 'title' => 'Success', 'message' => 'Account created successfully.'));
+            if ($this->sendActivationEmail($email, $message)) {
+                echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Success', 'message' => 'Check your email to activate your account.'));
+                die;
+            }
+        } else {
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));
+            die;
+        }
+    }
+
+    public function verify_user()
+    {
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('new_password', 'New Password', 'required');
+        $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'required|matches[new_password]');
+
+        if ($this->form_validation->run() == FALSE) {
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
+            die;
+        }
+
+        extract($this->input->post(NULL, TRUE));
+
+        if(!$this->auth->login($email, $password)){
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Credentials do not match', 'message' => ''));
+            die;
+        }
+
+        $res = $this->db
+        ->set(['is_verified', 'NOW()'])
+        ->where('email',$email)
+        ->update('user');
+        if ($res) {
+            echo json_encode(array('status' => 200, 'url'=>'page'));
             die;
         } else {
-            echo json_encode(array('status' => 400,'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));
+            echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));
             die;
+        }
+    }
+
+    public function generatePassword()
+    {
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
+        $pass = array();
+        $alphaLength = strlen($alphabet) - 1;
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        $password = implode($pass);
+
+        $this->auth->savePassword($password);
+
+        return $password;
+    }
+
+    public function sendActivationEmail($email, $message)
+    {
+        $mailer = new PHPMailer(true);
+        $mailer->isSMTP();
+        $mailer->Host = 'smtp.gmail.com';
+        $mailer->SMTPAuth = true;
+        $mailer->Username = 'azurestaycations@gmail.com';
+        $mailer->Password = 'spohodhubtzlzdti';
+        $mailer->SMTPSecure = 'tls';
+        $mailer->Port = 587;
+        $mailer->setFrom('azurestaycations@gmail.com');
+        $mailer->addAddress($email);
+        $mailer->isHTML(true);
+        $mailer->Subject = 'Activate Account';
+        $mailer->Body = $message;
+
+        if (!$mailer->send()) {
+            show_error($mailer->ErrorInfo);
+            return 0;
+        } else {
+            return 1;
         }
     }
 

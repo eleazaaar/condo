@@ -7,7 +7,7 @@ class Page extends CI_Controller {
 		parent::__construct();
 		$this->load->model('auth');
         
-        if ($this->auth->is_login()) {
+        if ($this->auth->is_login() && $this->auth->isUserVerified($this->session->userdata('email'))) {
 			if ($this->session->userdata('userlevel') == 1) {
 				redirect('app');
 			} else if ( $this->session->userdata('userlevel') == 2) {
@@ -28,8 +28,8 @@ class Page extends CI_Controller {
 		$this->load->view('signup');
 	}
 
-	public function schedule() {
-		$this->site([],'schedule');
+	public function verify_user(){
+		$this->load->view('verify_user');
 	}
 
 	public function home() {

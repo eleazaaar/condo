@@ -33,7 +33,6 @@
                 dataType: "JSON",
             })
             .then(response => {
-                console.log(response);
                 $('#book_today').html(response.data.book_today);
             })
             .fail((jqXHR, textStatus) => {

@@ -1,22 +1,30 @@
+<div class="pagetitle">
+    <h1>Book Units</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../">Home</a></li>
+            <li class="breadcrumb-item active">Book Units</li>
+        </ol>
+    </nav>
+</div>
+
 <section class="section">
     <div class="card info-card">
         <div class="card-body">
             <h5 class="card-title">Booked Units</h5>
-            <div class="row">
-                <table id="book-tbl" class="display table table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Unit</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Control</th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+            <table id="book-tbl" class="display nowrap table table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Unit</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Control</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </section>

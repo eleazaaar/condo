@@ -2,7 +2,7 @@
     <h1>Users</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="../">Home</a></li>
             <li class="breadcrumb-item active">Users</li>
         </ol>
     </nav>
@@ -18,19 +18,17 @@
                         Add User
                     </button>
                 </div>
-                <div class="col-12" style="overflow-x: auto;">
-                    <table id="user-tbl" class="table table-bordered" style="overflow: auto;">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact #</th>
-                                <th>User Type</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+                <table id="user-tbl" class="display nowrap table table-bordered" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Contact #</th>
+                            <th>User Type</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
