@@ -88,6 +88,13 @@
                         });
                     }
                 })
+                .fail((jqXHR, error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error occured',
+                        html: error
+                    });
+                })
         });
     });
 </script>

@@ -12,15 +12,6 @@ class Auth_ extends CI_Controller
         $this->load->model('auth');
     }
 
-    // public function login()
-    // {
-    //     if ($this->auth->is_valid_user()) {
-    //         redirect('app');
-    //     } else {
-    //         $this->load->view('auth/login');
-    //     }
-    // }
-
     public function sign_in()
     {
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -116,13 +107,15 @@ class Auth_ extends CI_Controller
             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Credentials do not match', 'message' => ''));
             die;
         }
-
-        $res = $this->db
-        ->set(['is_verified', 'NOW()'])
-        ->where('email',$email)
-        ->update('user');
+        $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $res = $this->db->query("
+            UPDATE user SET 
+            is_verified=NOW(),
+            password='$new_password'
+            WHERE email='$email'
+        ");
         if ($res) {
-            echo json_encode(array('status' => 200, 'url'=>'page'));
+            echo json_encode(array('status' => 200, 'url'=>'login'));
             die;
         } else {
             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));

@@ -53,7 +53,7 @@
                                 <input type="password" placeholder="Enter Password" name="password" required>
                             </div>
                         </div> -->
-                        
+
                         <!-- <div class="row">
                             <div class="col-12">
                                 <label for="password_confirm"><b>Confirm Password</b></label>
@@ -94,7 +94,7 @@
             e.preventDefault();
 
             const _this = $(e.currentTarget);
-            
+
             Swal.showLoading();
             $.ajax({
                     url: "<?= site_url('auth_/sign_up') ?>",
@@ -113,6 +113,13 @@
                                 window.location.replace("<?= site_url('page/login') ?>");
                             }
                         });
+                })
+                .fail((jqXHR, error) => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error occured',
+                        html: error
+                    });
                 })
         })
     });
