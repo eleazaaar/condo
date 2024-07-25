@@ -22,6 +22,7 @@ class Auth extends CI_Model
             if (!password_verify($password, $row->password)) {
                 return false;
             }
+
             // USER AND PASSWORD ARE GOODS
             $this->session->set_userdata("userid", $row->id);
             $this->session->set_userdata("email", $row->email);
@@ -44,6 +45,16 @@ class Auth extends CI_Model
             return true;
         }
         return false;
+    }
+
+    public function isUserVerified($email)
+    {
+        $query = $this->db->select('id')
+            ->where('email', $email)
+            ->where('is_verified IS NOT NULL')
+            ->get('user');
+
+        return $query->row();
     }
 
     public function is_login(){
