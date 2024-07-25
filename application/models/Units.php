@@ -7,6 +7,12 @@ class Units extends CI_Model {
 		
 	}
 
+	public function get_checkout_book($userid){
+		$query = $this->db->query("
+			SELECT 
+		");
+	}
+
 	public function get_available_units($from, $to){
 		$query = $this->db->query("
 			SELECT a.*, g.data AS unit_thumbnail,g.mime

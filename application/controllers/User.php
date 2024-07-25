@@ -20,6 +20,18 @@ class User extends CI_Controller
         $this->your_book();
     }
 
+    public function book_feedback(){
+        $data['ex_js'] = 'js/user/book_feedback.js.php'; 
+        $this->site($data,'user/book_feedback');
+    }
+
+    public function get_checkout_book(){
+        $data = $this->units->get_checkout_book($this->session->userdata('userid'));
+        $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+    }
+
     public function schedule(){
 
         $data['ex_js'] = 'js/user/schedule.js.php'; 
