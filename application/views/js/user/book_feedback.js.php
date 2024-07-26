@@ -17,6 +17,7 @@
                         const thumbnail = r['unit_thumbnail'] ? `<img src="data:${r['mime']};base64,${r['unit_thumbnail']}" class="img-fluid" alt='thumbnail'>` : '';
                         var footer = '';
 
+                        console.log(r['rate']);
                         if (r['rate'] == null) {
                             footer = `
                                 <div class="card-footer">
@@ -88,12 +89,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer">
-                                        <form action="<?= site_url('user/write_feedback') ?>" method="POST">
-                                            <input type="hidden" name="schedule_id" value="${r['schedule_id']}">
-                                            <input type="Submit" class="btn btn-info" value="Write a Feedback">
-                                        </form>
-                                    </div>
+                                    ${footer}
                                 </div>
                             </div>
                         </div>
@@ -101,11 +97,15 @@
                     })
                 }
             })
-
-        $('.star-rating').val('4')
-        const stars = new StarRating('.star-rating',{
-            readonly: true,
-            clearable: false,
-        });
+            .always(() => {
+                $('.star-rating').each((i, e) => {
+                    $(e).val($(e).data('value'));
+                });
+                
+                const stars = new StarRating('.star-rating', {
+                    readonly: true,
+                    clearable: false,
+                });
+            })
     });
 </script>

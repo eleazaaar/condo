@@ -215,7 +215,7 @@
 
     <script>
         $(document).ready(function() {
-            $('.show-more').on('click', function(e) {
+            $(document).on('click','.show-more', function(e) {
                 const textContainer = $(e.currentTarget).closest('.container').find('.text-container');
 
                 textContainer.toggleClass('expanded');
