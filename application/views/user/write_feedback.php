@@ -16,7 +16,8 @@
                 </div>
             </div>
             <div class="col-12">
-                <form action="">
+                <form id="feedback-form">
+                    <input type="hidden" name="schedule_id" value="<?= $schedule_id?>">
                     <div class="form-group">
                         <label for="rating">Rating</label>
                         <select class="star-rating" name="rating">
