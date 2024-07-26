@@ -141,6 +141,12 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('user/book_feedback') ?>">
+                    <i class="fas fa-comments"></i>
+                    <span>Your Feedback</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('user/schedule') ?>">
                     <i class="fas fa-calendar"></i>
                     <span>Schedule</span>

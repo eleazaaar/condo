@@ -101,8 +101,6 @@
                     })
                 }
             })
-
-        $('.star-rating').val('4')
         const stars = new StarRating('.star-rating',{
             readonly: true,
             clearable: false,
