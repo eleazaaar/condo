@@ -25,6 +25,29 @@ class User extends CI_Controller
         $this->site($data,'user/book_feedback');
     }
 
+    public function write_feedback(){
+        $this->form_validation->set_rules('schedule_id', 'Schedule ID', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            #redirect
+            $this->plain_site(['errors'=>validation_errors()],'errors/error_422');
+            return;
+        }
+        
+        extract($this->input->post(NULL,TRUE));
+        $query = $this->db->query("
+            SELECT a.*,s.from_date,s.to_date,s.total_amount
+            ,g.data as img_data, g.mime
+            FROM schedule s 
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            LEFT JOIN gallery g ON a.id=g.what_id AND g.what='units_thumbnail'
+            WHERE s.id='$schedule_id'
+        ");
+        $data['ex_js'] = 'js/user/write_feedback.js.php';
+        $data['data'] = $query->result(); 
+        $this->site($data,'user/write_feedback');
+    }
+
     public function get_checkout_book(){
         $data = $this->units->get_checkout_book($this->session->userdata('userid'));
         $this->output
@@ -114,5 +137,12 @@ class User extends CI_Controller
         $datas['url'] = $page;
         $datas['data'] = $data;
         $this->load->view('layout/user', $datas);
+    }
+
+    private function plain_site($data,$page)
+    {
+        $datas['url'] = $page;
+        $datas['data'] = $data;
+        $this->load->view('layout/plain', $datas);
     }
 }

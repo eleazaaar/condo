@@ -27,7 +27,7 @@ if (!function_exists('generate_unique_id')) {
 }
 
 if (!function_exists('generate_random_code')) {
-    function generate_random_code($length = 3): string
+    function generate_random_code($length = 3)
     {
         $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $randomCode = '';
