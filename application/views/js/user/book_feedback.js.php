@@ -15,6 +15,24 @@
                     $("#unit-container").html('');
                     $.each(res, (i, r) => {
                         const thumbnail = r['unit_thumbnail'] ? `<img src="data:${r['mime']};base64,${r['unit_thumbnail']}" class="img-fluid" alt='thumbnail'>` : '';
+                        var footer = '';
+
+                        if (r['rate'] == null) {
+                            footer = `
+                                <div class="card-footer">
+                                    <form action="<?= site_url('user/write_feedback') ?>" method="POST">
+                                        <input type="hidden" name="schedule_id" value="${r['schedule_id']}">
+                                        <input type="Submit" class="btn btn-info" value="Write a Feedback">
+                                    </form>
+                                </div>
+                            `;
+                        } else {
+                            footer = `
+                                <div class="card-footer">
+                                
+                                </div>
+                            `;
+                        }
                         $("#unit-container").append(`
                         <div class="col-xl-4 col-md-6 col-sm-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                             <div class="card">
@@ -37,7 +55,10 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <input type="button" class="btn btn-info write_feedback" data-id="${r['id']}" value="Write a Feedback">
+                                        <form action="<?= site_url('user/write_feedback') ?>" method="POST">
+                                            <input type="hidden" name="schedule_id" value="${r['schedule_id']}">
+                                            <input type="Submit" class="btn btn-info" value="Write a Feedback">
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -46,5 +67,11 @@
                     })
                 }
             })
+
+        $('.star-rating').val('4')
+        const stars = new StarRating('.star-rating',{
+            readonly: true,
+            clearable: false,
+        });
     });
 </script>

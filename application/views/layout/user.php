@@ -32,6 +32,8 @@
     <!-- FULLCALENDAR -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/fullcalendar/main.min.css'); ?>">
 
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/star-rating/star-rating.min.css'); ?>">
+
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
@@ -186,6 +188,8 @@
     <!-- FULLCALENDAR -->
     <script src="<?= base_url('assets/plugins/fullcalendar/main.min.js'); ?>"></script>
 
+    <script src="<?= base_url('assets/plugins/star-rating/star-rating.min.js'); ?>"></script>
+
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
@@ -203,6 +207,20 @@
     <script src="<?= base_url() ?>/assets-admin/js/main.js"></script>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> -->
 
+    <script>
+        $(document).ready(function() {
+            $('.show-more').on('click', function(e) {
+                const textContainer = $(e.currentTarget).closest('.container').find('.text-container');
+
+                textContainer.toggleClass('expanded');
+                if (textContainer.hasClass('expanded')) {
+                    $(e.currentTarget).text('Show Less');
+                } else {
+                    $(e.currentTarget).text('Show More');
+                }
+            });
+        });
+    </script>
     <?php
     if (isset($data['ex_js'])) {
         $this->load->view($data['ex_js']);
