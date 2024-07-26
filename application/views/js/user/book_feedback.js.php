@@ -29,12 +29,46 @@
                         } else {
                             footer = `
                                 <div class="card-footer">
-                                
+                                    <div class="card-footer">
+                                        <div class="d-flex align-items-cente">
+                                            Ratings&nbsp;&nbsp;
+                                            <select class="star-rating" data-value="${r['rate']}" disabled>
+                                                <option value="">Select a rating</option>
+                                                <option value="5">Excellent</option>
+                                                <option value="4">Very Good</option>
+                                                <option value="3">Average</option>
+                                                <option value="2">Poor</option>
+                                                <option value="1">Terrible</option>
+                                            </select>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <i class="fas fa-smile me-1"></i>
+                                                    <div class="container">
+                                                        <div class="text-container">
+                                                            ${r['pros']}
+                                                        </div>
+                                                        <button class="show-more btn btn-light">Show More</button>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="fas fa-frown me-1"></i>
+                                                    <div class="container">
+                                                        <div class="text-container">
+                                                            ${r['cons']}
+                                                        </div>
+                                                        <button class="show-more btn btn-light">Show More</button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             `;
                         }
                         $("#unit-container").append(`
-                        <div class="col-xl-4 col-md-6 col-sm-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title"><a href="#" class="">${r['name']}</a></h4>
