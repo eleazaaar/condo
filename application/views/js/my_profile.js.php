@@ -18,8 +18,10 @@
         $('#my_information').on('submit', e => {
             e.preventDefault();
 
+            var site = "<?= $this->session->userdata('userlevel') == "1" ? site_url('app/update_profile') : site_url('user/update_profile') ?>";
+
             $.ajax({
-                url: "<?= site_url('user/update_profile') ?>",
+                url: site,
                 type: "POST",
                 dataType: "JSON",
                 data: $(e.currentTarget).serialize(),
