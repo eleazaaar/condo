@@ -427,7 +427,7 @@
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form id="contact-form" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -451,11 +451,7 @@
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
+                  <button type="submit" id="contact-form-submit">Send Message</button>
                 </div>
 
               </div>
@@ -493,7 +489,6 @@
 
   <!-- Vendor JS Files -->
   <script src="<?=base_url()?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="<?=base_url()?>/assets/vendor/php-email-form/validate.js"></script>
   <script src="<?=base_url()?>/assets/vendor/aos/aos.js"></script>
   <script src="<?=base_url()?>/assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="<?=base_url()?>/assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -504,6 +499,42 @@
   <!-- Main JS File -->
   <script src="<?=base_url()?>/assets/js/main.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    $(() => {
+
+      $('#contact-form').on('submit', e => {
+            e.preventDefault();
+
+            alert();
+
+            $.ajax({
+                url: "<?=site_url('Extension/send_inquiry')?>",
+                type: "POST",
+                dataType: "JSON",
+                data: $(e.currentTarget).serialize(),
+                beforeSend: function() {
+                    Swal.showLoading();
+                },
+                success: function(data) {
+                    Swal.fire({
+                        icon: data.icon,
+                        title: data.title,
+                        html: data.message,
+                    })
+                },
+                error: function(jqXHR, textStatus) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error Occured',
+                        html: textStatus,
+                    });
+                }
+            });
+        });
+    });
+  </script>
 </body>
 
 </html>
