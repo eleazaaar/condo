@@ -43,12 +43,7 @@ class Page extends CI_Controller {
 	public function units() {
 		$this->load->view('admin/units');
 	}
-
-	private function site($data,$page){
-    $datas['url'] = $page;
-    $datas['data'] = $data;
-    $this->load->view('layout/guest', $datas);
-  }
+	
 	public function amenities() {
 		$this->load->view('admin/amenity');
 	}

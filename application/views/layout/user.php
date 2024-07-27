@@ -77,8 +77,8 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 
-                        <!-- <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="<?= site_url('user/my_profile') ?>">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -87,7 +87,7 @@
                             <hr class="dropdown-divider">
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="bi bi-gear"></i>
                                 <span>Account Settings</span>
