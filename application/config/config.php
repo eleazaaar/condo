@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/condo/';
-// $config['base_url'] = 'https://sandybrown-llama-658903.hostingersite.com/condo';
+// $config['base_url'] = 'http://localhost/condo/';
+$config['base_url'] = 'https://azurecozystays.online/condo/';
 
 /*
 |--------------------------------------------------------------------------
