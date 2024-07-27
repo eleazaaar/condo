@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 // $config['base_url'] = 'http://localhost/condo/';
-$config['base_url'] = 'https://azurecozystays.online/condo/';
+$config['base_url'] = 'https://azurecozystays.online/';
 
 /*
 |--------------------------------------------------------------------------
