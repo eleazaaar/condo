@@ -498,6 +498,7 @@
 
   <!-- Main JS File -->
   <script src="<?=base_url()?>/assets/js/main.js"></script>
+  <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -507,10 +508,8 @@
       $('#contact-form').on('submit', e => {
             e.preventDefault();
 
-            alert();
-
             $.ajax({
-                url: "<?=site_url('Extension/send_inquiry')?>",
+                url: "<?=site_url('extension/send_inquiry')?>",
                 type: "POST",
                 dataType: "JSON",
                 data: $(e.currentTarget).serialize(),
