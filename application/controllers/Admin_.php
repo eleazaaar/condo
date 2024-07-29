@@ -306,6 +306,11 @@ class Admin_ extends CI_Controller
         echo $this->ssp_model->customer_book();
     }
 
+    public function ssp_recent_book()
+    {
+        echo $this->ssp_model->recent_book();
+    }
+
     public function save_book_status()
     {
         $this->form_validation->set_rules('id', 'ID', 'required|numeric');

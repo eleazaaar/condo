@@ -20,11 +20,11 @@
                     `);
                 })
             })
-            .fail((jqXHR, textStatus) => {
+            .fail((jqXHR) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error Occured',
-                    html: textStatus,
+                    html: jqXHR,
                 });
             });
 
@@ -35,11 +35,11 @@
             .then(response => {
                 $('#book_today').html(response.data.book_today);
             })
-            .fail((jqXHR, textStatus) => {
+            .fail((jqXHR) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error Occured',
-                    html: textStatus,
+                    html: jqXHR,
                 });
             });
 
@@ -50,11 +50,11 @@
             .then(response => {
                 $('#customer_no').html(response.data.customer_no);
             })
-            .fail((jqXHR, textStatus) => {
+            .fail((jqXHR) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error Occured',
-                    html: textStatus,
+                    html: jqXHR,
                 });
             });
 
@@ -65,13 +65,23 @@
             .then(response => {
                 $('#revenue').html(response.data.revenue);
             })
-            .fail((jqXHR, textStatus) => {
+            .fail((jqXHR) => {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error Occured',
-                    html: textStatus,
+                    html: jqXHR,
                 });
             });
 
+        const booking_tbl = new DataTable('#book-tbl', {
+            scrollX: true,
+            ajax: {
+                url: "<?= site_url('admin_/ssp_recent_book'); ?>",
+                method: 'POST'
+            },
+            order: [],
+            processing: true,
+            serverSide: true,
+        });
     });
 </script>

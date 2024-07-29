@@ -198,4 +198,33 @@ class Ssp_Model extends CI_Model
             SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
         );
     }
+
+    public function recent_book()
+    {
+        $this->table = "(
+            SELECT s.id,s.status,CONCAT_WS(' ', u.fname,u.mname,u.lname) as customer_name, a.name as units,a.price
+            FROM schedule s 
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            INNER JOIN user u ON s.user_id=u.id
+            ) temp";
+        $this->primaryKey = 'id';
+        $this->columns = array(
+            array('db' => 'customer_name', 'dt' => 0),
+            array('db' => 'units', 'dt' => 1),
+            array('db' => 'price', 'dt' => 2),
+            array(
+                'db' => 'status', 'dt' => 3,
+                'formatter' => function ($data) {
+                    $badge = status_badge($data);
+                    return "
+                        <span class='badge $badge'>$data</span>
+                ";
+                }
+            )
+        );
+
+        return json_encode(
+            SSP::simple($_POST, $this->sql_details, $this->table, $this->primaryKey, $this->columns)
+        );
+    }
 }

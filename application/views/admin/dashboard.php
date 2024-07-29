@@ -93,53 +93,15 @@
             <div class="card-body">
               <h5 class="card-title">Recent Booking</h5>
 
-              <table class="table table-borderless datatable">
+              <table class="table table-borderless datatable" id="book-tbl" style="width: 100%;">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Customer</th>
                     <th scope="col">Unit</th>
                     <th scope="col">Price</th>
                     <th scope="col">Status</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"><a href="#">#249</a></th>
-                    <td>Juan Dela Cruz</td>
-                    <td><a href="#" class="text-primary">Unit 1</a></td>
-                    <td>₱ 5,000</td>
-                    <td><span class="badge bg-warning">Pending</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#248</a></th>
-                    <td>Juan Dela Cruz</td>
-                    <td><a href="#" class="text-primary">Unit 2</a></td>
-                    <td>₱ 5,000</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#247</a></th>
-                    <td>Juan Dela Cruz</td>
-                    <td><a href="#" class="text-primary">Unit 3</a></td>
-                    <td>₱ 5,000</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#246</a></th>
-                    <td>Juan Dela Cruz</td>
-                    <td><a href="#" class="text-primary">Unit 1</a></td>
-                    <td>₱ 5,000</td>
-                    <td><span class="badge bg-danger">Rejected</span></td>
-                  </tr>
-                  <tr>
-                    <th scope="row"><a href="#">#245</a></th>
-                    <td>Juan Dela Cruz</td>
-                    <td><a href="#" class="text-primary">Unit 2</a></td>
-                    <td>₱ 5,000</td>
-                    <td><span class="badge bg-success">Approved</span></td>
-                  </tr>
-                </tbody>
               </table>
 
             </div>
