@@ -187,9 +187,9 @@ class Ssp_Model extends CI_Model
                     return "
                         <div class='m-auto' data-id='$data'>
                             <button class='btn btn-outline-success btn-edit-status' data-toggle='modal' data-target='#editUnitModal' title='Edit Booked Status'><i class='fas fa-edit'></i></button>
-                            <button class='btn btn-outline-warning btn-transfer-unit' data-toggle='modal' data-target='#editUnitModal' title='Transfer Unit'><i class='fas fa-exchange-alt'></i></button>
-                        </div>
-                ";
+                            </div>
+                            ";
+                            // <button class='btn btn-outline-warning btn-transfer-unit' data-toggle='modal' data-target='#editUnitModal' title='Transfer Unit'><i class='fas fa-exchange-alt'></i></button>
                 }
             ),
         );
