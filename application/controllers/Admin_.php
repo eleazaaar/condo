@@ -406,4 +406,23 @@ class Admin_ extends CI_Controller
     /**
      * END OF BOOK
      */
+
+     
+    public function get_checkout_book()
+    {
+        $this->load->model('Units', 'units');
+        $data = $this->units->get_checkout_book('');
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($data));
+    }
+
+    public function get_available_units()
+    {
+        $this->load->model('Units', 'units');
+        $from = $this->input->post('from', TRUE);
+        $to = $this->input->post('to', TRUE);
+        $units = $this->units->get_available_units($from, $to);
+        echo json_encode($units);
+    }
 }

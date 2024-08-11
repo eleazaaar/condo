@@ -10,7 +10,7 @@
 	<meta content="" name="keywords">
 
 	<!-- Favicons -->
-	<link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
+	<link href="<?=base_url()?>/assets-all/img/logo.png" rel="icon">
 	<link href="<?=base_url()?>/assets-admin/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 	<!-- Google Fonts -->
@@ -45,7 +45,7 @@
 
 		<div class="d-flex align-items-center justify-content-between">
 			<a class="logo d-flex align-items-center" href="#" id="home">
-				<img src="<?=base_url()?>/assets-all/img/logo.jpg" alt="">
+				<img src="<?=base_url()?>/assets-all/img/logo.png" alt="">
 				<span class="d-none d-lg-block">Azure</span>
 			</a>
 			<i class="bi bi-list toggle-sidebar-btn"></i>

@@ -48,6 +48,18 @@ class App extends CI_Controller
         $this->site($data, 'admin/book');
     }
 
+    public function users_feedback()
+    {
+        $data['ex_js'] = 'js/admin/users_feedback.js.php';
+        $this->site($data, 'admin/users_feedback');
+    }
+
+    public function schedule()
+    {
+        $data['ex_js'] = 'js/admin/schedule.js.php';
+        $this->site($data, 'admin/schedule');
+    }
+
     private function site($data, $page)
     {
         $datas['url'] = $page;

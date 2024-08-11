@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azure</title>
-    <link href="<?= base_url() ?>/assets-all/img/logo.jpg" rel="icon">
+    <link href="<?= base_url() ?>/assets-all/img/logo.png" rel="icon">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/signup.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 </head>
 
-<body style="background: #37517e;">
+<body style="background: #FFF1E5;">
     <div class="content">
         <div class="content-body">
             <div class="container col-lg-8 col-md-8 col-sm-12">

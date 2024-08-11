@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?= base_url() ?>/assets-all/img/logo.jpg" rel="icon">
+    <link href="<?= base_url() ?>/assets-all/img/logo.png" rel="icon">
     <link href="<?= base_url() ?>/assets-admin/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -28,6 +28,12 @@
     <link href="<?= base_url() ?>/assets-admin/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css'); ?>">
+    
+    <!-- FULLCALENDAR -->
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/fullcalendar/main.min.css'); ?>">
+
+    <link rel="stylesheet" href="<?= base_url('assets/plugins/star-rating/star-rating.min.css'); ?>">
+    
     <!-- DataTables -->
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
@@ -46,7 +52,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a class="logo d-flex align-items-center" href="#" id="home">
-                <img src="<?= base_url() ?>/assets-all/img/logo.jpg" alt="">
+                <img src="<?= base_url() ?>/assets-all/img/logo.png" alt="">
                 <span class="d-none d-lg-block">Azure</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -152,6 +158,20 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('app/schedule') ?>">
+                    <i class="fas fa-calendar"></i>
+                    <span>Schedule</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?= site_url('app/users_feedback') ?>">
+                    <i class="fas fa-comments"></i>
+                    <span>Users Feedback</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="<?= site_url('app/users') ?>">
                     <i class="fas fa-users"></i>
                     <span>Users</span>
@@ -215,6 +235,11 @@
     <script src="<?= base_url('assets/js/sweetalert.js') ?>"></script>
     <script src="<?= base_url('assets/plugins/select2/js/select2.min.js') ?>"></script>
 
+    <!-- FULLCALENDAR -->
+    <script src="<?= base_url('assets/plugins/fullcalendar/main.min.js'); ?>"></script>
+
+    <script src="<?= base_url('assets/plugins/star-rating/star-rating.min.js'); ?>"></script>
+    
     <!-- DataTables  & Plugins -->
     <script src="<?= base_url('assets/plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>

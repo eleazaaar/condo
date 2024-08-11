@@ -9,7 +9,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="<?=base_url()?>/assets-all/img/logo.jpg" rel="icon">
+  <link href="<?=base_url()?>/assets-all/img/logo.png" rel="icon">
   <link href="<?=base_url()?>/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
   
   <!-- Fonts -->
@@ -43,7 +43,7 @@
 
       <a href="#" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="<?=base_url()?>/assets-all/img/logo.jpg" alt="">
+        <img src="<?=base_url()?>/assets-all/img/logo.png" alt="">
         <h1 class="sitename">Azure</h1>
       </a>
 
@@ -74,11 +74,12 @@
             <p class="">Located in Bicutan, Parañaque City, AZURE URBAN RESORT RESIDENCES brought the first ever large scale man-made beach concept to a residential development in the Philippines.</p>
             <div class="d-flex">
               <a href="<?=site_url('Page/login')?>" class="btn-get-started">Get Started</a>
-              <a href="#." class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="https://www.youtube.com/watch?v=2qqTW0Y8FMk" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             </div>
           </div>
-          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
-            <img src="<?=base_url()?>/assets-all/img/1.jpg" class="img-fluid animated" alt="" width="70%">
+          <div class="col-lg-2 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200"></div>
+          <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="<?=base_url()?>/assets-all/img/logo.png" class="img-fluid animated" alt="" width="70%">
         </div>
       </div>
 

@@ -8,14 +8,14 @@ class Units extends CI_Model {
 	}
 
 	public function get_checkout_book($userid){
+		$where = $userid ? "AND s.user_id = '$userid'" : '';
 		$query = $this->db->query("
-			SELECT a.*,s.from_date,s.id as schedule_id, s.to_date,s.total_amount, u.rate, u.remarks as f_remarks, u.pros, u.cons
+			SELECT a.*, s.from_date, s.id as schedule_id, s.to_date,s.total_amount, u.rate, u.remarks as f_remarks, u.pros, u.cons
 			FROM `accomodation` a
 			INNER JOIN `schedule` s on a.id= s.accomodation_id
 			LEFT JOIN `unit_feedbak` u ON s.id=u.schedule_id
-			WHERE s.user_id='$userid' AND s.status='Check-Out'
+			WHERE s.status='Check-Out' $where
 		");
-			// WHERE s.user_id='$userid'
 		return $query->result();
 	}
 
