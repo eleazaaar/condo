@@ -1203,7 +1203,7 @@ section,
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services {
+.units, .contact {
   --background-color: color-mix(in srgb, var(--heading-color), transparent 95%);
 }
 
