@@ -73,6 +73,15 @@
 
         </div><!-- End Customers Card -->
 
+        <div class="col-12">
+          <div class="card info-card customers-card">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <div id='calendar'></div>
+            </div>
+          </div>
+        </div>
+
         <!-- Recent Booking -->
         <div class="col-12">
           <div class="card recent-sales overflow-auto">

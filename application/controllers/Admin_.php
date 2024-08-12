@@ -362,6 +362,44 @@ class Admin_ extends CI_Controller
         }
     }
 
+    public function get_book_list_by_year_month(){
+        $this->form_validation->set_rules('month', 'Month', 'required|numeric');
+        $this->form_validation->set_rules('year', 'Year', 'required|numeric');
+
+        if ($this->form_validation->run() == FALSE) {
+            header('Content-Type: application/json');
+            echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
+            die;
+        }
+
+        extract($this->input->post(NULL,TRUE));
+
+        $start_date = new DateTime("$year-$month-01");
+        $last_date = new DateTime("$year-$month-01");        
+        $last_date->modify('last day of this month');
+
+        $start_date = $start_date->format('Y-m-d');
+        $last_date = $last_date->format('Y-m-d');
+
+        $query = $this->db->query("
+            SELECT CONCAT(a.name,'-',u.fname,' ',u.lname) as title, s.from_date as start, s.to_date as end
+            FROM schedule s 
+            LEFT JOIN accomodation a ON s.accomodation_id=a.id
+            LEFT JOIN user u ON s.user_id=u.id
+            WHERE 1=1
+            AND s.status <> 'Pending'
+            AND 
+            	(
+                    s.from_date BETWEEN DATE('$start_date') AND DATE('$last_date')
+                    OR s.to_date BETWEEN DATE('$start_date') AND DATE('$last_date')
+                )
+        ");
+        
+        header('Content-Type: application/json');
+        echo json_encode(['status'=> 200, 'data'=> $query->result()]);
+    }
+
+
     public function get_recent_check_in_check_out()
     {
         $query = $this->db->query("

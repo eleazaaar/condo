@@ -1,5 +1,58 @@
 <script>
     $(() => {
+
+        const update_calendar_book_list_by_year_month = (month, year) => {
+            $.ajax({
+                    url: "<?= site_url('admin_/get_book_list_by_year_month') ?>",
+                    dataType: "JSON",
+                    method: 'POST',
+                    data: {
+                        month: month,
+                        year: year,
+                    }
+                })
+                .then(response => {
+                    if(response.status==200){
+                        calendar.addEventSource(response.data);
+                    }else{
+                        console.error(response.message);
+                    }
+                })
+                .fail((jqXHR) => {
+                    console.log(jqXHR);
+                });
+        }
+
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            initialDate: '2024-08-12',
+            eventColor: 'green',
+
+            events: get_book_list_by_year_month(8,2024)
+        });
+
+        calendar.render();
+
+        // Add click event for the 'prev' button
+        $(document).on('click', '.fc-prev-button', function() {
+            var date = calendar.getDate();
+            var month = date.getMonth() + 1; // 0-based month, so +1
+            var year = date.getFullYear();
+            console.log('Month:', month + 1, 'Year:', year);
+            update_calendar_book_list_by_year_month(month,year);
+        });
+
+        // Add click event for the 'next' button
+        $(document).on('click', '.fc-next-button', function() {
+            var date = calendar.getDate();
+            var month = date.getMonth() + 1; // 0-based month, so +1
+            var year = date.getFullYear();
+            console.log('Month:', month + 1, 'Year:', year);
+            update_calendar_book_list_by_year_month(month,year);
+        });
+
         $.ajax({
                 url: "<?= site_url('admin_/get_recent_check_in_check_out') ?>",
                 dataType: "JSON",
