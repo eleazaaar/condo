@@ -130,7 +130,7 @@
     <section id="units" class="units section">
     <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
-      <h2>Unit 1</h2>
+      <h2>Cozy Stays Staycation Unit 1</h2>
     </div><!-- End Section Title -->
 
       <div class="container">
@@ -237,7 +237,7 @@
 
       </div>
       <div class="container section-title" data-aos="fade-up">
-      <h2>Unit 2</h2>
+      <h2>Cozy Stays Staycation Unit 2</h2>
       </div><!-- End Section Title -->
       </div><!-- End Section Title -->
 
