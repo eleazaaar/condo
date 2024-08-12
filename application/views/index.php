@@ -41,7 +41,7 @@
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-      <a href="#" class="logo d-flex align-items-center me-auto">
+      <a class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="<?=base_url()?>/assets-all/img/logo.png" alt="">
         <h1 class="sitename">Azure</h1>
@@ -51,6 +51,7 @@
         <ul>
           <li><a href="#hero" class="">Home</a></li>
           <li><a href="#about">Overview</a></li>
+          <li><a href="#units">Units</a></li>
           <li><a href="#services">Amenities</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -116,7 +117,7 @@
             <img src="<?=base_url()?>/assets-all/img/AZURE 9 TOWERS.jpg" width="300px" alt="">
             <p>AZURE’S 9 TOWERS</p>
             <p>Named after some of the most beautiful beaches in the world. From Rio in Brazil, Santorini in Greece, St. Tropez in France, Positano in Italy, and Miami in the US to Maui in Hawaii, Maldives in South Asia, the famous Boracay of the Philippines and Bahamas in the Caribbean.</p>
-            <!-- <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
+            <!-- <a class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a> -->
           </div>
 
         </div>
@@ -124,6 +125,232 @@
       </div>
 
     </section><!-- /about Section -->
+
+    <!-- Units Section -->
+    <section id="units" class="units section">
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Cozy Stays Staycation Unit 1</h2>
+    </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+               <img src="<?=base_url()?>/assets-all/img/UNIT 1/1.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/2.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/3.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/4.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+               <img src="<?=base_url()?>/assets-all/img/UNIT 1/5.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/6.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/7.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/8.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/9.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/10.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/11.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/12.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/13.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 1/14.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+      <div class="container section-title" data-aos="fade-up">
+      <h2>Cozy Stays Staycation Unit 2</h2>
+      </div><!-- End Section Title -->
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+               <img src="<?=base_url()?>/assets-all/img/UNIT 2/1.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/2.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/3.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/4.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+               <img src="<?=base_url()?>/assets-all/img/UNIT 2/5.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/6.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/7.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/8.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/9.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/10.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/11.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/12.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+        <div class="row gy-4 mt-1">
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/13.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/14.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-item position-relative">
+              <img src="<?=base_url()?>/assets-all/img/UNIT 2/15.jpg" width="250px" alt="">
+            </div>
+          </div><!-- End Service Item -->
+
+        </div>
+
+      </div>
+    </section><!-- /Units Section -->
 
     <!-- services Section -->
     <section id="services" class="services section">
@@ -143,7 +370,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
                <img src="<?=base_url()?>/assets-all/img/LOBBY LOUNGE.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">LOBBY LOUNGE</a></h4>
+              <h4><a class="stretched-link">LOBBY LOUNGE</a></h4>
               <p>A welcoming and restful entrance</p>
             </div>
           </div><!-- End Service Item -->
@@ -152,7 +379,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/ICE CREAM & CANDY BAR.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">ICE CREAM & CANDY BAR</a></h4>
+              <h4><a class="stretched-link">ICE CREAM & CANDY BAR</a></h4>
               <p>Dessert and café lounge with a bright and multicolored atmosphere.</p>
             </div>
           </div><!-- End Service Item -->
@@ -161,7 +388,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/MALE SPA AND FEMALE SPA.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">MALE SPA AND FEMALE SPA</a></h4>
+              <h4><a class="stretched-link">MALE SPA AND FEMALE SPA</a></h4>
               <p>Relax and ease away every ache and pain.</p>
             </div>
           </div><!-- End Service Item -->
@@ -170,7 +397,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/LOCKER ROOMS.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">LOCKER ROOMS</a></h4>
+              <h4><a class="stretched-link">LOCKER ROOMS</a></h4>
               <p>For your privacy and safety</p>
             </div>
           </div><!-- End Service Item -->
@@ -183,7 +410,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
                <img src="<?=base_url()?>/assets-all/img/CHILDREN’S PLAYROOM.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">CHILDREN’S PLAYROOM</a></h4>
+              <h4><a class="stretched-link">CHILDREN’S PLAYROOM</a></h4>
               <p>A colorful indoor play area for your active kids</p>
             </div>
           </div><!-- End Service Item -->
@@ -192,7 +419,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/GYM & STUDIO.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">GYM & STUDIO</a></h4>
+              <h4><a class="stretched-link">GYM & STUDIO</a></h4>
               <p>A spacious fitness center with top-grade equipment and marvelous views</p>
             </div>
           </div><!-- End Service Item -->
@@ -201,7 +428,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/MOVIE ROOM.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">MOVIE ROOM</a></h4>
+              <h4><a class="stretched-link">MOVIE ROOM</a></h4>
               <p>For a comfortable entertainment experience</p>
             </div>
           </div><!-- End Service Item -->
@@ -210,7 +437,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/AL FRESCO DINING AREA.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">AL FRESCO DINING AREA</a></h4>
+              <h4><a class="stretched-link">AL FRESCO DINING AREA</a></h4>
               <p>For a delightful dining experience.</p>
             </div>
           </div><!-- End Service Item -->
@@ -223,7 +450,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/GAME ROOM.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">GAME ROOM</a></h4>
+              <h4><a class="stretched-link">GAME ROOM</a></h4>
               <p>A variety of traditional and video games provides ample fun.</p>
             </div>
           </div><!-- End Service Item -->
@@ -232,7 +459,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/ILLUMINATED HALLWAYS.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">ILLUMINATED HALLWAYS</a></h4>
+              <h4><a class="stretched-link">ILLUMINATED HALLWAYS</a></h4>
               <p>Alternating hues</p>
             </div>
           </div><!-- End Service Item -->
@@ -241,7 +468,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/FUNCTION ROOM.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">FUNCTION ROOM</a></h4>
+              <h4><a class="stretched-link">FUNCTION ROOM</a></h4>
               <p>Ideal for meetings, seminars, and small parties</p>
             </div>
           </div><!-- End Service Item -->
@@ -250,7 +477,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/LOUNGE & FUNCTION ROOM.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">LOUNGE & FUNCTION ROOM</a></h4>
+              <h4><a class="stretched-link">LOUNGE & FUNCTION ROOM</a></h4>
               <p>A venue for small events or a quiet place to catch up on work, read a good book, or just hangout in style.</p>
             </div>
           </div><!-- End Service Item -->
@@ -272,7 +499,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
                <img src="<?=base_url()?>/assets-all/img/THE AZURE BEACH.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">THE AZURE BEACH</a></h4>
+              <h4><a class="stretched-link">THE AZURE BEACH</a></h4>
               <p>An iconic man-made beach facility with fine white sand, undulating waves, and water features.</p>
             </div>
           </div><!-- End Service Item -->
@@ -281,7 +508,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/THE AZURE WAVEPOOL.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">THE AZURE WAVE POOL</a></h4>
+              <h4><a class="stretched-link">THE AZURE WAVE POOL</a></h4>
               <p>Your very own man-made beach comes with a wave machine that creates fun beach waves every few minutes.</p>
             </div>
           </div><!-- End Service Item -->
@@ -290,7 +517,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/LAP POOL.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">LAP POOL</a></h4>
+              <h4><a class="stretched-link">LAP POOL</a></h4>
               <p>A 25-meter infinity lap pool with floating sunbathing-beds.</p>
             </div>
           </div><!-- End Service Item -->
@@ -299,7 +526,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/LAGOON POOL.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">LAGOON POOL</a></h4>
+              <h4><a class="stretched-link">LAGOON POOL</a></h4>
               <p>Exclusive to residents, the Azure’s lagoon pool is your next option for a more relaxed swim.</p>
             </div>
           </div><!-- End Service Item -->
@@ -312,7 +539,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
                <img src="<?=base_url()?>/assets-all/img/THE BEACH BAR.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">THE BEACH BAR</a></h4>
+              <h4><a class="stretched-link">THE BEACH BAR</a></h4>
               <p>A dynamic hangout in the middle of the Azure beach</p>
             </div>
           </div><!-- End Service Item -->
@@ -321,7 +548,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/KIDDIE POOL WITH CHILDREN’S BEACH PLAYGROUND.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">KIDDIE POOL WITH CHILDREN’S BEACH PLAYGROUND</a></h4>
+              <h4><a class="stretched-link">KIDDIE POOL WITH CHILDREN’S BEACH PLAYGROUND</a></h4>
               <p>Featuring fun slides and exciting water features for your kids!</p>
             </div>
           </div><!-- End Service Item -->
@@ -330,7 +557,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/BEACH VOLLEYBALL.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">BEACH VOLLEYBALL</a></h4>
+              <h4><a class="stretched-link">BEACH VOLLEYBALL</a></h4>
               <p>Dedicated to the great summer sport</p>
             </div>
           </div><!-- End Service Item -->
@@ -339,7 +566,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-broadcast icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/THE AZURE BASKETBALL COURT.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">THE AZURE BASKETBALL COURT</a></h4>
+              <h4><a class="stretched-link">THE AZURE BASKETBALL COURT</a></h4>
               <p>Shoot some hoops in your very own outdoor basketball court.</p>
             </div>
           </div><!-- End Service Item -->
@@ -352,7 +579,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-activity icon"></i></div> -->
               <img src="<?=base_url()?>/assets-all/img/AZURE BEACH CLUB.jpg" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">AZURE BEACH CLUB</a></h4>
+              <h4><a class="stretched-link">AZURE BEACH CLUB</a></h4>
               <p>A one-of-a-kind beach club amenity that integrates dining, relaxation, and entertainment facilities into one seamless, tropical-inspired experience.</p>
             </div>
           </div><!-- End Service Item -->
@@ -361,7 +588,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div> -->
               <img src="#" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">FOOD STALLS AND CONVENIENCE STORE</a></h4>
+              <h4><a class="stretched-link">FOOD STALLS AND CONVENIENCE STORE</a></h4>
               <p></p>
             </div>
           </div><!-- End Service Item -->
@@ -370,7 +597,7 @@
             <div class="service-item position-relative">
               <!-- <div class="icon"><i class="bi bi-calendar4-week icon"></i></div> -->
               <img src="#" width="250px" alt="">
-              <h4><a href="#" class="stretched-link">ROOF DECK, SKY VIEW, AND SKY GARDEN</a></h4>
+              <h4><a class="stretched-link">ROOF DECK, SKY VIEW, AND SKY GARDEN</a></h4>
               <p></p>
             </div>
           </div><!-- End Service Item -->
