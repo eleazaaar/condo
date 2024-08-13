@@ -2,28 +2,28 @@
     $(() => {
         var calendrical = [];
         const update_calendar_book_list_by_year_month = (month, year) => {
-            $.ajax({
-                    url: "<?= site_url('admin_/get_book_list_by_year_month') ?>",
-                    dataType: "JSON",
-                    method: 'POST',
-                    data: {
-                        month: month,
-                        year: year,
-                    }
-                })
-                .then(response => {
-                    if (response.status == 200) {
-                        if (!calendrical.includes(`${year}-${month}`)) {
+            if (!calendrical.includes(`${year}-${month}`)) {
+                $.ajax({
+                        url: "<?= site_url('admin_/get_book_list_by_year_month') ?>",
+                        dataType: "JSON",
+                        method: 'POST',
+                        data: {
+                            month: month,
+                            year: year,
+                        }
+                    })
+                    .then(response => {
+                        if (response.status == 200) {
                             calendar.addEventSource(response.data);
                             calendrical.push(`${year}-${month}`);
+                        } else {
+                            console.error(response.message);
                         }
-                    } else {
-                        console.error(response.message);
-                    }
-                })
-                .fail((jqXHR) => {
-                    console.log(jqXHR);
-                });
+                    })
+                    .fail((jqXHR) => {
+                        console.log(jqXHR);
+                    });
+            }
         }
 
         var calendarEl = document.getElementById('calendar');
