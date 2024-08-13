@@ -1,6 +1,6 @@
 <script>
     $(() => {
-
+        var calendrical = [];
         const update_calendar_book_list_by_year_month = (month, year) => {
             $.ajax({
                     url: "<?= site_url('admin_/get_book_list_by_year_month') ?>",
@@ -12,9 +12,12 @@
                     }
                 })
                 .then(response => {
-                    if(response.status==200){
-                        calendar.addEventSource(response.data);
-                    }else{
+                    if (response.status == 200) {
+                        if (!calendrical.includes(`${year}-${month}`)) {
+                            calendar.addEventSource(response.data);
+                            calendrical.push(`${year}-${month}`);
+                        }
+                    } else {
                         console.error(response.message);
                     }
                 })
@@ -25,12 +28,27 @@
 
         var calendarEl = document.getElementById('calendar');
 
+        const today = new Date();
+
+        const c_year = today.getFullYear();
+        const c_month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const c_day = String(today.getDate()).padStart(2, '0');
+
+        const formattedDate = `${c_year}-${c_month}-${c_day}`;
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
-            initialDate: '2024-08-12',
+            initialDate: formattedDate,
             eventColor: 'green',
-
-            events: get_book_list_by_year_month(8,2024)
+            eventDidMount: function(info) {
+                $(info.el).tooltip({
+                    title: info.event.extendedProps.description,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body'
+                });
+            },
+            events: update_calendar_book_list_by_year_month(c_month, c_year)
         });
 
         calendar.render();
@@ -40,8 +58,8 @@
             var date = calendar.getDate();
             var month = date.getMonth() + 1; // 0-based month, so +1
             var year = date.getFullYear();
-            console.log('Month:', month + 1, 'Year:', year);
-            update_calendar_book_list_by_year_month(month,year);
+
+            update_calendar_book_list_by_year_month(month, year);
         });
 
         // Add click event for the 'next' button
@@ -49,8 +67,8 @@
             var date = calendar.getDate();
             var month = date.getMonth() + 1; // 0-based month, so +1
             var year = date.getFullYear();
-            console.log('Month:', month + 1, 'Year:', year);
-            update_calendar_book_list_by_year_month(month,year);
+
+            update_calendar_book_list_by_year_month(month, year);
         });
 
         $.ajax({

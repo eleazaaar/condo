@@ -382,10 +382,10 @@ class Admin_ extends CI_Controller
         $last_date = $last_date->format('Y-m-d');
 
         $query = $this->db->query("
-            SELECT CONCAT(a.name,'-',u.fname,' ',u.lname) as title, s.from_date as start, s.to_date as end
+            SELECT a.name as title,CONCAT(a.name,' - ',u.fname,' ',u.lname) as description, s.from_date as start, s.to_date as end
             FROM schedule s 
-            LEFT JOIN accomodation a ON s.accomodation_id=a.id
-            LEFT JOIN user u ON s.user_id=u.id
+            INNER JOIN accomodation a ON s.accomodation_id=a.id
+            INNER JOIN user u ON s.user_id=u.id
             WHERE 1=1
             AND s.status <> 'Pending'
             AND 
