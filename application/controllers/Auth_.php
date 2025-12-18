@@ -67,11 +67,11 @@ class Auth_ extends CI_Controller
 
         // $password = $this->generatePassword();
 
-        // $data['email'] = $email;
-        // $data['contact_number'] = $contact_no;
+        $data['email'] = $email;
         $data['fname'] = $fname;
         $data['mname'] = $mname;
         $data['lname'] = $lname;
+        $data['contact_number'] = $contact_no;
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         $data['user_type'] = 2;
         $data['is_verified'] = date('Y-m-d H:i:s');
