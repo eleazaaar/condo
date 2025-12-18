@@ -54,6 +54,8 @@ class Auth_ extends CI_Controller
         $this->form_validation->set_rules('fname', 'First Name', 'required|min_length[5]|max_length[100]');
         $this->form_validation->set_rules('mname', 'Middle Name', 'regex_match[/^.*$/]');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|min_length[5]|max_length[100]');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
         $this->form_validation->set_rules('contact_no', 'Contact Number', 'required|regex_match[/^09\d{9}$/]');
 
         if ($this->form_validation->run() == FALSE) {
@@ -63,7 +65,7 @@ class Auth_ extends CI_Controller
 
         extract($this->input->post(NULL, TRUE));
 
-        $password = $this->generatePassword();
+        // $password = $this->generatePassword();
 
         $data['email'] = $email;
         $data['fname'] = $fname;
@@ -79,10 +81,10 @@ class Auth_ extends CI_Controller
 
         $res = $this->db->insert('user', $data);
         if ($res) {
-            if ($this->sendActivationEmail($email, $message)) {
-                echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Success', 'message' => 'Check your email to activate your account.'));
+            // if ($this->sendActivationEmail($email, $message)) {
+                echo json_encode(array('status' => 200, 'icon' => 'success', 'title' => 'Success', 'message' => 'Registered Successfully.'));
                 die;
-            }
+            // }
         } else {
             echo json_encode(array('status' => 400, 'icon' => 'error', 'title' => 'Error', 'message' => 'Something went wrong while adding.'));
             die;
@@ -146,8 +148,8 @@ class Auth_ extends CI_Controller
         $mailer->Host = 'smtp.gmail.com';
         $mailer->SMTPAuth = true;
         $mailer->Username = 'azurestaycations@gmail.com';
-        $mailer->Password = 'spohodhubtzlzdti';
-        $mailer->SMTPSecure = 'tls';
+        $mailer->Password = 'spoh odhu btzl zdti';
+        $mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mailer->Port = 587;
         $mailer->setFrom('azurestaycations@gmail.com');
         $mailer->addAddress($email);
