@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="row" hidden>
+                        <!-- <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-12">
                                 <label for="email"><b>Email</b></label>
                                 <input type="email" name="email" placeholder="Enter Email" required>
@@ -45,7 +45,7 @@
                                 <label for="contact_no"><b>Mobile Number</b></label>
                                 <input type="text" placeholder="Enter Mobile" maxlength="11" name="contact_no" required>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row">
                             <div class="col-12">
