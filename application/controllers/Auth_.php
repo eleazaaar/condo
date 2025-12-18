@@ -74,11 +74,10 @@ class Auth_ extends CI_Controller
         $data['contact_number'] = $contact_no;
         $data['password'] = password_hash($password, PASSWORD_DEFAULT);
         $data['user_type'] = 2;
-        $data['is_verified'] = date('Y-m-d H:i:s');
 
-        // $account['code'] = "Password: $password";
+        $account['code'] = "Password: $password";
 
-        // $message = $this->load->view('activate_account', $account, TRUE);
+        $message = $this->load->view('activate_account', $account, TRUE);
 
         $res = $this->db->insert('user', $data);
         if ($res) {
