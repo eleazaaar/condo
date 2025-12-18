@@ -42,21 +42,21 @@ class Auth_ extends CI_Controller
 
     public function sign_up()
     {
-        // $this->form_validation->set_rules(
-        //     'email',
-        //     'Email',
-        //     'required|valid_email|is_unique[user.email]',
-        //     array(
-        //         'required'      => 'You have not provided %s.',
-        //         'is_unique'     => 'This %s already exists.'
-        //     )
-        // );
+        $this->form_validation->set_rules(
+            'email',
+            'Email',
+            'required|valid_email|is_unique[user.email]',
+            array(
+                'required'      => 'You have not provided %s.',
+                'is_unique'     => 'This %s already exists.'
+            )
+        );
         $this->form_validation->set_rules('fname', 'First Name', 'required|min_length[5]|max_length[100]');
         $this->form_validation->set_rules('mname', 'Middle Name', 'regex_match[/^.*$/]');
         $this->form_validation->set_rules('lname', 'Last Name', 'required|min_length[5]|max_length[100]');
         $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|matches[password]');
-        // $this->form_validation->set_rules('contact_no', 'Contact Number', 'required|regex_match[/^09\d{9}$/]');
+        $this->form_validation->set_rules('contact_no', 'Contact Number', 'required|regex_match[/^09\d{9}$/]');
 
         if ($this->form_validation->run() == FALSE) {
             echo json_encode(array('status' => 400, 'icon' => 'warning', 'title' => 'Invalid Data', 'message' => validation_errors('', '<br>')));
