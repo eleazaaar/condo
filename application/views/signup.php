@@ -35,7 +35,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row" hidden>
                             <div class="col-lg-8 col-md-8 col-sm-12">
                                 <label for="email"><b>Email</b></label>
                                 <input type="email" name="email" placeholder="Enter Email" required>
